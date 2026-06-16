@@ -24,7 +24,7 @@ def check_word(word: str, guess: str):
     return past_try
 
 def main():
-    series = pd.read_csv("message.txt",sep="\t")
+    series = pd.read_csv("../../data/message.txt", sep="\t")
     word = str(series.sample(n=1).values).replace("[","").replace("]","").replace("'","")
     tentativa = 0
     while tentativa < 6:
