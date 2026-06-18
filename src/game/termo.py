@@ -1,6 +1,11 @@
+import random
+import re
 
 import pandas as pd
-
+from pathlib import Path
+ROOT = Path("message.txt").resolve().parent.parent
+PATH = ROOT/"termo"/"data"/"message.txt"
+PALAVRAS = pd.read_csv(PATH, sep="\t")
 
 def check_word(word: str, guess: str):
     past_try = [0] * 5
@@ -21,21 +26,53 @@ def check_word(word: str, guess: str):
 
     return past_try
 
+def filter_words(regex:str,word:str):
+    return re.match(rf"{regex}",word)
+
+def guess_word(word,guesses=None):
+
+    guess = "audio"
+    regex = list("^.....$")
+    missplaced = ""
+
+    if guesses is not None and len(guesses) > 0:
+        guess = random.choice(list(guesses))
+    print("chute: ",guess)
+    if guess == word:
+        return True
+
+    for index,value in enumerate(check_word(word,guess)):
+        if value == 2:
+            regex[index+1] = word[index]
+        if value == 1:
+            missplaced += f"(?=.*{guess[index]})"
+
+    if missplaced:
+        regex.insert(1,missplaced)
+
+    regexstr = "".join(regex)
+    filter_guesses = PALAVRAS["palavras"].str.match(regexstr)
+    guesses = PALAVRAS.loc[filter_guesses, "palavras"].tolist()
+    print(regexstr)
+    print("candidatas:", len(guesses),guesses)
+
+    return guesses
+
+
 def main():
-    series = pd.read_csv("../../data/message.txt", sep="\t")
-    word = str(series.sample(n=1).values).replace("[","").replace("]","").replace("'","")
+    print(type(PALAVRAS))
+    word = str(PALAVRAS.sample(n=1).values).replace("[", "").replace("]", "").replace("'", "")
     tentativa = 0
+    guesses = None
     while tentativa < 6:
-        guess = input("").lower()
-        if guess not in series.values:
-            print("palavra invalida")
-            continue
-        check_word(word,guess)
-        if word == guess:
-            print(check_word(word,guess))
+        resultado = guess_word(word, guesses)
+
+        if resultado is True:
+            print(f"Você ganhou! a palavra era {word}")
             break
-        print(check_word(word,guess))
-        tentativa+=1
+
+        guesses = resultado
+        tentativa += 1
 
 if __name__ == '__main__':
     main()
