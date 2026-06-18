@@ -1,6 +1,4 @@
-import random
 import re
-
 import pandas as pd
 from pathlib import Path
 ROOT = Path("message.txt").resolve().parent.parent
@@ -14,9 +12,22 @@ class Letras:
         self.missplaced = [[],[],[],[],[]]
         self.included = []
 
-def check_letters():
+def rank():
+    rank_l = PALAVRAS["palavras"].str.join('').str.split('').explode().value_counts()
+    rank_words = {}
+    for index, word in enumerate(PALAVRAS["palavras"]):
+        rank_words[word] = 0
+        for l in set(word):
+            rank_words[word] += rank_l[l]
 
-    print(PALAVRAS["palavras"].str.join('').str.split('').explode().value_counts())
+    return rank_words
+
+def choose_word(guesses):
+    rank_words = rank()
+    guesses_ranked = {key: rank_words[key] for key in guesses}
+    maior_valor = max(guesses_ranked.values())
+    return next((palavra for palavra,valor in guesses_ranked.items() if valor == maior_valor ),None)
+
 def check_word(word: str, guess: str):
     past_try = [0] * 5
     w = list(word)
@@ -45,7 +56,7 @@ def guess_word(word,info:object,guesses=None,) -> list:
     guess = "serao"
 
     if guesses:
-        guess = random.choice(guesses)
+        guess = choose_word(guesses)
 
     print(guess,end=" ", )
 
@@ -80,15 +91,15 @@ def guess_word(word,info:object,guesses=None,) -> list:
     guesses = PALAVRAS.loc[filter_guesses, "palavras"].tolist()
     if guess in guesses:
         guesses.remove(guess)
-
+    print(guesses)
     return guesses
 
 
 def main():
-    check_letters()
+
     word = str(PALAVRAS.sample(n=1).values).replace("[", "").replace("]", "").replace("'", "")
     print(word, end=":")
-    tentativa = 1
+    tentativa = 0
     guesses = []
     info = Letras()
     while tentativa < 6:
@@ -97,8 +108,7 @@ def main():
         if len(guesses) > 1 or len(guesses) == 0:
             tentativa+=1
         else:
-
-            print(guesses[0],tentativa)
+            print(guesses[0],tentativa + 1)
             break
 
 
