@@ -7,6 +7,16 @@ ROOT = Path("message.txt").resolve().parent.parent
 PATH = ROOT/"termo"/"data"/"message.txt"
 PALAVRAS = pd.read_csv(PATH, sep="\t")
 
+class Letras:
+    def __init__(self):
+        self.not_included = []
+        self.correct = [".",".",".",".","."]
+        self.missplaced = [[],[],[],[],[]]
+        self.included = []
+
+def check_letters():
+
+    print(PALAVRAS["palavras"].str.join('').str.split('').explode().value_counts())
 def check_word(word: str, guess: str):
     past_try = [0] * 5
     w = list(word)
@@ -29,50 +39,69 @@ def check_word(word: str, guess: str):
 def filter_words(regex:str,word:str):
     return re.match(rf"{regex}",word)
 
-def guess_word(word,guesses=None):
 
-    guess = "audio"
-    regex = list("^.....$")
-    missplaced = ""
+def guess_word(word,info:object,guesses=None,) -> list:
 
-    if guesses is not None and len(guesses) > 0:
-        guess = random.choice(list(guesses))
-    print("chute: ",guess)
+    guess = "serao"
+
+    if guesses:
+        guess = random.choice(guesses)
+
+    print(guess,end=" ", )
+
     if guess == word:
-        return True
+        return [guess]
+
+
 
     for index,value in enumerate(check_word(word,guess)):
         if value == 2:
-            regex[index+1] = word[index]
+            info.correct[index] = word[index]
         if value == 1:
-            missplaced += f"(?=.*{guess[index]})"
+            info.missplaced[index].append(guess[index])
+            if guess[index] in info.included:
+                continue
+            info.included.append(guess[index])
+        if value == 0 and guess[index] not in info.correct and guess[index] not in info.included :
+            info.not_included.append(guess[index])
+    pattern = ""
 
-    if missplaced:
-        regex.insert(1,missplaced)
+    for index,elem in enumerate(info.correct):
+        if (elem != ".") and not(info.missplaced[index]):
+            pattern += elem
+        elif info.missplaced[index]:
+            pattern += f"[^{"".join(info.missplaced[index])}]"
+        else:
+            pattern += elem
 
-    regexstr = "".join(regex)
-    filter_guesses = PALAVRAS["palavras"].str.match(regexstr)
+    regex = f"^(?!.*[{"".join(info.not_included)}])" + "".join([f"(?=.*{x})" for x in info.included]) + pattern + "$"
+
+    filter_guesses = PALAVRAS["palavras"].str.match(regex)
     guesses = PALAVRAS.loc[filter_guesses, "palavras"].tolist()
-    print(regexstr)
-    print("candidatas:", len(guesses),guesses)
+    if guess in guesses:
+        guesses.remove(guess)
 
     return guesses
 
 
 def main():
-    print(type(PALAVRAS))
+    check_letters()
     word = str(PALAVRAS.sample(n=1).values).replace("[", "").replace("]", "").replace("'", "")
-    tentativa = 0
-    guesses = None
+    print(word, end=":")
+    tentativa = 1
+    guesses = []
+    info = Letras()
     while tentativa < 6:
-        resultado = guess_word(word, guesses)
+        guesses = guess_word(word,info,guesses)
 
-        if resultado is True:
-            print(f"Você ganhou! a palavra era {word}")
+        if len(guesses) > 1 or len(guesses) == 0:
+            tentativa+=1
+        else:
+
+            print(guesses[0],tentativa)
             break
 
-        guesses = resultado
-        tentativa += 1
+
 
 if __name__ == '__main__':
     main()
