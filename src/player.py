@@ -2,7 +2,7 @@ import re
 import pandas as pd
 from pathlib import Path
 ROOT = Path("message.txt").resolve().parent.parent
-PATH = ROOT/"termo"/"data"/"message.txt"
+PATH = ROOT/"data"/"message.txt"
 PALAVRAS = pd.read_csv(PATH, sep="\t")
 
 class Letras:
