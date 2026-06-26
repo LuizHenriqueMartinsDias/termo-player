@@ -52,9 +52,7 @@ def filter_words(regex:str,word:str):
 
 
 def guess_word(word,info:object,guesses=None,) -> list:
-
     guess = "serao"
-
     if guesses:
         guess = choose_word(guesses)
 
@@ -62,8 +60,6 @@ def guess_word(word,info:object,guesses=None,) -> list:
 
     if guess == word:
         return [guess]
-
-
 
     for index,value in enumerate(check_word(word,guess)):
         if value == 2:
@@ -96,7 +92,6 @@ def guess_word(word,info:object,guesses=None,) -> list:
 
 
 def main():
-
     word = str(PALAVRAS.sample(n=1).values).replace("[", "").replace("]", "").replace("'", "")
     print(word, end=":")
     tentativa = 0
