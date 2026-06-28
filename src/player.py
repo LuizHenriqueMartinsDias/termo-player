@@ -1,6 +1,13 @@
-import re
+import json
+import time
+
 import pandas as pd
 from pathlib import Path
+
+from playwright.sync_api import sync_playwright, ViewportSize
+
+from compvision import check_collors, print_row, type_word
+
 ROOT = Path("message.txt").resolve().parent.parent
 PATH = ROOT/"data"/"message.txt"
 PALAVRAS = pd.read_csv(PATH, sep="\t")
@@ -22,28 +29,16 @@ def rank():
 
     return rank_words
 
-def choose_word(guesses):
+def choose_word(guesses:list) -> list:
     rank_words = rank()
     guesses_ranked = {key: rank_words[key] for key in guesses}
     maior_valor = max(guesses_ranked.values())
     return next((palavra for palavra,valor in guesses_ranked.items() if valor == maior_valor ),None)
 
 
-def filter_words(regex:str,word:str):
-    return re.match(rf"{regex}",word)
-
-
-def guess_word(info:object,guesses:list=None,) -> list:
-    guess = "serao"
-    if guesses:
-        guess = choose_word(guesses)
-
-    print(guess,end=" ", )
-
-    if guess == word:
-        return [guess]
-
-    for index,value in enumerate(check_word(word,guess)):
+def guess_word(guess:list,values:list,info:Letras) -> list:
+    print(guess)
+    for index,value in enumerate(values):
         if value == 2:
             info.correct[index] = guess[index]
         if value == 1:
@@ -56,7 +51,7 @@ def guess_word(info:object,guesses:list=None,) -> list:
     pattern = ""
 
     for index,elem in enumerate(info.correct):
-        if (elem != ".") and not(info.missplaced[index]):
+        if elem.isalpha():
             pattern += elem
         elif info.missplaced[index]:
             pattern += f"[^{"".join(info.missplaced[index])}]"
@@ -64,29 +59,45 @@ def guess_word(info:object,guesses:list=None,) -> list:
             pattern += elem
 
     regex = f"^(?!.*[{"".join(info.not_included)}])" + "".join([f"(?=.*{x})" for x in info.included]) + pattern + "$"
-
+    print(regex)
     filter_guesses = PALAVRAS["palavras"].str.match(regex)
-    guesses = PALAVRAS.loc[filter_guesses, "palavras"].tolist()
-    if guess in guesses:
-        guesses.remove(guess)
-    print(guesses)
-    return guesses
+    possible_words = PALAVRAS.loc[filter_guesses, "palavras"].tolist()
+    if guess in possible_words:
+        possible_words.remove(guess)
+    print(possible_words)
+    return possible_words
 
 
 def main():
-    word = str(PALAVRAS.sample(n=1).values).replace("[", "").replace("]", "").replace("'", "")
-    print(word, end=":")
-    tentativa = 0
-    guesses = []
+    possible_words = PALAVRAS["palavras"].values.tolist()
+    row = 0
     info = Letras()
-    while tentativa < 6:
-        guesses = guess_word(word,info,guesses)
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        context = browser.new_context(
+            viewport=ViewportSize(width=1280, height=720),
+        )
+        page = context.new_page()
+        palavra = "furia"
 
-        if len(guesses) > 1 or len(guesses) == 0:
-            tentativa+=1
-        else:
-            print(guesses[0],tentativa + 1)
-            break
+        local_storage_data = {"config": {"highContrast": 0, "hardMode": 0},
+                              "meta": {"startTime": 1782623403199, "endTime": 0, "highContrastChange": 0},
+                              "stats": {"games": 0, "wins": 0, "curstreak": 0, "avgtime": 0, "mintime": 0, "maxtime": 0,
+                                        "maxstreak": 0, "histo": [0, 0, 0, 0, 0, 0]},
+                              "state": [{"curday": 1638, "solution": f"{palavra}", "normSolution": f"{palavra}"}]}
+        page.add_init_script(f" localStorage.setItem('termo', '{json.dumps(local_storage_data)}')")
+        page.goto("https://term.ooo/")
+        page.keyboard.press("Escape")
+        while len(possible_words) > 0 and row<6:
+            word = choose_word(possible_words)
+            type_word(page,word)
+            time.sleep(2)
+            values = check_collors(print_row(page,row))
+            possible_words = guess_word(word,values,info)
+            row += 1
+
+        return
+
 
 
 
