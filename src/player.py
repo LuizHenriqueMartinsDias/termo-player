@@ -36,18 +36,8 @@ def choose_word(guesses:list) -> list:
     return next((palavra for palavra,valor in guesses_ranked.items() if valor == maior_valor ),None)
 
 
-def guess_word(guess:list,values:list,info:Letras) -> list:
+def guess_word(guess:list,info:Letras) -> list:
     print(guess)
-    for index,value in enumerate(values):
-        if value == 2:
-            info.correct[index] = guess[index]
-        if value == 1:
-            info.missplaced[index].append(guess[index])
-            if guess[index] in info.included:
-                continue
-            info.included.append(guess[index])
-        if value == 0 and guess[index] not in info.correct and guess[index] not in info.included :
-            info.not_included.append(guess[index])
     pattern = ""
 
     for index,elem in enumerate(info.correct):
@@ -66,6 +56,19 @@ def guess_word(guess:list,values:list,info:Letras) -> list:
         possible_words.remove(guess)
     print(possible_words)
     return possible_words
+
+
+def add_info(info, values,guess):
+    for index, value in enumerate(values):
+        if value == 2:
+            info.correct[index] = guess[index]
+        if value == 1:
+            info.missplaced[index].append(guess[index])
+            if guess[index] in info.included:
+                continue
+            info.included.append(guess[index])
+        if value == 0 and guess[index] not in info.correct and guess[index] not in info.included:
+            info.not_included.append(guess[index])
 
 
 def main():
@@ -93,7 +96,8 @@ def main():
             type_word(page,word)
             time.sleep(2)
             values = check_collors(print_row(page,row))
-            possible_words = guess_word(word,values,info)
+            add_info(info,values,word)
+            possible_words = guess_word(word,info)
             row += 1
 
         return
