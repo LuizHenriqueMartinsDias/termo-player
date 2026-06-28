@@ -28,30 +28,12 @@ def choose_word(guesses):
     maior_valor = max(guesses_ranked.values())
     return next((palavra for palavra,valor in guesses_ranked.items() if valor == maior_valor ),None)
 
-def check_word(word: str, guess: str):
-    past_try = [0] * 5
-    w = list(word)
-    g = list(guess)
-    for i1,l1 in enumerate(g):
-        if g[i1] == w[i1]:
-            past_try[i1] = 2
-            g[i1] = None
-            w[i1] = None
-
-    for i1,l1 in enumerate(g):
-
-        if g[i1] in w and g[i1] is not None:
-            past_try[i1] = 1
-            w[w.index(g[i1])] = None
-            g[i1] = None
-
-    return past_try
 
 def filter_words(regex:str,word:str):
     return re.match(rf"{regex}",word)
 
 
-def guess_word(word,info:object,guesses=None,) -> list:
+def guess_word(info:object,guesses:list=None,) -> list:
     guess = "serao"
     if guesses:
         guess = choose_word(guesses)
@@ -63,7 +45,7 @@ def guess_word(word,info:object,guesses=None,) -> list:
 
     for index,value in enumerate(check_word(word,guess)):
         if value == 2:
-            info.correct[index] = word[index]
+            info.correct[index] = guess[index]
         if value == 1:
             info.missplaced[index].append(guess[index])
             if guess[index] in info.included:
