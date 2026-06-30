@@ -1,0 +1,1441 @@
+Palavra_correta,palavra_inicial,N_de_tentativas,Chutes,Vitoria
+termo,serao,4,"('serao', 'certo', 'terno', 'termo')",True
+suite,serao,2,"('serao', 'suite')",True
+avido,serao,5,"('serao', 'laico', 'apito', 'animo', 'avido')",True
+festa,serao,4,"('serao', 'cesta', 'besta', 'festa')",True
+bebia,serao,4,"('serao', 'celta', 'media', 'bebia')",True
+honra,serao,4,"('serao', 'loira', 'cobra', 'honra')",True
+ouvir,serao,3,"('serao', 'licor', 'ouvir')",True
+pesco,serao,3,"('serao', 'cesto', 'pesco')",True
+fungo,serao,5,"('serao', 'cinto', 'mundo', 'punho', 'fungo')",True
+pagam,serao,3,"('serao', 'vital', 'pagam')",True
+ginga,serao,5,"('serao', 'cinta', 'linda', 'pinga', 'ginga')",True
+pinta,serao,3,"('serao', 'cinta', 'pinta')",True
+poder,serao,3,"('serao', 'comer', 'poder')",True
+utero,serao,3,"('serao', 'treco', 'utero')",True
+pilha,serao,4,"('serao', 'cinta', 'milha', 'pilha')",True
+sarar,serao,3,"('serao', 'sarau', 'sarar')",True
+fruta,serao,4,"('serao', 'latir', 'gruta', 'fruta')",True
+piano,serao,4,"('serao', 'laico', 'inato', 'piano')",True
+notar,serao,3,"('serao', 'lotar', 'notar')",True
+musgo,serao,3,"('serao', 'nisto', 'musgo')",True
+tensa,serao,3,"('serao', 'cesta', 'tensa')",True
+melao,serao,3,"('serao', 'telao', 'melao')",True
+feliz,serao,4,"('serao', 'cetim', 'debil', 'feliz')",True
+miojo,serao,5,"('serao', 'cinto', 'limpo', 'miudo', 'miojo')",True
+pagos,serao,5,"('serao', 'coisa', 'altos', 'panos', 'pagos')",True
+texto,serao,4,"('serao', 'leito', 'cento', 'texto')",True
+mamae,serao,3,"('serao', 'ideal', 'mamae')",True
+ameno,serao,3,"('serao', 'aceno', 'ameno')",True
+chuva,serao,4,"('serao', 'cinta', 'calma', 'chuva')",True
+coral,serao,2,"('serao', 'coral')",True
+forte,serao,3,"('serao', 'norte', 'forte')",True
+tonta,serao,4,"('serao', 'otica', 'ponta', 'tonta')",True
+temor,serao,3,"('serao', 'tenor', 'temor')",True
+ligar,serao,5,"('serao', 'citar', 'pilar', 'lidar', 'ligar')",True
+rolar,serao,6,"('serao', 'lotar', 'colar', 'polar', 'dolar', 'rolar')",True
+navio,serao,4,"('serao', 'laico', 'patio', 'navio')",True
+limbo,serao,4,"('serao', 'cinto', 'limpo', 'limbo')",True
+calvo,serao,5,"('serao', 'laico', 'calmo', 'caldo', 'calvo')",True
+fedor,serao,4,"('serao', 'tenor', 'depor', 'fedor')",True
+balde,serao,3,"('serao', 'etica', 'balde')",True
+oxala,serao,3,"('serao', 'otica', 'oxala')",True
+talco,serao,3,"('serao', 'laico', 'talco')",True
+labia,serao,4,"('serao', 'cinta', 'duzia', 'labia')",True
+crime,serao,3,"('serao', 'tripe', 'crime')",True
+grade,serao,3,"('serao', 'trela', 'grade')",True
+carta,serao,4,"('serao', 'abril', 'turma', 'carta')",True
+flora,serao,3,"('serao', 'loira', 'flora')",True
+comum,serao,3,"('serao', 'docil', 'comum')",True
+fatal,serao,4,"('serao', 'vital', 'natal', 'fatal')",True
+pecar,serao,2,"('serao', 'pecar')",True
+feroz,serao,3,"('serao', 'heroi', 'feroz')",True
+virus,serao,2,"('serao', 'virus')",True
+armar,serao,5,"('serao', 'citar', 'lunar', 'ambar', 'armar')",True
+couro,serao,3,"('serao', 'litro', 'couro')",True
+exito,serao,3,"('serao', 'etico', 'exito')",True
+ecoar,serao,2,"('serao', 'ecoar')",True
+balao,serao,3,"('serao', 'licao', 'balao')",True
+falir,serao,3,"('serao', 'latir', 'falir')",True
+tecer,serao,3,"('serao', 'medir', 'tecer')",True
+arena,serao,4,"('serao', 'trela', 'areia', 'arena')",True
+justo,serao,5,"('serao', 'nisto', 'custo', 'busto', 'justo')",True
+arido,serao,3,"('serao', 'traco', 'arido')",True
+ruiva,serao,4,"('serao', 'latir', 'ruina', 'ruiva')",True
+mumia,serao,4,"('serao', 'cinta', 'duzia', 'mumia')",True
+fogao,serao,4,"('serao', 'licao', 'tufao', 'fogao')",True
+dupla,serao,4,"('serao', 'cinta', 'pluma', 'dupla')",True
+touca,serao,3,"('serao', 'otica', 'touca')",True
+sogro,serao,2,"('serao', 'sogro')",True
+osseo,serao,3,"('serao', 'ileso', 'osseo')",True
+treta,serao,4,"('serao', 'trela', 'trena', 'treta')",True
+atomo,serao,4,"('serao', 'laico', 'agudo', 'atomo')",True
+sadio,serao,3,"('serao', 'salto', 'sadio')",True
+colon,serao,3,"('serao', 'docil', 'colon')",True
+patio,serao,3,"('serao', 'laico', 'patio')",True
+molas,serao,2,"('serao', 'molas')",True
+certo,serao,2,"('serao', 'certo')",True
+risco,serao,2,"('serao', 'risco')",True
+bossa,serao,5,"('serao', 'coisa', 'lousa', 'nossa', 'bossa')",True
+porre,serao,4,"('serao', 'norte', 'lorde', 'porre')",True
+tigre,serao,3,"('serao', 'tripe', 'tigre')",True
+vocal,serao,3,"('serao', 'bocal', 'vocal')",True
+treze,serao,3,"('serao', 'tripe', 'treze')",True
+sueco,serao,2,"('serao', 'sueco')",True
+verbo,serao,5,"('serao', 'certo', 'lerdo', 'nervo', 'verbo')",True
+latim,serao,3,"('serao', 'cinta', 'latim')",True
+povos,serao,5,"('serao', 'mitos', 'nulos', 'pocos', 'povos')",True
+longo,serao,4,"('serao', 'cinto', 'mundo', 'longo')",True
+lotar,serao,2,"('serao', 'lotar')",True
+depor,serao,3,"('serao', 'tenor', 'depor')",True
+cento,serao,3,"('serao', 'leito', 'cento')",True
+trava,serao,5,"('serao', 'latir', 'gruta', 'trama', 'trava')",True
+latao,serao,3,"('serao', 'licao', 'latao')",True
+ditos,serao,3,"('serao', 'mitos', 'ditos')",True
+torax,serao,3,"('serao', 'coral', 'torax')",True
+polir,serao,3,"('serao', 'licor', 'polir')",True
+cacos,serao,4,"('serao', 'coisa', 'cabos', 'cacos')",True
+tunel,serao,3,"('serao', 'clipe', 'tunel')",True
+lindo,serao,3,"('serao', 'cinto', 'lindo')",True
+pegar,serao,4,"('serao', 'pecar', 'penar', 'pegar')",True
+pilar,serao,3,"('serao', 'citar', 'pilar')",True
+passo,serao,3,"('serao', 'casto', 'passo')",True
+piada,serao,4,"('serao', 'cinta', 'milha', 'piada')",True
+puxar,serao,6,"('serao', 'citar', 'lunar', 'mudar', 'bufar', 'puxar')",True
+tacas,serao,3,"('serao', 'dicas', 'tacas')",True
+manta,serao,3,"('serao', 'cinta', 'manta')",True
+barba,serao,4,"('serao', 'abril', 'burra', 'barba')",True
+subir,serao,3,"('serao', 'sumir', 'subir')",True
+tosse,serao,3,"('serao', 'poste', 'tosse')",True
+adega,serao,5,"('serao', 'etica', 'plena', 'queda', 'adega')",True
+veias,serao,4,"('serao', 'teias', 'meias', 'veias')",True
+mesma,serao,4,"('serao', 'cesta', 'lesma', 'mesma')",True
+mirim,serao,3,"('serao', 'viril', 'mirim')",True
+mansa,serao,3,"('serao', 'mista', 'mansa')",True
+nobre,serao,3,"('serao', 'comer', 'nobre')",True
+grama,serao,5,"('serao', 'latir', 'praca', 'drama', 'grama')",True
+ritmo,serao,3,"('serao', 'litro', 'ritmo')",True
+samba,serao,3,"('serao', 'sutia', 'samba')",True
+ardor,serao,4,"('serao', 'loira', 'autor', 'ardor')",True
+daqui,serao,4,"('serao', 'cinta', 'habil', 'daqui')",True
+bravo,serao,4,"('serao', 'traco', 'irado', 'bravo')",True
+surfe,serao,2,"('serao', 'surfe')",True
+tanto,serao,4,"('serao', 'laico', 'manto', 'tanto')",True
+imune,serao,3,"('serao', 'clipe', 'imune')",True
+lucro,serao,3,"('serao', 'litro', 'lucro')",True
+finos,serao,5,"('serao', 'mitos', 'lidos', 'pinos', 'finos')",True
+bocas,serao,5,"('serao', 'molas', 'todas', 'copas', 'bocas')",True
+toldo,serao,3,"('serao', 'cinto', 'toldo')",True
+major,serao,5,"('serao', 'loira', 'autor', 'vapor', 'major')",True
+cabos,serao,3,"('serao', 'coisa', 'cabos')",True
+estar,serao,2,"('serao', 'estar')",True
+focal,serao,4,"('serao', 'bocal', 'vocal', 'focal')",True
+acoes,serao,2,"('serao', 'acoes')",True
+queda,serao,4,"('serao', 'etica', 'plena', 'queda')",True
+juros,serao,6,"('serao', 'tiros', 'muros', 'duros', 'furos', 'juros')",True
+elite,serao,3,"('serao', 'clipe', 'elite')",True
+burro,serao,4,"('serao', 'turco', 'murro', 'burro')",True
+fundo,serao,4,"('serao', 'cinto', 'mundo', 'fundo')",True
+duelo,serao,3,"('serao', 'etico', 'duelo')",True
+breve,serao,4,"('serao', 'tripe', 'creme', 'breve')",True
+bolso,serao,4,"('serao', 'nisto', 'pulso', 'bolso')",True
+linha,serao,4,"('serao', 'cinta', 'linda', 'linha')",True
+parir,serao,5,"('serao', 'abril', 'guria', 'nariz', 'parir')",True
+furar,serao,5,"('serao', 'viral', 'curar', 'durar', 'furar')",True
+quina,serao,4,"('serao', 'cinta', 'unida', 'quina')",True
+pasta,serao,4,"('serao', 'mista', 'casta', 'pasta')",True
+suino,serao,2,"('serao', 'suino')",True
+dosar,serao,4,"('serao', 'tosar', 'posar', 'dosar')",True
+cervo,serao,3,"('serao', 'certo', 'cervo')",True
+sujar,serao,3,"('serao', 'sacar', 'sujar')",True
+corda,serao,3,"('serao', 'porta', 'corda')",True
+macia,serao,4,"('serao', 'cinta', 'quica', 'macia')",True
+reler,serao,4,"('serao', 'medir', 'tecer', 'reler')",True
+musas,serao,4,"('serao', 'dicas', 'luvas', 'musas')",True
+verme,serao,3,"('serao', 'cerne', 'verme')",True
+focar,serao,5,"('serao', 'lotar', 'boiar', 'pomar', 'focar')",True
+macas,serao,4,"('serao', 'dicas', 'tacas', 'macas')",True
+nocao,serao,3,"('serao', 'licao', 'nocao')",True
+anual,serao,4,"('serao', 'vital', 'bucal', 'anual')",True
+aerea,serao,5,"('serao', 'certa', 'perua', 'verba', 'aerea')",True
+cerco,serao,4,"('serao', 'certo', 'cervo', 'cerco')",True
+socio,serao,4,"('serao', 'suino', 'sitio', 'socio')",True
+porca,serao,3,"('serao', 'porta', 'porca')",True
+fraco,serao,4,"('serao', 'traco', 'braco', 'fraco')",True
+punho,serao,4,"('serao', 'cinto', 'mundo', 'punho')",True
+acima,serao,4,"('serao', 'cinta', 'quica', 'acima')",True
+varao,serao,4,"('serao', 'pirao', 'barao', 'varao')",True
+bolha,serao,4,"('serao', 'otica', 'lomba', 'bolha')",True
+tanga,serao,3,"('serao', 'cinta', 'tanga')",True
+globo,serao,5,"('serao', 'cinto', 'duplo', 'lombo', 'globo')",True
+rampa,serao,4,"('serao', 'latir', 'cabra', 'rampa')",True
+goela,serao,4,"('serao', 'poeta', 'moela', 'goela')",True
+reais,serao,2,"('serao', 'reais')",True
+cheio,serao,3,"('serao', 'etico', 'cheio')",True
+fosso,serao,5,"('serao', 'nisto', 'musgo', 'fosco', 'fosso')",True
+pouco,serao,4,"('serao', 'cinto', 'louco', 'pouco')",True
+danos,serao,5,"('serao', 'coisa', 'altos', 'panos', 'danos')",True
+salas,serao,3,"('serao', 'sinal', 'salas')",True
+mimar,serao,5,"('serao', 'citar', 'pilar', 'ninar', 'mimar')",True
+sanha,serao,4,"('serao', 'sutia', 'samba', 'sanha')",True
+oxido,serao,4,"('serao', 'cinto', 'umido', 'oxido')",True
+suave,serao,3,"('serao', 'saude', 'suave')",True
+epoca,serao,3,"('serao', 'poeta', 'epoca')",True
+antro,serao,3,"('serao', 'traco', 'antro')",True
+total,serao,3,"('serao', 'bocal', 'total')",True
+joias,serao,5,"('serao', 'molas', 'todas', 'copas', 'joias')",True
+polvo,serao,4,"('serao', 'cinto', 'duplo', 'polvo')",True
+jejum,serao,3,"('serao', 'cetim', 'jejum')",True
+atriz,serao,3,"('serao', 'abril', 'atriz')",True
+recuo,serao,3,"('serao', 'reino', 'recuo')",True
+ageis,serao,3,"('serao', 'aneis', 'ageis')",True
+treno,serao,3,"('serao', 'treco', 'treno')",True
+fluir,serao,3,"('serao', 'punir', 'fluir')",True
+muito,serao,3,"('serao', 'cinto', 'muito')",True
+opera,serao,2,"('serao', 'opera')",True
+ficar,serao,4,"('serao', 'citar', 'picar', 'ficar')",True
+bucha,serao,4,"('serao', 'cinta', 'ducha', 'bucha')",True
+magro,serao,4,"('serao', 'traco', 'radio', 'magro')",True
+frota,serao,4,"('serao', 'loira', 'troca', 'frota')",True
+serie,serao,2,"('serao', 'serie')",True
+acido,serao,3,"('serao', 'laico', 'acido')",True
+apice,serao,3,"('serao', 'etica', 'apice')",True
+lider,serao,4,"('serao', 'tripe', 'rimel', 'lider')",True
+idoso,serao,3,"('serao', 'nisto', 'idoso')",True
+multa,serao,3,"('serao', 'cinta', 'multa')",True
+primo,serao,3,"('serao', 'litro', 'primo')",True
+garca,serao,5,"('serao', 'abril', 'turma', 'carpa', 'garca')",True
+banal,serao,4,"('serao', 'vital', 'bucal', 'banal')",True
+juiza,serao,4,"('serao', 'cinta', 'duzia', 'juiza')",True
+gorro,serao,6,"('serao', 'turco', 'lirio', 'morno', 'bordo', 'gorro')",False
+sismo,serao,4,"('serao', 'suino', 'sitio', 'sismo')",True
+merce,serao,3,"('serao', 'cerne', 'merce')",True
+ponei,serao,3,"('serao', 'noite', 'ponei')",True
+etapa,serao,3,"('serao', 'etica', 'etapa')",True
+modas,serao,3,"('serao', 'molas', 'modas')",True
+colar,serao,3,"('serao', 'lotar', 'colar')",True
+muita,serao,3,"('serao', 'cinta', 'muita')",True
+papel,serao,4,"('serao', 'etica', 'balde', 'papel')",True
+ruela,serao,3,"('serao', 'trela', 'ruela')",True
+meias,serao,3,"('serao', 'teias', 'meias')",True
+gripe,serao,3,"('serao', 'tripe', 'gripe')",True
+causa,serao,4,"('serao', 'mista', 'blusa', 'causa')",True
+menor,serao,3,"('serao', 'tenor', 'menor')",True
+nulos,serao,3,"('serao', 'mitos', 'nulos')",True
+caule,serao,3,"('serao', 'etica', 'caule')",True
+rubor,serao,6,"('serao', 'licor', 'pudor', 'tutor', 'humor', 'rubor')",True
+optar,serao,3,"('serao', 'lotar', 'optar')",True
+redor,serao,5,"('serao', 'tenor', 'depor', 'fedor', 'redor')",True
+nacao,serao,4,"('serao', 'licao', 'nocao', 'nacao')",True
+galho,serao,4,"('serao', 'laico', 'palmo', 'galho')",True
+roubo,serao,5,"('serao', 'litro', 'prumo', 'rouco', 'roubo')",True
+parto,serao,2,"('serao', 'parto')",True
+cenas,serao,3,"('serao', 'teias', 'cenas')",True
+podio,serao,5,"('serao', 'cinto', 'umido', 'idolo', 'podio')",True
+lesar,serao,3,"('serao', 'retas', 'lesar')",True
+telao,serao,2,"('serao', 'telao')",True
+reuso,serao,3,"('serao', 'resto', 'reuso')",True
+odiar,serao,3,"('serao', 'lotar', 'odiar')",True
+usual,serao,3,"('serao', 'dicas', 'usual')",True
+latir,serao,2,"('serao', 'latir')",True
+altos,serao,3,"('serao', 'coisa', 'altos')",True
+livre,serao,3,"('serao', 'tripe', 'livre')",True
+vosso,serao,5,"('serao', 'nisto', 'musgo', 'fosco', 'vosso')",True
+geada,serao,5,"('serao', 'celta', 'media', 'venda', 'geada')",True
+etnia,serao,3,"('serao', 'etica', 'etnia')",True
+trevo,serao,4,"('serao', 'treco', 'treno', 'trevo')",True
+rezar,serao,6,"('serao', 'pecar', 'vetar', 'gelar', 'remar', 'rezar')",True
+bucal,serao,3,"('serao', 'vital', 'bucal')",True
+vetor,serao,3,"('serao', 'tenor', 'vetor')",True
+filho,serao,4,"('serao', 'cinto', 'limpo', 'filho')",True
+miolo,serao,5,"('serao', 'cinto', 'limpo', 'milho', 'miolo')",True
+ordem,serao,3,"('serao', 'comer', 'ordem')",True
+valor,serao,4,"('serao', 'loira', 'calor', 'valor')",True
+filha,serao,5,"('serao', 'cinta', 'milha', 'pilha', 'filha')",True
+antes,serao,3,"('serao', 'aneis', 'antes')",True
+vetar,serao,3,"('serao', 'pecar', 'vetar')",True
+surra,serao,3,"('serao', 'surda', 'surra')",True
+prata,serao,4,"('serao', 'latir', 'gruta', 'prata')",True
+ceder,serao,3,"('serao', 'medir', 'ceder')",True
+pirao,serao,2,"('serao', 'pirao')",True
+frear,serao,3,"('serao', 'areal', 'frear')",True
+quilo,serao,4,"('serao', 'cinto', 'umido', 'quilo')",True
+rombo,serao,4,"('serao', 'litro', 'prumo', 'rombo')",True
+lomba,serao,3,"('serao', 'otica', 'lomba')",True
+praia,serao,3,"('serao', 'latir', 'praia')",True
+urnas,serao,3,"('serao', 'irmas', 'urnas')",True
+aveia,serao,5,"('serao', 'etica', 'hiena', 'ideia', 'aveia')",True
+picar,serao,3,"('serao', 'citar', 'picar')",True
+arcar,serao,5,"('serao', 'citar', 'fucar', 'alcar', 'arcar')",True
+unica,serao,3,"('serao', 'cinta', 'unica')",True
+magoa,serao,4,"('serao', 'otica', 'lomba', 'magoa')",True
+jaula,serao,5,"('serao', 'cinta', 'pluma', 'lauda', 'jaula')",True
+gerar,serao,3,"('serao', 'geral', 'gerar')",True
+trena,serao,3,"('serao', 'trela', 'trena')",True
+gemer,serao,3,"('serao', 'medir', 'gemer')",True
+riste,serao,2,"('serao', 'riste')",True
+labio,serao,3,"('serao', 'laico', 'labio')",True
+busto,serao,4,"('serao', 'nisto', 'custo', 'busto')",True
+visar,serao,4,"('serao', 'irmas', 'pisar', 'visar')",True
+velha,serao,3,"('serao', 'celta', 'velha')",True
+aereo,serao,2,"('serao', 'aereo')",True
+adaga,serao,4,"('serao', 'cinta', 'pluma', 'adaga')",True
+crase,serao,3,"('serao', 'aries', 'crase')",True
+feras,serao,2,"('serao', 'feras')",True
+missa,serao,3,"('serao', 'mista', 'missa')",True
+cobra,serao,3,"('serao', 'loira', 'cobra')",True
+ideia,serao,4,"('serao', 'etica', 'hiena', 'ideia')",True
+briga,serao,4,"('serao', 'latir', 'ruina', 'briga')",True
+dardo,serao,5,"('serao', 'parto', 'barco', 'fardo', 'dardo')",True
+berco,serao,3,"('serao', 'certo', 'berco')",True
+palmo,serao,3,"('serao', 'laico', 'palmo')",True
+ralar,serao,5,"('serao', 'citar', 'lunar', 'falar', 'ralar')",True
+reles,serao,2,"('serao', 'reles')",True
+blusa,serao,3,"('serao', 'mista', 'blusa')",True
+super,serao,2,"('serao', 'super')",True
+grata,serao,4,"('serao', 'latir', 'gruta', 'grata')",True
+longa,serao,4,"('serao', 'otica', 'lomba', 'longa')",True
+tarso,serao,2,"('serao', 'tarso')",True
+vulto,serao,3,"('serao', 'cinto', 'vulto')",True
+lenda,serao,3,"('serao', 'celta', 'lenda')",True
+grego,serao,6,"('serao', 'treco', 'freio', 'dreno', 'prego', 'grego')",True
+pinos,serao,4,"('serao', 'mitos', 'lidos', 'pinos')",True
+fluor,serao,3,"('serao', 'licor', 'fluor')",True
+obeso,serao,4,"('serao', 'ileso', 'coeso', 'obeso')",True
+sauna,serao,3,"('serao', 'sutia', 'sauna')",True
+assim,serao,3,"('serao', 'mista', 'assim')",True
+troco,serao,4,"('serao', 'litro', 'truco', 'troco')",True
+uteis,serao,2,"('serao', 'uteis')",True
+infra,serao,4,"('serao', 'latir', 'ruina', 'infra')",True
+pudor,serao,3,"('serao', 'licor', 'pudor')",True
+cofre,serao,4,"('serao', 'comer', 'cobre', 'cofre')",True
+prece,serao,3,"('serao', 'tripe', 'prece')",True
+junho,serao,5,"('serao', 'cinto', 'mundo', 'punho', 'junho')",True
+manco,serao,3,"('serao', 'laico', 'manco')",True
+pisar,serao,3,"('serao', 'irmas', 'pisar')",True
+posse,serao,3,"('serao', 'poste', 'posse')",True
+copas,serao,4,"('serao', 'molas', 'todas', 'copas')",True
+ninfa,serao,6,"('serao', 'cinta', 'linda', 'pinga', 'minha', 'ninfa')",True
+gruta,serao,3,"('serao', 'latir', 'gruta')",True
+regra,serao,5,"('serao', 'letra', 'beira', 'pedra', 'regra')",True
+citar,serao,2,"('serao', 'citar')",True
+mural,serao,3,"('serao', 'viral', 'mural')",True
+giria,serao,4,"('serao', 'abril', 'guria', 'giria')",True
+ruina,serao,3,"('serao', 'latir', 'ruina')",True
+fases,serao,5,"('serao', 'aneis', 'males', 'gases', 'fases')",True
+farao,serao,5,"('serao', 'pirao', 'barao', 'varao', 'farao')",True
+miope,serao,3,"('serao', 'noite', 'miope')",True
+mando,serao,4,"('serao', 'laico', 'manto', 'mando')",True
+frios,serao,3,"('serao', 'ritos', 'frios')",True
+gelar,serao,4,"('serao', 'pecar', 'vetar', 'gelar')",True
+chave,serao,4,"('serao', 'etica', 'caule', 'chave')",True
+sobra,serao,2,"('serao', 'sobra')",True
+opaco,serao,3,"('serao', 'laico', 'opaco')",True
+lagos,serao,5,"('serao', 'coisa', 'altos', 'lados', 'lagos')",True
+corpo,serao,4,"('serao', 'turco', 'corno', 'corpo')",True
+doses,serao,3,"('serao', 'poste', 'doses')",True
+basco,serao,3,"('serao', 'casto', 'basco')",True
+caida,serao,4,"('serao', 'cinta', 'clima', 'caida')",True
+vinda,serao,4,"('serao', 'cinta', 'linda', 'vinda')",True
+sujos,serao,3,"('serao', 'sucos', 'sujos')",True
+igual,serao,3,"('serao', 'vital', 'igual')",True
+lapis,serao,3,"('serao', 'mista', 'lapis')",True
+julho,serao,5,"('serao', 'cinto', 'duplo', 'vulgo', 'julho')",True
+acaso,serao,3,"('serao', 'casto', 'acaso')",True
+dados,serao,6,"('serao', 'coisa', 'altos', 'panos', 'magos', 'dados')",True
+favor,serao,5,"('serao', 'loira', 'autor', 'vapor', 'favor')",True
+pente,serao,4,"('serao', 'cetim', 'lente', 'pente')",True
+beata,serao,5,"('serao', 'celta', 'feita', 'menta', 'beata')",True
+chulo,serao,3,"('serao', 'cinto', 'chulo')",True
+rumos,serao,3,"('serao', 'ritos', 'rumos')",True
+cubos,serao,4,"('serao', 'mitos', 'nulos', 'cubos')",True
+tento,serao,5,"('serao', 'leito', 'cento', 'vento', 'tento')",True
+toque,serao,3,"('serao', 'noite', 'toque')",True
+polpa,serao,5,"('serao', 'otica', 'lomba', 'folga', 'polpa')",True
+ombro,serao,4,"('serao', 'litro', 'couro', 'ombro')",True
+raras,serao,3,"('serao', 'atras', 'raras')",True
+pneus,serao,3,"('serao', 'uteis', 'pneus')",True
+canil,serao,3,"('serao', 'cinta', 'canil')",True
+funil,serao,3,"('serao', 'futil', 'funil')",True
+perto,serao,3,"('serao', 'certo', 'perto')",True
+coala,serao,3,"('serao', 'otica', 'coala')",True
+amplo,serao,4,"('serao', 'laico', 'aluno', 'amplo')",True
+orgia,serao,3,"('serao', 'loira', 'orgia')",True
+doces,serao,3,"('serao', 'poste', 'doces')",True
+sobre,serao,2,"('serao', 'sobre')",True
+tedio,serao,3,"('serao', 'leito', 'tedio')",True
+pinca,serao,3,"('serao', 'cinta', 'pinca')",True
+motel,serao,3,"('serao', 'noite', 'motel')",True
+trufa,serao,4,"('serao', 'latir', 'gruta', 'trufa')",True
+voraz,serao,5,"('serao', 'coral', 'torax', 'morar', 'voraz')",True
+azedo,serao,5,"('serao', 'aceno', 'apelo', 'afeto', 'azedo')",True
+coeso,serao,3,"('serao', 'ileso', 'coeso')",True
+acaro,serao,4,"('serao', 'traco', 'claro', 'acaro')",True
+calmo,serao,3,"('serao', 'laico', 'calmo')",True
+enfim,serao,3,"('serao', 'clipe', 'enfim')",True
+mitos,serao,2,"('serao', 'mitos')",True
+feios,serao,3,"('serao', 'meios', 'feios')",True
+palha,serao,4,"('serao', 'cinta', 'pluma', 'palha')",True
+andar,serao,4,"('serao', 'citar', 'lunar', 'andar')",True
+crepe,serao,3,"('serao', 'tripe', 'crepe')",True
+pingo,serao,4,"('serao', 'cinto', 'lindo', 'pingo')",True
+avela,serao,4,"('serao', 'etica', 'plena', 'avela')",True
+malte,serao,3,"('serao', 'etica', 'malte')",True
+saida,serao,4,"('serao', 'sutia', 'sigla', 'saida')",True
+monge,serao,5,"('serao', 'noite', 'conde', 'longe', 'monge')",True
+salto,serao,2,"('serao', 'salto')",True
+lotus,serao,3,"('serao', 'mitos', 'lotus')",True
+rimel,serao,3,"('serao', 'tripe', 'rimel')",True
+lauda,serao,4,"('serao', 'cinta', 'pluma', 'lauda')",True
+damas,serao,4,"('serao', 'dicas', 'dunas', 'damas')",True
+sadia,serao,3,"('serao', 'sutia', 'sadia')",True
+truco,serao,3,"('serao', 'litro', 'truco')",True
+serio,serao,2,"('serao', 'serio')",True
+oeste,serao,3,"('serao', 'meios', 'oeste')",True
+selva,serao,3,"('serao', 'seita', 'selva')",True
+reter,serao,4,"('serao', 'medir', 'tecer', 'reter')",True
+bolsa,serao,4,"('serao', 'coisa', 'lousa', 'bolsa')",True
+anexo,serao,3,"('serao', 'aceno', 'anexo')",True
+renda,serao,3,"('serao', 'letra', 'renda')",True
+lobos,serao,4,"('serao', 'mitos', 'nulos', 'lobos')",True
+vicio,serao,4,"('serao', 'cinto', 'bicho', 'vicio')",True
+zebra,serao,4,"('serao', 'letra', 'beira', 'zebra')",True
+modos,serao,3,"('serao', 'mitos', 'modos')",True
+praxe,serao,4,"('serao', 'trela', 'grade', 'praxe')",True
+pudim,serao,4,"('serao', 'futil', 'cupim', 'pudim')",True
+birra,serao,3,"('serao', 'abril', 'birra')",True
+praca,serao,3,"('serao', 'latir', 'praca')",True
+pedra,serao,4,"('serao', 'letra', 'beira', 'pedra')",True
+olhar,serao,3,"('serao', 'lotar', 'olhar')",True
+pizza,serao,5,"('serao', 'cinta', 'milha', 'piada', 'pizza')",True
+banho,serao,5,"('serao', 'laico', 'manto', 'bando', 'banho')",True
+bucho,serao,4,"('serao', 'cinto', 'louco', 'bucho')",True
+afins,serao,4,"('serao', 'mista', 'lapis', 'afins')",True
+maior,serao,3,"('serao', 'loira', 'maior')",True
+cabra,serao,3,"('serao', 'latir', 'cabra')",True
+visao,serao,3,"('serao', 'cisao', 'visao')",True
+irado,serao,3,"('serao', 'traco', 'irado')",True
+razao,serao,4,"('serao', 'irmao', 'racao', 'razao')",True
+macio,serao,3,"('serao', 'laico', 'macio')",True
+troca,serao,3,"('serao', 'loira', 'troca')",True
+salmo,serao,3,"('serao', 'salto', 'salmo')",True
+casta,serao,3,"('serao', 'mista', 'casta')",True
+midia,serao,4,"('serao', 'cinta', 'milha', 'midia')",True
+trupe,serao,3,"('serao', 'tripe', 'trupe')",True
+morna,serao,4,"('serao', 'porta', 'corda', 'morna')",True
+falso,serao,4,"('serao', 'casto', 'lapso', 'falso')",True
+lidar,serao,4,"('serao', 'citar', 'pilar', 'lidar')",True
+afeto,serao,4,"('serao', 'aceno', 'apelo', 'afeto')",True
+verso,serao,2,"('serao', 'verso')",True
+belos,serao,4,"('serao', 'meios', 'pelos', 'belos')",True
+pareo,serao,3,"('serao', 'aureo', 'pareo')",True
+video,serao,3,"('serao', 'etico', 'video')",True
+denso,serao,3,"('serao', 'cesto', 'denso')",True
+heroi,serao,2,"('serao', 'heroi')",True
+moeda,serao,4,"('serao', 'poeta', 'moela', 'moeda')",True
+vaiar,serao,6,"('serao', 'citar', 'impar', 'guiar', 'aliar', 'vaiar')",True
+copia,serao,3,"('serao', 'otica', 'copia')",True
+cocar,serao,6,"('serao', 'lotar', 'boiar', 'pomar', 'focar', 'cocar')",True
+aulas,serao,4,"('serao', 'dicas', 'luvas', 'aulas')",True
+ganho,serao,5,"('serao', 'laico', 'manto', 'bando', 'ganho')",True
+chapa,serao,5,"('serao', 'cinta', 'calma', 'chuva', 'chapa')",True
+garra,serao,6,"('serao', 'abril', 'turma', 'carpa', 'farda', 'garra')",False
+velho,serao,3,"('serao', 'leito', 'velho')",True
+grilo,serao,3,"('serao', 'litro', 'grilo')",True
+sigma,serao,4,"('serao', 'sutia', 'sigla', 'sigma')",True
+farsa,serao,2,"('serao', 'farsa')",True
+sigla,serao,3,"('serao', 'sutia', 'sigla')",True
+clone,serao,3,"('serao', 'noite', 'clone')",True
+cesta,serao,2,"('serao', 'cesta')",True
+anjos,serao,5,"('serao', 'coisa', 'altos', 'ambos', 'anjos')",True
+rugir,serao,4,"('serao', 'punir', 'fugir', 'rugir')",True
+luzes,serao,3,"('serao', 'uteis', 'luzes')",True
+ardua,serao,4,"('serao', 'latir', 'praca', 'ardua')",True
+parvo,serao,5,"('serao', 'parto', 'parco', 'pardo', 'parvo')",True
+censo,serao,3,"('serao', 'cesto', 'censo')",True
+virar,serao,3,"('serao', 'viral', 'virar')",True
+apito,serao,3,"('serao', 'laico', 'apito')",True
+gosto,serao,5,"('serao', 'nisto', 'custo', 'posto', 'gosto')",True
+casto,serao,2,"('serao', 'casto')",True
+fraca,serao,5,"('serao', 'latir', 'praca', 'graca', 'fraca')",True
+agudo,serao,3,"('serao', 'laico', 'agudo')",True
+sovar,serao,6,"('serao', 'solar', 'socar', 'sonar', 'somar', 'sovar')",True
+fatos,serao,5,"('serao', 'coisa', 'altos', 'matos', 'fatos')",True
+torso,serao,3,"('serao', 'curso', 'torso')",True
+tumba,serao,3,"('serao', 'cinta', 'tumba')",True
+veste,serao,5,"('serao', 'tenis', 'leste', 'peste', 'veste')",True
+leoes,serao,3,"('serao', 'meios', 'leoes')",True
+secar,serao,3,"('serao', 'selar', 'secar')",True
+berro,serao,5,"('serao', 'certo', 'lerdo', 'nervo', 'berro')",True
+sutis,serao,3,"('serao', 'sutil', 'sutis')",True
+bispo,serao,4,"('serao', 'nisto', 'fisco', 'bispo')",True
+locao,serao,3,"('serao', 'licao', 'locao')",True
+pesar,serao,4,"('serao', 'retas', 'lesar', 'pesar')",True
+digno,serao,3,"('serao', 'cinto', 'digno')",True
+bamba,serao,5,"('serao', 'cinta', 'pluma', 'gamba', 'bamba')",True
+broca,serao,4,"('serao', 'loira', 'troca', 'broca')",True
+hiato,serao,4,"('serao', 'laico', 'inato', 'hiato')",True
+clube,serao,3,"('serao', 'clipe', 'clube')",True
+totem,serao,4,"('serao', 'noite', 'motel', 'totem')",True
+prumo,serao,3,"('serao', 'litro', 'prumo')",True
+meios,serao,2,"('serao', 'meios')",True
+vulgo,serao,4,"('serao', 'cinto', 'duplo', 'vulgo')",True
+esqui,serao,3,"('serao', 'uteis', 'esqui')",True
+epico,serao,3,"('serao', 'etico', 'epico')",True
+minha,serao,5,"('serao', 'cinta', 'linda', 'pinga', 'minha')",True
+ainda,serao,5,"('serao', 'cinta', 'linda', 'vinda', 'ainda')",True
+remar,serao,5,"('serao', 'pecar', 'vetar', 'gelar', 'remar')",True
+manso,serao,4,"('serao', 'casto', 'lapso', 'manso')",True
+ousar,serao,3,"('serao', 'tosar', 'ousar')",True
+viral,serao,2,"('serao', 'viral')",True
+ovulo,serao,4,"('serao', 'cinto', 'duplo', 'ovulo')",True
+trote,serao,4,"('serao', 'comer', 'prole', 'trote')",True
+artes,serao,3,"('serao', 'aries', 'artes')",True
+facas,serao,6,"('serao', 'dicas', 'tacas', 'macas', 'vacas', 'facas')",True
+brava,serao,6,"('serao', 'latir', 'praca', 'drama', 'grana', 'brava')",True
+meiga,serao,4,"('serao', 'celta', 'media', 'meiga')",True
+campo,serao,4,"('serao', 'laico', 'canto', 'campo')",True
+levar,serao,4,"('serao', 'pecar', 'vetar', 'levar')",True
+preta,serao,3,"('serao', 'trela', 'preta')",True
+lebre,serao,4,"('serao', 'medir', 'rente', 'lebre')",True
+pobre,serao,4,"('serao', 'comer', 'nobre', 'pobre')",True
+gesso,serao,4,"('serao', 'cesto', 'vesgo', 'gesso')",True
+sabia,serao,4,"('serao', 'sutia', 'sadia', 'sabia')",True
+freio,serao,3,"('serao', 'treco', 'freio')",True
+marte,serao,3,"('serao', 'carie', 'marte')",True
+clara,serao,3,"('serao', 'latir', 'clara')",True
+magos,serao,5,"('serao', 'coisa', 'altos', 'panos', 'magos')",True
+reino,serao,2,"('serao', 'reino')",True
+murro,serao,3,"('serao', 'turco', 'murro')",True
+calar,serao,3,"('serao', 'citar', 'calar')",True
+prosa,serao,4,"('serao', 'raios', 'ostra', 'prosa')",True
+feita,serao,3,"('serao', 'celta', 'feita')",True
+folga,serao,4,"('serao', 'otica', 'lomba', 'folga')",True
+terco,serao,3,"('serao', 'certo', 'terco')",True
+patas,serao,4,"('serao', 'dicas', 'luvas', 'patas')",True
+vogal,serao,4,"('serao', 'bocal', 'total', 'vogal')",True
+ziper,serao,3,"('serao', 'tripe', 'ziper')",True
+divas,serao,3,"('serao', 'dicas', 'divas')",True
+borda,serao,4,"('serao', 'porta', 'corda', 'borda')",True
+penar,serao,3,"('serao', 'pecar', 'penar')",True
+errar,serao,2,"('serao', 'errar')",True
+nevoa,serao,2,"('serao', 'nevoa')",True
+morto,serao,3,"('serao', 'turco', 'morto')",True
+forma,serao,5,"('serao', 'porta', 'corda', 'morna', 'forma')",True
+aureo,serao,2,"('serao', 'aureo')",True
+vapor,serao,4,"('serao', 'loira', 'autor', 'vapor')",True
+circo,serao,3,"('serao', 'turco', 'circo')",True
+faixa,serao,6,"('serao', 'cinta', 'duzia', 'axila', 'baixa', 'faixa')",True
+beijo,serao,4,"('serao', 'leito', 'meigo', 'beijo')",True
+bufao,serao,4,"('serao', 'licao', 'tufao', 'bufao')",True
+pedir,serao,3,"('serao', 'medir', 'pedir')",True
+tropa,serao,4,"('serao', 'loira', 'troca', 'tropa')",True
+vital,serao,2,"('serao', 'vital')",True
+vento,serao,4,"('serao', 'leito', 'cento', 'vento')",True
+carie,serao,2,"('serao', 'carie')",True
+vespa,serao,4,"('serao', 'cesta', 'lesma', 'vespa')",True
+negro,serao,3,"('serao', 'reino', 'negro')",True
+pardo,serao,4,"('serao', 'parto', 'parco', 'pardo')",True
+local,serao,5,"('serao', 'bocal', 'vocal', 'focal', 'local')",True
+beato,serao,2,"('serao', 'beato')",True
+quais,serao,4,"('serao', 'mista', 'lapis', 'quais')",True
+frase,serao,4,"('serao', 'aries', 'crase', 'frase')",True
+sucos,serao,2,"('serao', 'sucos')",True
+botao,serao,4,"('serao', 'licao', 'tufao', 'botao')",True
+balsa,serao,4,"('serao', 'mista', 'blusa', 'balsa')",True
+foice,serao,3,"('serao', 'noite', 'foice')",True
+nozes,serao,5,"('serao', 'poste', 'doces', 'nomes', 'nozes')",True
+dente,serao,5,"('serao', 'cetim', 'lente', 'pente', 'dente')",True
+cedro,serao,4,"('serao', 'reino', 'cetro', 'cedro')",True
+aceno,serao,2,"('serao', 'aceno')",True
+repor,serao,4,"('serao', 'tenor', 'depor', 'repor')",True
+leque,serao,3,"('serao', 'cetim', 'leque')",True
+drama,serao,4,"('serao', 'latir', 'praca', 'drama')",True
+forno,serao,5,"('serao', 'turco', 'lirio', 'morno', 'forno')",True
+tarde,serao,4,"('serao', 'carie', 'marte', 'tarde')",True
+sarro,serao,2,"('serao', 'sarro')",True
+certa,serao,2,"('serao', 'certa')",True
+trama,serao,4,"('serao', 'latir', 'gruta', 'trama')",True
+milho,serao,4,"('serao', 'cinto', 'limpo', 'milho')",True
+dreno,serao,4,"('serao', 'treco', 'freio', 'dreno')",True
+carma,serao,4,"('serao', 'abril', 'turma', 'carma')",True
+poeta,serao,2,"('serao', 'poeta')",True
+mafia,serao,6,"('serao', 'cinta', 'duzia', 'labia', 'magia', 'mafia')",True
+lenco,serao,3,"('serao', 'leito', 'lenco')",True
+nunca,serao,4,"('serao', 'cinta', 'lanca', 'nunca')",True
+ficha,serao,3,"('serao', 'cinta', 'ficha')",True
+otica,serao,2,"('serao', 'otica')",True
+molho,serao,5,"('serao', 'cinto', 'duplo', 'lombo', 'molho')",True
+barao,serao,3,"('serao', 'pirao', 'barao')",True
+cutis,serao,2,"('serao', 'cutis')",True
+toada,serao,4,"('serao', 'otica', 'ponta', 'toada')",True
+trens,serao,3,"('serao', 'riste', 'trens')",True
+chale,serao,4,"('serao', 'etica', 'caule', 'chale')",True
+ciclo,serao,3,"('serao', 'cinto', 'ciclo')",True
+leigo,serao,3,"('serao', 'leito', 'leigo')",True
+golpe,serao,4,"('serao', 'noite', 'couve', 'golpe')",True
+haver,serao,4,"('serao', 'trela', 'caber', 'haver')",True
+varal,serao,3,"('serao', 'viral', 'varal')",True
+ritos,serao,2,"('serao', 'ritos')",True
+fibra,serao,5,"('serao', 'latir', 'ruina', 'cifra', 'fibra')",True
+nervo,serao,4,"('serao', 'certo', 'lerdo', 'nervo')",True
+irmas,serao,2,"('serao', 'irmas')",True
+sagaz,serao,3,"('serao', 'sinal', 'sagaz')",True
+gente,serao,6,"('serao', 'cetim', 'lente', 'pente', 'dente', 'gente')",True
+pombo,serao,4,"('serao', 'cinto', 'duplo', 'pombo')",True
+zinco,serao,3,"('serao', 'cinto', 'zinco')",True
+pavor,serao,5,"('serao', 'loira', 'autor', 'vapor', 'pavor')",True
+feixe,serao,4,"('serao', 'cetim', 'peixe', 'feixe')",True
+pular,serao,4,"('serao', 'citar', 'lunar', 'pular')",True
+titia,serao,4,"('serao', 'cinta', 'tibia', 'titia')",True
+deter,serao,3,"('serao', 'medir', 'deter')",True
+axila,serao,4,"('serao', 'cinta', 'duzia', 'axila')",True
+brejo,serao,6,"('serao', 'treco', 'freio', 'dreno', 'prego', 'brejo')",True
+rever,serao,5,"('serao', 'medir', 'tecer', 'reler', 'rever')",True
+naipe,serao,4,"('serao', 'etica', 'baile', 'naipe')",True
+arder,serao,4,"('serao', 'trela', 'grade', 'arder')",True
+entao,serao,2,"('serao', 'entao')",True
+pleno,serao,4,"('serao', 'etico', 'duelo', 'pleno')",True
+parma,serao,5,"('serao', 'abril', 'turma', 'carma', 'parma')",True
+juizo,serao,5,"('serao', 'cinto', 'umido', 'quilo', 'juizo')",True
+noite,serao,2,"('serao', 'noite')",True
+seiva,serao,3,"('serao', 'seita', 'seiva')",True
+furor,serao,3,"('serao', 'forum', 'furor')",True
+janta,serao,4,"('serao', 'cinta', 'manta', 'janta')",True
+mover,serao,3,"('serao', 'comer', 'mover')",True
+vidro,serao,3,"('serao', 'litro', 'vidro')",True
+votar,serao,6,"('serao', 'lotar', 'notar', 'dotar', 'botar', 'votar')",True
+brasa,serao,3,"('serao', 'brisa', 'brasa')",True
+areal,serao,2,"('serao', 'areal')",True
+jarro,serao,5,"('serao', 'parto', 'barco', 'fardo', 'jarro')",True
+pocos,serao,4,"('serao', 'mitos', 'nulos', 'pocos')",True
+nossa,serao,4,"('serao', 'coisa', 'lousa', 'nossa')",True
+boiar,serao,3,"('serao', 'lotar', 'boiar')",True
+outra,serao,3,"('serao', 'loira', 'outra')",True
+pires,serao,2,"('serao', 'pires')",True
+regar,serao,6,"('serao', 'pecar', 'vetar', 'gelar', 'negar', 'regar')",True
+boato,serao,4,"('serao', 'laico', 'agudo', 'boato')",True
+sumir,serao,2,"('serao', 'sumir')",True
+lenta,serao,3,"('serao', 'celta', 'lenta')",True
+loira,serao,2,"('serao', 'loira')",True
+cinza,serao,3,"('serao', 'cinta', 'cinza')",True
+fisco,serao,3,"('serao', 'nisto', 'fisco')",True
+agora,serao,5,"('serao', 'loira', 'outra', 'amora', 'agora')",True
+lazer,serao,4,"('serao', 'trela', 'lacre', 'lazer')",True
+pista,serao,3,"('serao', 'mista', 'pista')",True
+pulga,serao,4,"('serao', 'cinta', 'pluma', 'pulga')",True
+fosca,serao,5,"('serao', 'coisa', 'tosca', 'mosca', 'fosca')",True
+males,serao,3,"('serao', 'aneis', 'males')",True
+conto,serao,3,"('serao', 'cinto', 'conto')",True
+tocha,serao,4,"('serao', 'otica', 'conta', 'tocha')",True
+retas,serao,2,"('serao', 'retas')",True
+cuspe,serao,3,"('serao', 'uteis', 'cuspe')",True
+persa,serao,2,"('serao', 'persa')",True
+gemeo,serao,4,"('serao', 'leito', 'feudo', 'gemeo')",True
+tenda,serao,3,"('serao', 'celta', 'tenda')",True
+aguia,serao,4,"('serao', 'cinta', 'duzia', 'aguia')",True
+meros,serao,2,"('serao', 'meros')",True
+robos,serao,5,"('serao', 'ritos', 'rumos', 'rolos', 'robos')",True
+lados,serao,4,"('serao', 'coisa', 'altos', 'lados')",True
+areia,serao,3,"('serao', 'trela', 'areia')",True
+impor,serao,3,"('serao', 'licor', 'impor')",True
+vigor,serao,3,"('serao', 'licor', 'vigor')",True
+medio,serao,3,"('serao', 'leito', 'medio')",True
+matiz,serao,4,"('serao', 'cinta', 'latim', 'matiz')",True
+orgao,serao,3,"('serao', 'irmao', 'orgao')",True
+senso,serao,3,"('serao', 'sexto', 'senso')",True
+novas,serao,6,"('serao', 'molas', 'todas', 'copas', 'joias', 'novas')",True
+turco,serao,2,"('serao', 'turco')",True
+densa,serao,4,"('serao', 'cesta', 'deusa', 'densa')",True
+balas,serao,5,"('serao', 'dicas', 'luvas', 'atlas', 'balas')",True
+bicho,serao,3,"('serao', 'cinto', 'bicho')",True
+galao,serao,4,"('serao', 'licao', 'balao', 'galao')",True
+atual,serao,3,"('serao', 'vital', 'atual')",True
+monte,serao,3,"('serao', 'noite', 'monte')",True
+tribo,serao,4,"('serao', 'litro', 'trico', 'tribo')",True
+tarda,serao,4,"('serao', 'abril', 'turma', 'tarda')",True
+baita,serao,4,"('serao', 'cinta', 'muita', 'baita')",True
+ampla,serao,4,"('serao', 'cinta', 'pluma', 'ampla')",True
+floco,serao,5,"('serao', 'cinto', 'louco', 'bloco', 'floco')",True
+banjo,serao,6,"('serao', 'laico', 'manto', 'bando', 'banho', 'banjo')",True
+olhos,serao,5,"('serao', 'mitos', 'nulos', 'lobos', 'olhos')",True
+gasto,serao,5,"('serao', 'casto', 'pasto', 'vasto', 'gasto')",True
+facil,serao,3,"('serao', 'cinta', 'facil')",True
+acesa,serao,3,"('serao', 'aneis', 'acesa')",True
+torto,serao,3,"('serao', 'turco', 'torto')",True
+horta,serao,3,"('serao', 'porta', 'horta')",True
+alcar,serao,4,"('serao', 'citar', 'fucar', 'alcar')",True
+vivos,serao,6,"('serao', 'mitos', 'lidos', 'pinos', 'fixos', 'vivos')",True
+gaita,serao,5,"('serao', 'cinta', 'muita', 'baita', 'gaita')",True
+solto,serao,3,"('serao', 'suino', 'solto')",True
+cetro,serao,3,"('serao', 'reino', 'cetro')",True
+redes,serao,3,"('serao', 'reles', 'redes')",True
+criar,serao,4,"('serao', 'citar', 'chiar', 'criar')",True
+sacro,serao,2,"('serao', 'sacro')",True
+banir,serao,3,"('serao', 'latir', 'banir')",True
+prato,serao,3,"('serao', 'traco', 'prato')",True
+miudo,serao,4,"('serao', 'cinto', 'limpo', 'miudo')",True
+moida,serao,3,"('serao', 'otica', 'moida')",True
+aliar,serao,5,"('serao', 'citar', 'impar', 'guiar', 'aliar')",True
+bater,serao,3,"('serao', 'trela', 'bater')",True
+fauna,serao,3,"('serao', 'cinta', 'fauna')",True
+norte,serao,2,"('serao', 'norte')",True
+haste,serao,3,"('serao', 'aneis', 'haste')",True
+alado,serao,4,"('serao', 'laico', 'aluno', 'alado')",True
+bloco,serao,4,"('serao', 'cinto', 'louco', 'bloco')",True
+pinga,serao,4,"('serao', 'cinta', 'linda', 'pinga')",True
+etico,serao,2,"('serao', 'etico')",True
+corja,serao,4,"('serao', 'porta', 'corda', 'corja')",True
+morno,serao,4,"('serao', 'turco', 'lirio', 'morno')",True
+ideal,serao,2,"('serao', 'ideal')",True
+fusao,serao,3,"('serao', 'cisao', 'fusao')",True
+verao,serao,2,"('serao', 'verao')",True
+vozes,serao,5,"('serao', 'poste', 'doces', 'nomes', 'vozes')",True
+bilis,serao,3,"('serao', 'cutis', 'bilis')",True
+impar,serao,3,"('serao', 'citar', 'impar')",True
+sogra,serao,3,"('serao', 'sobra', 'sogra')",True
+jovem,serao,4,"('serao', 'noite', 'movel', 'jovem')",True
+testa,serao,5,"('serao', 'cesta', 'besta', 'festa', 'testa')",True
+metal,serao,2,"('serao', 'metal')",True
+falsa,serao,5,"('serao', 'mista', 'blusa', 'valsa', 'falsa')",True
+bruto,serao,4,"('serao', 'litro', 'truco', 'bruto')",True
+tenso,serao,3,"('serao', 'cesto', 'tenso')",True
+dique,serao,4,"('serao', 'clipe', 'imune', 'dique')",True
+fator,serao,4,"('serao', 'loira', 'autor', 'fator')",True
+sutil,serao,2,"('serao', 'sutil')",True
+grupo,serao,4,"('serao', 'litro', 'prumo', 'grupo')",True
+matar,serao,4,"('serao', 'citar', 'lutar', 'matar')",True
+motor,serao,4,"('serao', 'licor', 'pudor', 'motor')",True
+meses,serao,3,"('serao', 'tenis', 'meses')",True
+vazio,serao,5,"('serao', 'laico', 'patio', 'navio', 'vazio')",True
+cujos,serao,5,"('serao', 'mitos', 'nulos', 'cubos', 'cujos')",True
+parda,serao,5,"('serao', 'abril', 'turma', 'carpa', 'parda')",True
+carpa,serao,4,"('serao', 'abril', 'turma', 'carpa')",True
+arabe,serao,6,"('serao', 'trela', 'grade', 'praxe', 'arame', 'arabe')",True
+plebe,serao,3,"('serao', 'clipe', 'plebe')",True
+advir,serao,3,"('serao', 'latir', 'advir')",True
+punir,serao,2,"('serao', 'punir')",True
+rival,serao,3,"('serao', 'citar', 'rival')",True
+trave,serao,3,"('serao', 'trela', 'trave')",True
+trico,serao,3,"('serao', 'litro', 'trico')",True
+lento,serao,3,"('serao', 'leito', 'lento')",True
+sarda,serao,3,"('serao', 'surda', 'sarda')",True
+rodar,serao,6,"('serao', 'lotar', 'boiar', 'pomar', 'focar', 'rodar')",False
+caber,serao,3,"('serao', 'trela', 'caber')",True
+sexta,serao,3,"('serao', 'seita', 'sexta')",True
+sacra,serao,2,"('serao', 'sacra')",True
+rolha,serao,3,"('serao', 'loira', 'rolha')",True
+acude,serao,4,"('serao', 'etica', 'caule', 'acude')",True
+casos,serao,5,"('serao', 'coisa', 'cabos', 'cacos', 'casos')",True
+cisao,serao,2,"('serao', 'cisao')",True
+chata,serao,4,"('serao', 'cinta', 'culta', 'chata')",True
+ossos,serao,5,"('serao', 'mitos', 'nulos', 'pocos', 'ossos')",True
+expor,serao,3,"('serao', 'comer', 'expor')",True
+venda,serao,4,"('serao', 'celta', 'media', 'venda')",True
+casco,serao,3,"('serao', 'casto', 'casco')",True
+banco,serao,4,"('serao', 'laico', 'manco', 'banco')",True
+bomba,serao,5,"('serao', 'otica', 'lomba', 'pomba', 'bomba')",True
+sinal,serao,2,"('serao', 'sinal')",True
+horto,serao,4,"('serao', 'turco', 'morto', 'horto')",True
+ramos,serao,3,"('serao', 'raios', 'ramos')",True
+fonte,serao,5,"('serao', 'noite', 'monte', 'ponte', 'fonte')",True
+leito,serao,2,"('serao', 'leito')",True
+cobre,serao,3,"('serao', 'comer', 'cobre')",True
+tibia,serao,3,"('serao', 'cinta', 'tibia')",True
+cinco,serao,3,"('serao', 'cinto', 'cinco')",True
+noiva,serao,5,"('serao', 'otica', 'moida', 'boina', 'noiva')",True
+ponto,serao,4,"('serao', 'cinto', 'junto', 'ponto')",True
+aluno,serao,3,"('serao', 'laico', 'aluno')",True
+traje,serao,4,"('serao', 'trela', 'trave', 'traje')",True
+canal,serao,4,"('serao', 'vital', 'bucal', 'canal')",True
+rouco,serao,4,"('serao', 'litro', 'prumo', 'rouco')",True
+boate,serao,3,"('serao', 'poeta', 'boate')",True
+mutuo,serao,4,"('serao', 'cinto', 'toldo', 'mutuo')",True
+caros,serao,2,"('serao', 'caros')",True
+lente,serao,3,"('serao', 'cetim', 'lente')",True
+lares,serao,2,"('serao', 'lares')",True
+sacar,serao,2,"('serao', 'sacar')",True
+porem,serao,3,"('serao', 'norte', 'porem')",True
+feudo,serao,3,"('serao', 'leito', 'feudo')",True
+vezes,serao,4,"('serao', 'tenis', 'meses', 'vezes')",True
+carga,serao,5,"('serao', 'abril', 'turma', 'carpa', 'carga')",True
+inves,serao,3,"('serao', 'uteis', 'inves')",True
+presa,serao,4,"('serao', 'aries', 'crase', 'presa')",True
+geral,serao,2,"('serao', 'geral')",True
+negar,serao,5,"('serao', 'pecar', 'vetar', 'gelar', 'negar')",True
+atuar,serao,3,"('serao', 'citar', 'atuar')",True
+ciume,serao,3,"('serao', 'clipe', 'ciume')",True
+fiado,serao,5,"('serao', 'laico', 'inato', 'fiapo', 'fiado')",True
+forca,serao,4,"('serao', 'porta', 'corda', 'forca')",True
+corvo,serao,5,"('serao', 'turco', 'corno', 'corpo', 'corvo')",True
+gordo,serao,6,"('serao', 'turco', 'lirio', 'morno', 'bordo', 'gordo')",True
+tutor,serao,4,"('serao', 'licor', 'pudor', 'tutor')",True
+duros,serao,4,"('serao', 'tiros', 'muros', 'duros')",True
+exame,serao,3,"('serao', 'etica', 'exame')",True
+caldo,serao,4,"('serao', 'laico', 'calmo', 'caldo')",True
+cupim,serao,3,"('serao', 'futil', 'cupim')",True
+otimo,serao,3,"('serao', 'cinto', 'otimo')",True
+mamar,serao,5,"('serao', 'citar', 'lunar', 'ambar', 'mamar')",True
+indio,serao,3,"('serao', 'cinto', 'indio')",True
+autos,serao,4,"('serao', 'coisa', 'altos', 'autos')",True
+pavio,serao,4,"('serao', 'laico', 'patio', 'pavio')",True
+fobia,serao,4,"('serao', 'otica', 'viola', 'fobia')",True
+jeito,serao,3,"('serao', 'leito', 'jeito')",True
+votos,serao,3,"('serao', 'mitos', 'votos')",True
+tesao,serao,2,"('serao', 'tesao')",True
+lagoa,serao,4,"('serao', 'otica', 'lomba', 'lagoa')",True
+pampa,serao,4,"('serao', 'cinta', 'pluma', 'pampa')",True
+diodo,serao,4,"('serao', 'cinto', 'limpo', 'diodo')",True
+parte,serao,4,"('serao', 'carie', 'marte', 'parte')",True
+ambas,serao,5,"('serao', 'dicas', 'luvas', 'patas', 'ambas')",True
+farda,serao,5,"('serao', 'abril', 'turma', 'carpa', 'farda')",True
+sonar,serao,4,"('serao', 'solar', 'socar', 'sonar')",True
+bacon,serao,3,"('serao', 'otica', 'bacon')",True
+gatas,serao,5,"('serao', 'dicas', 'luvas', 'patas', 'gatas')",True
+banca,serao,4,"('serao', 'cinta', 'lanca', 'banca')",True
+meigo,serao,3,"('serao', 'leito', 'meigo')",True
+pavao,serao,4,"('serao', 'licao', 'tufao', 'pavao')",True
+fixos,serao,5,"('serao', 'mitos', 'lidos', 'pinos', 'fixos')",True
+doido,serao,5,"('serao', 'cinto', 'umido', 'oxido', 'doido')",True
+valer,serao,4,"('serao', 'trela', 'lacre', 'valer')",True
+girar,serao,6,"('serao', 'viral', 'tirar', 'mirar', 'pirar', 'girar')",True
+caspa,serao,3,"('serao', 'mista', 'caspa')",True
+opcao,serao,4,"('serao', 'licao', 'nocao', 'opcao')",True
+macro,serao,3,"('serao', 'traco', 'macro')",True
+prego,serao,5,"('serao', 'treco', 'freio', 'dreno', 'prego')",True
+perda,serao,5,"('serao', 'certa', 'perua', 'perna', 'perda')",True
+enjoo,serao,3,"('serao', 'etico', 'enjoo')",True
+longe,serao,4,"('serao', 'noite', 'conde', 'longe')",True
+icone,serao,3,"('serao', 'noite', 'icone')",True
+ferro,serao,6,"('serao', 'certo', 'lerdo', 'nervo', 'berro', 'ferro')",True
+braco,serao,3,"('serao', 'traco', 'braco')",True
+unida,serao,3,"('serao', 'cinta', 'unida')",True
+licao,serao,2,"('serao', 'licao')",True
+bambu,serao,4,"('serao', 'cinta', 'album', 'bambu')",True
+dorso,serao,4,"('serao', 'curso', 'torso', 'dorso')",True
+moral,serao,3,"('serao', 'coral', 'moral')",True
+ameba,serao,5,"('serao', 'etica', 'plena', 'queda', 'ameba')",True
+viril,serao,2,"('serao', 'viril')",True
+amora,serao,4,"('serao', 'loira', 'outra', 'amora')",True
+magna,serao,4,"('serao', 'cinta', 'fauna', 'magna')",True
+rural,serao,4,"('serao', 'viral', 'mural', 'rural')",True
+penal,serao,3,"('serao', 'metal', 'penal')",True
+abuso,serao,4,"('serao', 'casto', 'aviso', 'abuso')",True
+sunga,serao,3,"('serao', 'sutia', 'sunga')",True
+pocao,serao,4,"('serao', 'licao', 'nocao', 'pocao')",True
+erros,serao,3,"('serao', 'euros', 'erros')",True
+surda,serao,2,"('serao', 'surda')",True
+beber,serao,5,"('serao', 'medir', 'tecer', 'reler', 'beber')",True
+cifra,serao,4,"('serao', 'latir', 'ruina', 'cifra')",True
+movel,serao,3,"('serao', 'noite', 'movel')",True
+atras,serao,2,"('serao', 'atras')",True
+farol,serao,3,"('serao', 'porta', 'farol')",True
+fugaz,serao,4,"('serao', 'vital', 'pagam', 'fugaz')",True
+zerar,serao,3,"('serao', 'geral', 'zerar')",True
+menta,serao,4,"('serao', 'celta', 'feita', 'menta')",True
+estes,serao,3,"('serao', 'uteis', 'estes')",True
+venus,serao,3,"('serao', 'tenis', 'venus')",True
+vista,serao,4,"('serao', 'mista', 'pista', 'vista')",True
+final,serao,3,"('serao', 'vital', 'final')",True
+nevar,serao,5,"('serao', 'pecar', 'vetar', 'levar', 'nevar')",True
+norma,serao,5,"('serao', 'porta', 'corda', 'morna', 'norma')",True
+leste,serao,3,"('serao', 'tenis', 'leste')",True
+nudez,serao,4,"('serao', 'clipe', 'nuvem', 'nudez')",True
+telas,serao,3,"('serao', 'teias', 'telas')",True
+tinto,serao,3,"('serao', 'cinto', 'tinto')",True
+saber,serao,2,"('serao', 'saber')",True
+bingo,serao,5,"('serao', 'cinto', 'lindo', 'pingo', 'bingo')",True
+cacau,serao,4,"('serao', 'vital', 'pagam', 'cacau')",True
+fardo,serao,4,"('serao', 'parto', 'barco', 'fardo')",True
+morar,serao,4,"('serao', 'coral', 'torax', 'morar')",True
+bioma,serao,4,"('serao', 'otica', 'viola', 'bioma')",True
+domar,serao,5,"('serao', 'lotar', 'boiar', 'pomar', 'domar')",True
+grega,serao,5,"('serao', 'trela', 'areia', 'brega', 'grega')",True
+coice,serao,4,"('serao', 'noite', 'foice', 'coice')",True
+ervas,serao,3,"('serao', 'estar', 'ervas')",True
+medir,serao,2,"('serao', 'medir')",True
+mista,serao,2,"('serao', 'mista')",True
+atroz,serao,3,"('serao', 'porta', 'atroz')",True
+raios,serao,2,"('serao', 'raios')",True
+tosar,serao,2,"('serao', 'tosar')",True
+muros,serao,3,"('serao', 'tiros', 'muros')",True
+santa,serao,3,"('serao', 'sutia', 'santa')",True
+desde,serao,3,"('serao', 'tenis', 'desde')",True
+posto,serao,4,"('serao', 'nisto', 'custo', 'posto')",True
+cesto,serao,2,"('serao', 'cesto')",True
+abril,serao,2,"('serao', 'abril')",True
+penta,serao,5,"('serao', 'celta', 'feita', 'menta', 'penta')",True
+celta,serao,2,"('serao', 'celta')",True
+mudar,serao,4,"('serao', 'citar', 'lunar', 'mudar')",True
+cacho,serao,5,"('serao', 'laico', 'canto', 'campo', 'cacho')",True
+bando,serao,4,"('serao', 'laico', 'manto', 'bando')",True
+caixa,serao,5,"('serao', 'cinta', 'clima', 'caida', 'caixa')",True
+resto,serao,2,"('serao', 'resto')",True
+libra,serao,3,"('serao', 'latir', 'libra')",True
+regua,serao,4,"('serao', 'letra', 'renda', 'regua')",True
+calda,serao,4,"('serao', 'cinta', 'calma', 'calda')",True
+preto,serao,3,"('serao', 'treco', 'preto')",True
+tenue,serao,4,"('serao', 'cetim', 'lente', 'tenue')",True
+vazar,serao,6,"('serao', 'citar', 'lunar', 'ambar', 'pagar', 'vazar')",True
+reger,serao,6,"('serao', 'medir', 'tecer', 'reler', 'rever', 'reger')",True
+usina,serao,3,"('serao', 'mista', 'usina')",True
+vazia,serao,4,"('serao', 'cinta', 'duzia', 'vazia')",True
+todos,serao,3,"('serao', 'mitos', 'todos')",True
+durar,serao,4,"('serao', 'viral', 'curar', 'durar')",True
+angra,serao,4,"('serao', 'latir', 'praca', 'angra')",True
+selos,serao,2,"('serao', 'selos')",True
+alias,serao,3,"('serao', 'dicas', 'alias')",True
+preco,serao,3,"('serao', 'treco', 'preco')",True
+bufar,serao,5,"('serao', 'citar', 'lunar', 'mudar', 'bufar')",True
+nuvem,serao,3,"('serao', 'clipe', 'nuvem')",True
+etica,serao,2,"('serao', 'etica')",True
+lapso,serao,3,"('serao', 'casto', 'lapso')",True
+uniao,serao,3,"('serao', 'licao', 'uniao')",True
+civis,serao,3,"('serao', 'cutis', 'civis')",True
+grito,serao,4,"('serao', 'litro', 'trico', 'grito')",True
+bonus,serao,3,"('serao', 'mitos', 'bonus')",True
+cinto,serao,2,"('serao', 'cinto')",True
+matos,serao,4,"('serao', 'coisa', 'altos', 'matos')",True
+safra,serao,3,"('serao', 'sacra', 'safra')",True
+algoz,serao,4,"('serao', 'otica', 'anzol', 'algoz')",True
+letra,serao,2,"('serao', 'letra')",True
+dogma,serao,4,"('serao', 'otica', 'lomba', 'dogma')",True
+pesca,serao,3,"('serao', 'cesta', 'pesca')",True
+linho,serao,4,"('serao', 'cinto', 'lindo', 'linho')",True
+tchau,serao,3,"('serao', 'vital', 'tchau')",True
+graxa,serao,6,"('serao', 'latir', 'praca', 'drama', 'grana', 'graxa')",True
+casal,serao,3,"('serao', 'dicas', 'casal')",True
+lidos,serao,3,"('serao', 'mitos', 'lidos')",True
+lorde,serao,3,"('serao', 'norte', 'lorde')",True
+larva,serao,3,"('serao', 'abril', 'larva')",True
+gnomo,serao,3,"('serao', 'cinto', 'gnomo')",True
+casca,serao,4,"('serao', 'mista', 'caspa', 'casca')",True
+botar,serao,5,"('serao', 'lotar', 'notar', 'dotar', 'botar')",True
+tinta,serao,4,"('serao', 'cinta', 'pinta', 'tinta')",True
+prado,serao,4,"('serao', 'traco', 'irado', 'prado')",True
+animo,serao,4,"('serao', 'laico', 'apito', 'animo')",True
+bacia,serao,5,"('serao', 'cinta', 'quica', 'macia', 'bacia')",True
+magia,serao,5,"('serao', 'cinta', 'duzia', 'labia', 'magia')",True
+saque,serao,3,"('serao', 'saude', 'saque')",True
+grato,serao,4,"('serao', 'traco', 'prato', 'grato')",True
+bares,serao,3,"('serao', 'lares', 'bares')",True
+rolos,serao,4,"('serao', 'ritos', 'rumos', 'rolos')",True
+loura,serao,3,"('serao', 'loira', 'loura')",True
+obvio,serao,4,"('serao', 'cinto', 'umido', 'obvio')",True
+viola,serao,3,"('serao', 'otica', 'viola')",True
+linda,serao,3,"('serao', 'cinta', 'linda')",True
+sabio,serao,4,"('serao', 'salto', 'sadio', 'sabio')",True
+cueca,serao,3,"('serao', 'etica', 'cueca')",True
+santo,serao,3,"('serao', 'salto', 'santo')",True
+couve,serao,3,"('serao', 'noite', 'couve')",True
+susto,serao,3,"('serao', 'suino', 'susto')",True
+ostra,serao,3,"('serao', 'raios', 'ostra')",True
+altar,serao,4,"('serao', 'citar', 'lutar', 'altar')",True
+furia,serao,4,"('serao', 'abril', 'guria', 'furia')",True
+limpo,serao,3,"('serao', 'cinto', 'limpo')",True
+trair,serao,3,"('serao', 'latir', 'trair')",True
+idolo,serao,4,"('serao', 'cinto', 'umido', 'idolo')",True
+deusa,serao,3,"('serao', 'cesta', 'deusa')",True
+usura,serao,3,"('serao', 'brisa', 'usura')",True
+cacar,serao,5,"('serao', 'citar', 'calar', 'cavar', 'cacar')",True
+todas,serao,3,"('serao', 'molas', 'todas')",True
+obter,serao,3,"('serao', 'comer', 'obter')",True
+tampa,serao,4,"('serao', 'cinta', 'tumba', 'tampa')",True
+fossa,serao,6,"('serao', 'coisa', 'lousa', 'nossa', 'bossa', 'fossa')",True
+lavar,serao,4,"('serao', 'citar', 'lunar', 'lavar')",True
+gueto,serao,4,"('serao', 'etico', 'dueto', 'gueto')",True
+lunar,serao,3,"('serao', 'citar', 'lunar')",True
+panda,serao,3,"('serao', 'cinta', 'panda')",True
+vacuo,serao,4,"('serao', 'laico', 'canto', 'vacuo')",True
+rigor,serao,4,"('serao', 'licor', 'vigor', 'rigor')",True
+humor,serao,5,"('serao', 'licor', 'pudor', 'tutor', 'humor')",True
+pulso,serao,3,"('serao', 'nisto', 'pulso')",True
+terno,serao,3,"('serao', 'certo', 'terno')",True
+aneis,serao,2,"('serao', 'aneis')",True
+donos,serao,4,"('serao', 'mitos', 'nulos', 'donos')",True
+coxao,serao,3,"('serao', 'licao', 'coxao')",True
+civil,serao,3,"('serao', 'futil', 'civil')",True
+bocal,serao,2,"('serao', 'bocal')",True
+aroma,serao,5,"('serao', 'loira', 'troca', 'prova', 'aroma')",True
+soldo,serao,4,"('serao', 'suino', 'solto', 'soldo')",True
+morro,serao,5,"('serao', 'turco', 'lirio', 'morno', 'morro')",True
+coxas,serao,5,"('serao', 'molas', 'todas', 'copas', 'coxas')",True
+cupom,serao,3,"('serao', 'docil', 'cupom')",True
+jogos,serao,6,"('serao', 'mitos', 'nulos', 'pocos', 'fogos', 'jogos')",True
+furos,serao,5,"('serao', 'tiros', 'muros', 'duros', 'furos')",True
+arcos,serao,3,"('serao', 'raios', 'arcos')",True
+louca,serao,3,"('serao', 'otica', 'louca')",True
+peste,serao,4,"('serao', 'tenis', 'leste', 'peste')",True
+crise,serao,3,"('serao', 'riste', 'crise')",True
+homem,serao,4,"('serao', 'noite', 'movel', 'homem')",True
+duplo,serao,3,"('serao', 'cinto', 'duplo')",True
+taxis,serao,3,"('serao', 'mista', 'taxis')",True
+pauta,serao,4,"('serao', 'cinta', 'multa', 'pauta')",True
+canja,serao,3,"('serao', 'cinta', 'canja')",True
+cauda,serao,4,"('serao', 'cinta', 'calma', 'cauda')",True
+dizer,serao,4,"('serao', 'tripe', 'rimel', 'dizer')",True
+rapaz,serao,3,"('serao', 'citar', 'rapaz')",True
+atlas,serao,4,"('serao', 'dicas', 'luvas', 'atlas')",True
+sitio,serao,3,"('serao', 'suino', 'sitio')",True
+guiar,serao,4,"('serao', 'citar', 'impar', 'guiar')",True
+babar,serao,5,"('serao', 'citar', 'lunar', 'ambar', 'babar')",True
+trono,serao,4,"('serao', 'litro', 'truco', 'trono')",True
+trigo,serao,5,"('serao', 'litro', 'trico', 'tribo', 'trigo')",True
+novos,serao,4,"('serao', 'mitos', 'nulos', 'novos')",True
+massa,serao,3,"('serao', 'mista', 'massa')",True
+horas,serao,3,"('serao', 'obras', 'horas')",True
+junto,serao,3,"('serao', 'cinto', 'junto')",True
+omega,serao,3,"('serao', 'poeta', 'omega')",True
+salsa,serao,5,"('serao', 'sutia', 'samba', 'sanha', 'salsa')",True
+pinho,serao,5,"('serao', 'cinto', 'lindo', 'pingo', 'pinho')",True
+brisa,serao,2,"('serao', 'brisa')",True
+ambos,serao,4,"('serao', 'coisa', 'altos', 'ambos')",True
+guria,serao,3,"('serao', 'abril', 'guria')",True
+brega,serao,4,"('serao', 'trela', 'areia', 'brega')",True
+motim,serao,3,"('serao', 'docil', 'motim')",True
+rumor,serao,6,"('serao', 'licor', 'pudor', 'tutor', 'humor', 'rumor')",True
+sutia,serao,2,"('serao', 'sutia')",True
+ducha,serao,3,"('serao', 'cinta', 'ducha')",True
+misto,serao,3,"('serao', 'nisto', 'misto')",True
+farto,serao,3,"('serao', 'parto', 'farto')",True
+polen,serao,3,"('serao', 'noite', 'polen')",True
+debil,serao,3,"('serao', 'cetim', 'debil')",True
+dicas,serao,2,"('serao', 'dicas')",True
+canto,serao,3,"('serao', 'laico', 'canto')",True
+cargo,serao,4,"('serao', 'parto', 'barco', 'cargo')",True
+seita,serao,2,"('serao', 'seita')",True
+graus,serao,3,"('serao', 'brisa', 'graus')",True
+baile,serao,3,"('serao', 'etica', 'baile')",True
+zelar,serao,5,"('serao', 'pecar', 'vetar', 'gelar', 'zelar')",True
+apelo,serao,3,"('serao', 'aceno', 'apelo')",True
+arroz,serao,4,"('serao', 'porta', 'farol', 'arroz')",True
+canoa,serao,4,"('serao', 'otica', 'coala', 'canoa')",True
+perna,serao,4,"('serao', 'certa', 'perua', 'perna')",True
+tarja,serao,5,"('serao', 'abril', 'turma', 'tarda', 'tarja')",True
+fluxo,serao,4,"('serao', 'cinto', 'duplo', 'fluxo')",True
+falar,serao,4,"('serao', 'citar', 'lunar', 'falar')",True
+dobro,serao,4,"('serao', 'litro', 'couro', 'dobro')",True
+orfao,serao,4,"('serao', 'irmao', 'orgao', 'orfao')",True
+leite,serao,3,"('serao', 'cetim', 'leite')",True
+curso,serao,2,"('serao', 'curso')",True
+comer,serao,2,"('serao', 'comer')",True
+cisne,serao,3,"('serao', 'uteis', 'cisne')",True
+femea,serao,4,"('serao', 'celta', 'media', 'femea')",True
+cheia,serao,3,"('serao', 'etica', 'cheia')",True
+lugar,serao,4,"('serao', 'citar', 'lunar', 'lugar')",True
+prazo,serao,5,"('serao', 'traco', 'irado', 'bravo', 'prazo')",True
+letal,serao,4,"('serao', 'metal', 'fetal', 'letal')",True
+secao,serao,2,"('serao', 'secao')",True
+fiapo,serao,4,"('serao', 'laico', 'inato', 'fiapo')",True
+vinte,serao,4,"('serao', 'clipe', 'imune', 'vinte')",True
+puxao,serao,4,"('serao', 'licao', 'tufao', 'puxao')",True
+reves,serao,4,"('serao', 'reles', 'redes', 'reves')",True
+clipe,serao,2,"('serao', 'clipe')",True
+tomar,serao,4,"('serao', 'lotar', 'tocar', 'tomar')",True
+manto,serao,3,"('serao', 'laico', 'manto')",True
+gesto,serao,3,"('serao', 'cesto', 'gesto')",True
+praga,serao,4,"('serao', 'latir', 'praca', 'praga')",True
+audio,serao,4,"('serao', 'laico', 'inato', 'audio')",True
+ansia,serao,3,"('serao', 'mista', 'ansia')",True
+tripe,serao,2,"('serao', 'tripe')",True
+licor,serao,2,"('serao', 'licor')",True
+alibi,serao,4,"('serao', 'cinta', 'habil', 'alibi')",True
+inato,serao,3,"('serao', 'laico', 'inato')",True
+lance,serao,3,"('serao', 'etica', 'lance')",True
+redea,serao,4,"('serao', 'letra', 'renda', 'redea')",True
+mutua,serao,4,"('serao', 'cinta', 'tumba', 'mutua')",True
+vagao,serao,5,"('serao', 'licao', 'tufao', 'pavao', 'vagao')",True
+lesma,serao,3,"('serao', 'cesta', 'lesma')",True
+beira,serao,3,"('serao', 'letra', 'beira')",True
+abono,serao,5,"('serao', 'laico', 'agudo', 'atomo', 'abono')",True
+salao,serao,3,"('serao', 'sotao', 'salao')",True
+russo,serao,4,"('serao', 'risco', 'rosto', 'russo')",True
+caqui,serao,4,"('serao', 'cinta', 'capim', 'caqui')",True
+pelos,serao,3,"('serao', 'meios', 'pelos')",True
+servo,serao,3,"('serao', 'serio', 'servo')",True
+facao,serao,5,"('serao', 'licao', 'nocao', 'opcao', 'facao')",True
+barro,serao,4,"('serao', 'parto', 'barco', 'barro')",True
+filme,serao,3,"('serao', 'clipe', 'filme')",True
+rouca,serao,3,"('serao', 'loira', 'rouca')",True
+nisto,serao,2,"('serao', 'nisto')",True
+corar,serao,3,"('serao', 'coral', 'corar')",True
+idade,serao,3,"('serao', 'etica', 'idade')",True
+lisos,serao,4,"('serao', 'mitos', 'lidos', 'lisos')",True
+selim,serao,2,"('serao', 'selim')",True
+peixe,serao,3,"('serao', 'cetim', 'peixe')",True
+untar,serao,4,"('serao', 'citar', 'lutar', 'untar')",True
+sanar,serao,3,"('serao', 'sacar', 'sanar')",True
+grana,serao,5,"('serao', 'latir', 'praca', 'drama', 'grana')",True
+panos,serao,4,"('serao', 'coisa', 'altos', 'panos')",True
+relva,serao,3,"('serao', 'letra', 'relva')",True
+plena,serao,3,"('serao', 'etica', 'plena')",True
+besta,serao,3,"('serao', 'cesta', 'besta')",True
+banda,serao,4,"('serao', 'cinta', 'panda', 'banda')",True
+sodio,serao,5,"('serao', 'suino', 'sitio', 'socio', 'sodio')",True
+feira,serao,4,"('serao', 'letra', 'beira', 'feira')",True
+pompa,serao,4,"('serao', 'otica', 'lomba', 'pompa')",True
+veloz,serao,2,"('serao', 'veloz')",True
+belas,serao,4,"('serao', 'teias', 'cenas', 'belas')",True
+poema,serao,3,"('serao', 'poeta', 'poema')",True
+tecla,serao,3,"('serao', 'celta', 'tecla')",True
+adeus,serao,3,"('serao', 'aneis', 'adeus')",True
+dobra,serao,4,"('serao', 'loira', 'cobra', 'dobra')",True
+fruto,serao,5,"('serao', 'litro', 'truco', 'bruto', 'fruto')",True
+sorte,serao,2,"('serao', 'sorte')",True
+sabao,serao,4,"('serao', 'sotao', 'salao', 'sabao')",True
+sushi,serao,3,"('serao', 'sutil', 'sushi')",True
+quibe,serao,3,"('serao', 'clipe', 'quibe')",True
+corno,serao,3,"('serao', 'turco', 'corno')",True
+tenis,serao,2,"('serao', 'tenis')",True
+tosco,serao,3,"('serao', 'nisto', 'tosco')",True
+valsa,serao,4,"('serao', 'mista', 'blusa', 'valsa')",True
+lacre,serao,3,"('serao', 'trela', 'lacre')",True
+fosco,serao,4,"('serao', 'nisto', 'musgo', 'fosco')",True
+nenem,serao,4,"('serao', 'cetim', 'jejum', 'nenem')",True
+clero,serao,3,"('serao', 'treco', 'clero')",True
+dever,serao,4,"('serao', 'medir', 'deter', 'dever')",True
+duzia,serao,3,"('serao', 'cinta', 'duzia')",True
+racao,serao,3,"('serao', 'irmao', 'racao')",True
+terca,serao,3,"('serao', 'certa', 'terca')",True
+sotao,serao,2,"('serao', 'sotao')",True
+fuzue,serao,4,"('serao', 'clipe', 'duque', 'fuzue')",True
+aviso,serao,3,"('serao', 'casto', 'aviso')",True
+prole,serao,3,"('serao', 'comer', 'prole')",True
+costa,serao,3,"('serao', 'coisa', 'costa')",True
+manga,serao,4,"('serao', 'cinta', 'panda', 'manga')",True
+metro,serao,4,"('serao', 'reino', 'cetro', 'metro')",True
+pirar,serao,5,"('serao', 'viral', 'tirar', 'mirar', 'pirar')",True
+verde,serao,4,"('serao', 'cerne', 'verme', 'verde')",True
+unico,serao,3,"('serao', 'cinto', 'unico')",True
+vacas,serao,5,"('serao', 'dicas', 'tacas', 'macas', 'vacas')",True
+suado,serao,3,"('serao', 'salto', 'suado')",True
+fixar,serao,6,"('serao', 'citar', 'pilar', 'ninar', 'mimar', 'fixar')",True
+loiro,serao,3,"('serao', 'litro', 'loiro')",True
+fogos,serao,5,"('serao', 'mitos', 'nulos', 'pocos', 'fogos')",True
+dunas,serao,3,"('serao', 'dicas', 'dunas')",True
+baixa,serao,5,"('serao', 'cinta', 'duzia', 'axila', 'baixa')",True
+frevo,serao,4,"('serao', 'treco', 'freio', 'frevo')",True
+terra,serao,3,"('serao', 'certa', 'terra')",True
+calva,serao,5,"('serao', 'cinta', 'calma', 'calda', 'calva')",True
+harpa,serao,6,"('serao', 'abril', 'turma', 'carpa', 'farpa', 'harpa')",True
+dueto,serao,3,"('serao', 'etico', 'dueto')",True
+prova,serao,4,"('serao', 'loira', 'troca', 'prova')",True
+pluma,serao,3,"('serao', 'cinta', 'pluma')",True
+irmao,serao,2,"('serao', 'irmao')",True
+justa,serao,4,"('serao', 'mista', 'casta', 'justa')",True
+pagar,serao,5,"('serao', 'citar', 'lunar', 'ambar', 'pagar')",True
+farpa,serao,5,"('serao', 'abril', 'turma', 'carpa', 'farpa')",True
+cerca,serao,3,"('serao', 'certa', 'cerca')",True
+volei,serao,3,"('serao', 'noite', 'volei')",True
+rosca,serao,3,"('serao', 'raios', 'rosca')",True
+euros,serao,2,"('serao', 'euros')",True
+curar,serao,3,"('serao', 'viral', 'curar')",True
+fenda,serao,5,"('serao', 'celta', 'media', 'venda', 'fenda')",True
+farra,serao,6,"('serao', 'abril', 'turma', 'carpa', 'farda', 'farra')",True
+areas,serao,3,"('serao', 'estar', 'areas')",True
+unhas,serao,4,"('serao', 'dicas', 'luvas', 'unhas')",True
+nomes,serao,4,"('serao', 'poste', 'doces', 'nomes')",True
+tabua,serao,4,"('serao', 'cinta', 'tumba', 'tabua')",True
+gosma,serao,3,"('serao', 'coisa', 'gosma')",True
+capuz,serao,3,"('serao', 'cinta', 'capuz')",True
+ileso,serao,2,"('serao', 'ileso')",True
+lenha,serao,4,"('serao', 'celta', 'lenda', 'lenha')",True
+perua,serao,3,"('serao', 'certa', 'perua')",True
+padre,serao,4,"('serao', 'trela', 'caber', 'padre')",True
+fazer,serao,5,"('serao', 'trela', 'caber', 'haver', 'fazer')",True
+tocar,serao,3,"('serao', 'lotar', 'tocar')",True
+bruxo,serao,4,"('serao', 'litro', 'prumo', 'bruxo')",True
+lojas,serao,3,"('serao', 'molas', 'lojas')",True
+lerdo,serao,3,"('serao', 'certo', 'lerdo')",True
+nisso,serao,3,"('serao', 'nisto', 'nisso')",True
+golfo,serao,5,"('serao', 'cinto', 'duplo', 'lombo', 'golfo')",True
+topar,serao,5,"('serao', 'lotar', 'tocar', 'tomar', 'topar')",True
+usada,serao,4,"('serao', 'mista', 'blusa', 'usada')",True
+ruivo,serao,4,"('serao', 'litro', 'primo', 'ruivo')",True
+saude,serao,2,"('serao', 'saude')",True
+nadar,serao,5,"('serao', 'citar', 'lunar', 'andar', 'nadar')",True
+lixar,serao,6,"('serao', 'citar', 'pilar', 'lidar', 'ligar', 'lixar')",True
+vidas,serao,3,"('serao', 'dicas', 'vidas')",True
+pomba,serao,4,"('serao', 'otica', 'lomba', 'pomba')",True
+exodo,serao,4,"('serao', 'etico', 'enjoo', 'exodo')",True
+acola,serao,4,"('serao', 'otica', 'coala', 'acola')",True
+dotar,serao,4,"('serao', 'lotar', 'notar', 'dotar')",True
+batom,serao,3,"('serao', 'otica', 'batom')",True
+ontem,serao,3,"('serao', 'noite', 'ontem')",True
+torpe,serao,3,"('serao', 'norte', 'torpe')",True
+oasis,serao,3,"('serao', 'coisa', 'oasis')",True
+cloro,serao,3,"('serao', 'litro', 'cloro')",True
+curva,serao,4,"('serao', 'abril', 'turma', 'curva')",True
+surto,serao,2,"('serao', 'surto')",True
+ricos,serao,3,"('serao', 'ritos', 'ricos')",True
+ursos,serao,3,"('serao', 'ritos', 'ursos')",True
+hiena,serao,3,"('serao', 'etica', 'hiena')",True
+vasta,serao,6,"('serao', 'mista', 'casta', 'pasta', 'basta', 'vasta')",True
+risos,serao,4,"('serao', 'ritos', 'ricos', 'risos')",True
+febre,serao,5,"('serao', 'medir', 'rente', 'lebre', 'febre')",True
+fumar,serao,5,"('serao', 'citar', 'lunar', 'mudar', 'fumar')",True
+forum,serao,2,"('serao', 'forum')",True
+lutar,serao,3,"('serao', 'citar', 'lutar')",True
+catar,serao,3,"('serao', 'citar', 'catar')",True
+trela,serao,2,"('serao', 'trela')",True
+litro,serao,2,"('serao', 'litro')",True
+surdo,serao,3,"('serao', 'surto', 'surdo')",True
+menos,serao,3,"('serao', 'meios', 'menos')",True
+choro,serao,4,"('serao', 'litro', 'couro', 'choro')",True
+chefe,serao,3,"('serao', 'clipe', 'chefe')",True
+vasto,serao,4,"('serao', 'casto', 'pasto', 'vasto')",True
+cetim,serao,2,"('serao', 'cetim')",True
+traco,serao,2,"('serao', 'traco')",True
+cilio,serao,4,"('serao', 'cinto', 'ciclo', 'cilio')",True
+extra,serao,3,"('serao', 'trela', 'extra')",True
+greve,serao,5,"('serao', 'tripe', 'creme', 'breve', 'greve')",True
+tapar,serao,4,"('serao', 'citar', 'atuar', 'tapar')",True
+tufao,serao,3,"('serao', 'licao', 'tufao')",True
+sarau,serao,2,"('serao', 'sarau')",True
+rosas,serao,3,"('serao', 'tosar', 'rosas')",True
+touro,serao,3,"('serao', 'litro', 'touro')",True
+trapo,serao,3,"('serao', 'traco', 'trapo')",True
+lirio,serao,3,"('serao', 'turco', 'lirio')",True
+abano,serao,6,"('serao', 'laico', 'agudo', 'atomo', 'abono', 'abano')",True
+delta,serao,3,"('serao', 'celta', 'delta')",True
+cacao,serao,6,"('serao', 'licao', 'nocao', 'opcao', 'facao', 'cacao')",True
+anzol,serao,3,"('serao', 'otica', 'anzol')",True
+sarna,serao,3,"('serao', 'surda', 'sarna')",True
+clave,serao,4,"('serao', 'etica', 'caule', 'clave')",True
+refem,serao,3,"('serao', 'medir', 'refem')",True
+hifen,serao,4,"('serao', 'clipe', 'enfim', 'hifen')",True
+claro,serao,3,"('serao', 'traco', 'claro')",True
+nasal,serao,4,"('serao', 'dicas', 'usual', 'nasal')",True
+burra,serao,3,"('serao', 'abril', 'burra')",True
+conde,serao,3,"('serao', 'noite', 'conde')",True
+ponte,serao,4,"('serao', 'noite', 'monte', 'ponte')",True
+ondas,serao,3,"('serao', 'molas', 'ondas')",True
+quota,serao,4,"('serao', 'otica', 'ponta', 'quota')",True
+mexer,serao,4,"('serao', 'medir', 'meter', 'mexer')",True
+verba,serao,4,"('serao', 'certa', 'perua', 'verba')",True
+aonde,serao,3,"('serao', 'poeta', 'aonde')",True
+obras,serao,2,"('serao', 'obras')",True
+idosa,serao,3,"('serao', 'coisa', 'idosa')",True
+signo,serao,3,"('serao', 'suino', 'signo')",True
+frias,serao,3,"('serao', 'irmas', 'frias')",True
+lesao,serao,3,"('serao', 'tesao', 'lesao')",True
+mundo,serao,3,"('serao', 'cinto', 'mundo')",True
+genio,serao,4,"('serao', 'leito', 'medio', 'genio')",True
+legal,serao,4,"('serao', 'metal', 'penal', 'legal')",True
+tempo,serao,3,"('serao', 'leito', 'tempo')",True
+ambar,serao,4,"('serao', 'citar', 'lunar', 'ambar')",True
+culta,serao,3,"('serao', 'cinta', 'culta')",True
+vinho,serao,5,"('serao', 'cinto', 'lindo', 'pingo', 'vinho')",True
+livro,serao,3,"('serao', 'litro', 'livro')",True
+ninho,serao,6,"('serao', 'cinto', 'lindo', 'pingo', 'vinho', 'ninho')",True
+germe,serao,4,"('serao', 'cerne', 'verme', 'germe')",True
+culto,serao,3,"('serao', 'cinto', 'culto')",True
+pasto,serao,3,"('serao', 'casto', 'pasto')",True
+podre,serao,4,"('serao', 'comer', 'nobre', 'podre')",True
+mirar,serao,4,"('serao', 'viral', 'tirar', 'mirar')",True
+teses,serao,3,"('serao', 'tenis', 'teses')",True
+ebrio,serao,2,"('serao', 'ebrio')",True
+naves,serao,3,"('serao', 'aneis', 'naves')",True
+afago,serao,5,"('serao', 'laico', 'agudo', 'amago', 'afago')",True
+laudo,serao,3,"('serao', 'laico', 'laudo')",True
+ditar,serao,3,"('serao', 'citar', 'ditar')",True
+selar,serao,2,"('serao', 'selar')",True
+folia,serao,4,"('serao', 'otica', 'viola', 'folia')",True
+pedal,serao,4,"('serao', 'metal', 'penal', 'pedal')",True
+ninar,serao,4,"('serao', 'citar', 'pilar', 'ninar')",True
+tirar,serao,3,"('serao', 'viral', 'tirar')",True
+fugir,serao,3,"('serao', 'punir', 'fugir')",True
+calor,serao,3,"('serao', 'loira', 'calor')",True
+naval,serao,3,"('serao', 'vital', 'naval')",True
+porta,serao,2,"('serao', 'porta')",True
+amago,serao,4,"('serao', 'laico', 'agudo', 'amago')",True
+ponta,serao,3,"('serao', 'otica', 'ponta')",True
+calma,serao,3,"('serao', 'cinta', 'calma')",True
+capaz,serao,4,"('serao', 'vital', 'pagam', 'capaz')",True
+genro,serao,4,"('serao', 'reino', 'negro', 'genro')",True
+almas,serao,5,"('serao', 'dicas', 'luvas', 'atlas', 'almas')",True
+feias,serao,5,"('serao', 'teias', 'meias', 'veias', 'feias')",True
+senao,serao,3,"('serao', 'secao', 'senao')",True
+barco,serao,3,"('serao', 'parto', 'barco')",True
+zonzo,serao,5,"('serao', 'cinto', 'mundo', 'longo', 'zonzo')",True
+senha,serao,4,"('serao', 'seita', 'selva', 'senha')",True
+focos,serao,5,"('serao', 'mitos', 'nulos', 'pocos', 'focos')",True
+ossea,serao,3,"('serao', 'acoes', 'ossea')",True
+rosto,serao,3,"('serao', 'risco', 'rosto')",True
+socar,serao,3,"('serao', 'solar', 'socar')",True
+carne,serao,3,"('serao', 'carie', 'carne')",True
+garfo,serao,5,"('serao', 'parto', 'barco', 'fardo', 'garfo')",True
+luvas,serao,3,"('serao', 'dicas', 'luvas')",True
+chiar,serao,3,"('serao', 'citar', 'chiar')",True
+vazao,serao,6,"('serao', 'licao', 'tufao', 'pavao', 'vagao', 'vazao')",True
+porco,serao,4,"('serao', 'turco', 'circo', 'porco')",True
+gases,serao,4,"('serao', 'aneis', 'males', 'gases')",True
+umido,serao,3,"('serao', 'cinto', 'umido')",True
+boina,serao,4,"('serao', 'otica', 'moida', 'boina')",True
+lacos,serao,3,"('serao', 'coisa', 'lacos')",True
+ferir,serao,4,"('serao', 'cerne', 'gerir', 'ferir')",True
+media,serao,3,"('serao', 'celta', 'media')",True
+roupa,serao,4,"('serao', 'loira', 'rouca', 'roupa')",True
+duque,serao,3,"('serao', 'clipe', 'duque')",True
+bonde,serao,4,"('serao', 'noite', 'conde', 'bonde')",True
+tiros,serao,2,"('serao', 'tiros')",True
+avaro,serao,3,"('serao', 'traco', 'avaro')",True
+exato,serao,3,"('serao', 'aceno', 'exato')",True
+docil,serao,2,"('serao', 'docil')",True
+basta,serao,5,"('serao', 'mista', 'casta', 'pasta', 'basta')",True
+viver,serao,5,"('serao', 'tripe', 'rimel', 'dizer', 'viver')",True
+placa,serao,4,"('serao', 'cinta', 'ducha', 'placa')",True
+disso,serao,5,"('serao', 'nisto', 'fisco', 'bispo', 'disso')",True
+poros,serao,4,"('serao', 'tiros', 'muros', 'poros')",True
+arame,serao,5,"('serao', 'trela', 'grade', 'praxe', 'arame')",True
+outro,serao,3,"('serao', 'litro', 'outro')",True
+sopas,serao,2,"('serao', 'sopas')",True
+otima,serao,3,"('serao', 'otica', 'otima')",True
+bruxa,serao,5,"('serao', 'latir', 'praca', 'ardua', 'bruxa')",True
+raiva,serao,3,"('serao', 'latir', 'raiva')",True
+museu,serao,4,"('serao', 'uteis', 'cuspe', 'museu')",True
+astro,serao,2,"('serao', 'astro')",True
+rente,serao,3,"('serao', 'medir', 'rente')",True
+lombo,serao,4,"('serao', 'cinto', 'duplo', 'lombo')",True
+bordo,serao,5,"('serao', 'turco', 'lirio', 'morno', 'bordo')",True
+cinta,serao,2,"('serao', 'cinta')",True
+manha,serao,5,"('serao', 'cinta', 'panda', 'manga', 'manha')",True
+palco,serao,4,"('serao', 'laico', 'talco', 'palco')",True
+peoes,serao,4,"('serao', 'meios', 'leoes', 'peoes')",True
+folha,serao,5,"('serao', 'otica', 'lomba', 'folga', 'folha')",True
+treco,serao,2,"('serao', 'treco')",True
+casar,serao,3,"('serao', 'irmas', 'casar')",True
+louco,serao,3,"('serao', 'cinto', 'louco')",True
+turvo,serao,4,"('serao', 'turco', 'turno', 'turvo')",True
+radio,serao,3,"('serao', 'traco', 'radio')",True
+tipos,serao,3,"('serao', 'mitos', 'tipos')",True
+somar,serao,5,"('serao', 'solar', 'socar', 'sonar', 'somar')",True
+achar,serao,4,"('serao', 'citar', 'fucar', 'achar')",True
+macho,serao,5,"('serao', 'laico', 'canto', 'vacuo', 'macho')",True
+ajuda,serao,4,"('serao', 'cinta', 'pluma', 'ajuda')",True
+times,serao,3,"('serao', 'uteis', 'times')",True
+meter,serao,3,"('serao', 'medir', 'meter')",True
+graca,serao,4,"('serao', 'latir', 'praca', 'graca')",True
+mosca,serao,4,"('serao', 'coisa', 'tosca', 'mosca')",True
+milha,serao,3,"('serao', 'cinta', 'milha')",True
+carro,serao,5,"('serao', 'parto', 'barco', 'cargo', 'carro')",True
+algum,serao,4,"('serao', 'cinta', 'album', 'algum')",True
+conta,serao,3,"('serao', 'otica', 'conta')",True
+nicho,serao,3,"('serao', 'cinto', 'nicho')",True
+sabor,serao,3,"('serao', 'sobra', 'sabor')",True
+natal,serao,3,"('serao', 'vital', 'natal')",True
+tatil,serao,4,"('serao', 'cinta', 'latim', 'tatil')",True
+cerne,serao,2,"('serao', 'cerne')",True
+torta,serao,4,"('serao', 'porta', 'horta', 'torta')",True
+apoio,serao,5,"('serao', 'laico', 'inato', 'audio', 'apoio')",True
+simio,serao,4,"('serao', 'suino', 'sitio', 'simio')",True
+fetal,serao,3,"('serao', 'metal', 'fetal')",True
+hotel,serao,4,"('serao', 'noite', 'motel', 'hotel')",True
+setor,serao,2,"('serao', 'setor')",True
+vesgo,serao,3,"('serao', 'cesto', 'vesgo')",True
+amada,serao,5,"('serao', 'cinta', 'pluma', 'gamba', 'amada')",True
+firma,serao,3,"('serao', 'abril', 'firma')",True
+habil,serao,3,"('serao', 'cinta', 'habil')",True
+calca,serao,6,"('serao', 'cinta', 'calma', 'calda', 'calva', 'calca')",True
+aspas,serao,5,"('serao', 'dicas', 'luvas', 'patas', 'aspas')",True
+latas,serao,4,"('serao', 'dicas', 'luvas', 'latas')",True
+quase,serao,4,"('serao', 'aneis', 'haste', 'quase')",True
+creme,serao,3,"('serao', 'tripe', 'creme')",True
+telha,serao,3,"('serao', 'celta', 'telha')",True
+teias,serao,2,"('serao', 'teias')",True
+assar,serao,4,"('serao', 'irmas', 'casar', 'assar')",True
+lousa,serao,3,"('serao', 'coisa', 'lousa')",True
+baque,serao,4,"('serao', 'etica', 'balde', 'baque')",True
+rubro,serao,4,"('serao', 'litro', 'couro', 'rubro')",True
+fotos,serao,4,"('serao', 'mitos', 'votos', 'fotos')",True
+adiar,serao,6,"('serao', 'citar', 'impar', 'guiar', 'aliar', 'adiar')",True
+dolar,serao,5,"('serao', 'lotar', 'colar', 'polar', 'dolar')",True
+polar,serao,4,"('serao', 'lotar', 'colar', 'polar')",True
+limao,serao,3,"('serao', 'licao', 'limao')",True
+lanca,serao,3,"('serao', 'cinta', 'lanca')",True
+coroa,serao,5,"('serao', 'porta', 'corda', 'corja', 'coroa')",True
+pomar,serao,4,"('serao', 'lotar', 'boiar', 'pomar')",True
+tripa,serao,3,"('serao', 'latir', 'tripa')",True
+mesmo,serao,4,"('serao', 'cesto', 'vesgo', 'mesmo')",True
+jegue,serao,4,"('serao', 'cetim', 'leque', 'jegue')",True
+album,serao,3,"('serao', 'cinta', 'album')",True
+custo,serao,3,"('serao', 'nisto', 'custo')",True
+futil,serao,2,"('serao', 'futil')",True
+laico,serao,2,"('serao', 'laico')",True
+dedos,serao,4,"('serao', 'meios', 'pelos', 'dedos')",True
+ganso,serao,5,"('serao', 'casto', 'lapso', 'manso', 'ganso')",True
+visor,serao,3,"('serao', 'ritos', 'visor')",True
+abrir,serao,3,"('serao', 'abril', 'abrir')",True
+dedao,serao,3,"('serao', 'telao', 'dedao')",True
+bazar,serao,5,"('serao', 'citar', 'lunar', 'ambar', 'bazar')",True
+gerir,serao,3,"('serao', 'cerne', 'gerir')",True
+mania,serao,3,"('serao', 'cinta', 'mania')",True
+turno,serao,3,"('serao', 'turco', 'turno')",True
+anoes,serao,3,"('serao', 'acoes', 'anoes')",True
+sexto,serao,2,"('serao', 'sexto')",True
+palma,serao,4,"('serao', 'cinta', 'pluma', 'palma')",True
+parco,serao,3,"('serao', 'parto', 'parco')",True
+pouso,serao,4,"('serao', 'nisto', 'pulso', 'pouso')",True
+moela,serao,3,"('serao', 'poeta', 'moela')",True
+otico,serao,3,"('serao', 'cinto', 'otico')",True
+aries,serao,2,"('serao', 'aries')",True
+tenor,serao,2,"('serao', 'tenor')",True
+amido,serao,5,"('serao', 'laico', 'apito', 'animo', 'amido')",True
+solar,serao,2,"('serao', 'solar')",True
+poste,serao,2,"('serao', 'poste')",True
+urubu,serao,3,"('serao', 'punir', 'urubu')",True
+coisa,serao,2,"('serao', 'coisa')",True
+seara,serao,2,"('serao', 'seara')",True
+xampu,serao,4,"('serao', 'cinta', 'album', 'xampu')",True
+dieta,serao,3,"('serao', 'etica', 'dieta')",True
+rocha,serao,4,"('serao', 'loira', 'rouca', 'rocha')",True
+turma,serao,3,"('serao', 'abril', 'turma')",True
+paiol,serao,3,"('serao', 'otica', 'paiol')",True
+vilao,serao,3,"('serao', 'licao', 'vilao')",True
+nivel,serao,3,"('serao', 'clipe', 'nivel')",True
+pouca,serao,4,"('serao', 'otica', 'louca', 'pouca')",True
+vinil,serao,4,"('serao', 'futil', 'civil', 'vinil')",True
+frade,serao,4,"('serao', 'trela', 'grade', 'frade')",True
+tonto,serao,5,"('serao', 'cinto', 'junto', 'ponto', 'tonto')",True
+cavar,serao,4,"('serao', 'citar', 'calar', 'cavar')",True
+lilas,serao,3,"('serao', 'dicas', 'lilas')",True
+nariz,serao,4,"('serao', 'abril', 'guria', 'nariz')",True
+torre,serao,4,"('serao', 'norte', 'torpe', 'torre')",True
+parar,serao,4,"('serao', 'viral', 'curar', 'parar')",True
+supor,serao,2,"('serao', 'supor')",True
+gamba,serao,4,"('serao', 'cinta', 'pluma', 'gamba')",True
+cravo,serao,3,"('serao', 'traco', 'cravo')",True
+arduo,serao,4,"('serao', 'traco', 'arido', 'arduo')",True
+tosca,serao,3,"('serao', 'coisa', 'tosca')",True
+clima,serao,3,"('serao', 'cinta', 'clima')",True
+sosia,serao,2,"('serao', 'sosia')",True
+chato,serao,3,"('serao', 'laico', 'chato')",True
+moita,serao,3,"('serao', 'otica', 'moita')",True
+vagar,serao,6,"('serao', 'citar', 'lunar', 'ambar', 'pagar', 'vagar')",True
+pausa,serao,5,"('serao', 'mista', 'blusa', 'causa', 'pausa')",True
+truta,serao,5,"('serao', 'latir', 'gruta', 'fruta', 'truta')",True
+podar,serao,5,"('serao', 'lotar', 'boiar', 'pomar', 'podar')",True
+fucar,serao,3,"('serao', 'citar', 'fucar')",True
+posar,serao,3,"('serao', 'tosar', 'posar')",True
+autor,serao,3,"('serao', 'loira', 'autor')",True
+cruel,serao,3,"('serao', 'tripe', 'cruel')",True
+quica,serao,3,"('serao', 'cinta', 'quica')",True
+aviao,serao,4,"('serao', 'licao', 'uniao', 'aviao')",True
+retro,serao,4,"('serao', 'reino', 'recuo', 'retro')",True
+dores,serao,3,"('serao', 'euros', 'dores')",True
+credo,serao,3,"('serao', 'treco', 'credo')",True
+hinos,serao,6,"('serao', 'mitos', 'lidos', 'pinos', 'finos', 'hinos')",True
+capim,serao,3,"('serao', 'cinta', 'capim')",True
+tango,serao,4,"('serao', 'laico', 'manto', 'tango')",True
+voces,serao,4,"('serao', 'poste', 'doces', 'voces')",True
+jurar,serao,6,"('serao', 'viral', 'curar', 'durar', 'furar', 'jurar')",True
+raiar,serao,6,"('serao', 'citar', 'impar', 'guiar', 'aliar', 'vaiar')",False
+vasos,serao,6,"('serao', 'coisa', 'altos', 'panos', 'magos', 'dados')",False
+jorro,serao,6,"('serao', 'turco', 'lirio', 'morno', 'bordo', 'gorro')",False
+ninja,serao,6,"('serao', 'cinta', 'linda', 'pinga', 'minha', 'ninfa')",False
+gozar,serao,6,"('serao', 'lotar', 'boiar', 'pomar', 'focar', 'rodar')",False
+fofas,serao,6,"('serao', 'molas', 'todas', 'copas', 'joias', 'novas')",False
+rocar,serao,6,"('serao', 'lotar', 'boiar', 'pomar', 'focar', 'cocar')",False
+rimar,serao,5,"('serao', 'citar', 'pilar', 'ninar', 'mimar')",False
+zonas,serao,6,"('serao', 'molas', 'todas', 'copas', 'joias', 'novas')",False
+jogar,serao,6,"('serao', 'lotar', 'boiar', 'pomar', 'focar', 'rodar')",False
