@@ -2,10 +2,12 @@ import os
 
 import pandas as pd
 
-from src.player import play, WORD_LIST
+from src.player import WORD_LIST, ConcreteStrategyA,Context
+
 
 def main():
-    play()
+    context = Context(ConcreteStrategyA())
+    context.play_strategy()
 
 
 def save_dataset(attempts:int, guesses:tuple, win:bool, correct_word:str) -> None:

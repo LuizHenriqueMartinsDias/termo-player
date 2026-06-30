@@ -1,5 +1,6 @@
 import json
 import time
+from abc import ABC, abstractmethod
 from typing import Optional
 
 import pandas as pd
@@ -8,6 +9,106 @@ from playwright.sync_api import sync_playwright, ViewportSize
 
 from src.compvision import check_collors, print_row, type_word
 
+class Strategy(ABC):
+    @abstractmethod
+    def play(self,first_word:str=None, correct_word:str=None, website=True):
+        pass
+class ConcreteStrategyA(Strategy):
+    def play(self,first_word: str = None, correct_word: str = None, website=True) -> tuple[int, tuple, bool, str]:
+        """
+           Executa uma partida completa do Termo.
+
+           Pode jogar:
+               - Diretamente no site utilizando Playwright.
+               - Em modo simulado, comparando contra uma palavra informada.
+
+           Parameters
+           ----------
+           first_word : str, optional
+               Primeiro chute utilizado pelo algoritmo.
+
+           correct_word : str, optional
+               Palavra correta da simulação. Quando website=True,
+               também pode ser utilizada para alterar o localStorage
+               e definir a solução do jogo.
+
+           website : bool, default=True
+               Se True, joga automaticamente no site.
+               Caso False, executa apenas uma simulação.
+
+           Returns
+           -------
+           tuple
+               (
+                   número de tentativas,
+                   tupla contendo todos os chutes,
+                   vitória (True/False),
+                   última palavra jogada
+               )
+           """
+
+        if first_word:
+            possible_words = [first_word]
+        else:
+            possible_words = WORD_LIST["palavras"].values.tolist()
+        row = 0
+        info = Info()
+        all_guesses = []
+        if website:
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=False)
+                context = browser.new_context(
+                    viewport=ViewportSize(width=1280, height=720),
+                )
+                page = context.new_page()
+                if correct_word:
+                    page.clock.set_fixed_time("2026-06-29T12:00:00Z")
+                    local_storage_data = {"config": {"highContrast": 0, "hardMode": 0},
+                                          "meta": {"startTime": 1782623403199, "endTime": 0, "highContrastChange": 0},
+                                          "stats": {"games": 0, "wins": 0, "curstreak": 0, "avgtime": 0, "mintime": 0,
+                                                    "maxtime": 0,
+                                                    "maxstreak": 0, "histo": [0, 0, 0, 0, 0, 0]},
+                                          "state": [{"curday": 1639, "solution": f"{correct_word}",
+                                                     "normSolution": f"{correct_word}"}]}
+                    page.add_init_script(f" localStorage.setItem('termo', '{json.dumps(local_storage_data)}')")
+                page.goto("https://term.ooo/")
+                page.keyboard.press("Escape")
+
+                while len(possible_words) > 0 and row < 6:
+                    word = choose_word(possible_words)
+                    all_guesses.append(word)
+                    type_word(page, word)
+                    time.sleep(2)
+                    values = check_collors(print_row(page, row))
+                    add_info(info, values, word)
+                    possible_words = guess_word(word, info)
+                    row += 1
+                if "".join(info.correct).isalpha() and row < 7:
+                    win = True
+                else:
+                    win = False
+        else:
+            while len(possible_words) > 0 and row < 6:
+                word = choose_word(possible_words)
+                all_guesses.append(word)
+                values = check_word(correct_word, word)
+                add_info(info, values, word)
+                possible_words = guess_word(word, info)
+                row += 1
+            if "".join(info.correct).isalpha() and row < 7:
+                win = True
+            else:
+                win = False
+        return row, tuple(all_guesses), win, word
+
+
+class Context:
+    def __init__(self,strategy:Strategy):
+        self._strategy = strategy
+    def set_strategy(self,strategy:Strategy):
+        self._strategy = strategy
+    def play_strategy(self,first_word:str=None, correct_word:str=None, website=True):
+       self._strategy.play(first_word,correct_word,website)
 
 WORD_LIST = pd.read_csv("..\\data\\data.txt", sep="\t")
 
@@ -199,90 +300,6 @@ def add_info(info:Info, values:list, guess:str) -> None:
             info.not_included.append(guess[index])
 
 
-def play(first_word:str=None, correct_word:str=None, website=True) -> tuple[int,tuple,bool,str]:
-    """
-       Executa uma partida completa do Termo.
-
-       Pode jogar:
-           - Diretamente no site utilizando Playwright.
-           - Em modo simulado, comparando contra uma palavra informada.
-
-       Parameters
-       ----------
-       first_word : str, optional
-           Primeiro chute utilizado pelo algoritmo.
-
-       correct_word : str, optional
-           Palavra correta da simulação. Quando website=True,
-           também pode ser utilizada para alterar o localStorage
-           e definir a solução do jogo.
-
-       website : bool, default=True
-           Se True, joga automaticamente no site.
-           Caso False, executa apenas uma simulação.
-
-       Returns
-       -------
-       tuple
-           (
-               número de tentativas,
-               tupla contendo todos os chutes,
-               vitória (True/False),
-               última palavra jogada
-           )
-       """
-
-    if first_word:
-        possible_words = [first_word]
-    else:
-        possible_words = WORD_LIST["palavras"].values.tolist()
-    row = 0
-    info = Info()
-    all_guesses = []
-    if website:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False)
-            context = browser.new_context(
-                viewport=ViewportSize(width=1280, height=720),
-            )
-            page = context.new_page()
-            if correct_word:
-                page.clock.set_fixed_time("2026-06-29T12:00:00Z")
-                local_storage_data = {"config": {"highContrast": 0, "hardMode": 0},
-                                      "meta": {"startTime": 1782623403199, "endTime": 0, "highContrastChange": 0},
-                                      "stats": {"games": 0, "wins": 0, "curstreak": 0, "avgtime": 0, "mintime": 0, "maxtime": 0,
-                                                "maxstreak": 0, "histo": [0, 0, 0, 0, 0, 0]},
-                                      "state": [{"curday": 1639, "solution": f"{correct_word}", "normSolution": f"{correct_word}"}]}
-                page.add_init_script(f" localStorage.setItem('termo', '{json.dumps(local_storage_data)}')")
-            page.goto("https://term.ooo/")
-            page.keyboard.press("Escape")
-
-            while len(possible_words) > 0 and row<6:
-                word = choose_word(possible_words)
-                all_guesses.append(word)
-                type_word(page,word)
-                time.sleep(2)
-                values = check_collors(print_row(page,row))
-                add_info(info,values,word)
-                possible_words = guess_word(word,info)
-                row += 1
-            if "".join(info.correct).isalpha() and row<7:
-                win = True
-            else:
-                win = False
-    else:
-        while len(possible_words) > 0 and row < 6:
-            word = choose_word(possible_words)
-            all_guesses.append(word)
-            values = check_word(correct_word, word)
-            add_info(info, values, word)
-            possible_words = guess_word(word, info)
-            row += 1
-        if "".join(info.correct).isalpha() and row < 7:
-            win = True
-        else:
-            win = False
-    return row,tuple(all_guesses),win,word
 
 
 
