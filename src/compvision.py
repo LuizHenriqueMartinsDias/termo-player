@@ -23,7 +23,7 @@ def type_word(page:Page,word:str) -> None:
       None
       """
     for l in word:
-        time.sleep(0.20)
+        time.sleep(0.10)
         page.keyboard.type(l)
     page.keyboard.press("Enter")
 

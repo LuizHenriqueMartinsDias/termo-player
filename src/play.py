@@ -2,14 +2,12 @@ import os
 
 import pandas as pd
 
-from src.player import WORD_LIST, ConcreteSolutionStrategyA,Context
+from src.player import WORD_LIST, Context, PlayOnTerminal, PlayOnWebsite
 
 
 def main():
-    context = Context(ConcreteSolutionStrategyA())
-    for word in WORD_LIST["palavras"].values.to_numpy():
-        args = context.play_strategy("serao",correct_word=word,website=False)
-        save_dataset(*args)
+    context = Context(PlayOnWebsite())
+    context.play_strategy("jorge","furia")
 
 def save_dataset(attempts:int, guesses:tuple, win:bool, correct_word:str) -> None:
     file = "dataset_01.csv"
