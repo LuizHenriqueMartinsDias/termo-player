@@ -8,8 +8,7 @@ import pandas as pd
 
 from playwright.sync_api import sync_playwright, ViewportSize
 
-from compvision import check_collors, print_row, type_word
-from src.compvision import predict_square
+from compvision import check_collors, print_row, type_word,predict_square
 
 WORD_LIST = pd.read_csv("..\\data\\data.csv")
 RANK = dict(zip(WORD_LIST["palavras"], WORD_LIST["valor"]))

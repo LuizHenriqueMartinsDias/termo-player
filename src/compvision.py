@@ -2,7 +2,15 @@ import time
 import cv2
 import numpy as np
 from playwright.sync_api import Page
+import os
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
 import tensorflow as tf
+
+
+MODEL = tf.keras.models.load_model("modelo.keras")
 def type_word(page:Page,word:str) -> None:
     """
       Digita uma palavra no jogo e confirma o envio.
@@ -29,14 +37,17 @@ def type_word(page:Page,word:str) -> None:
 
 def predict_square(squares):
     class_values = [1, 0, 2]
-    values = []
+    imgs = []
+
     for square in squares:
-        model = tf.keras.models.load_model('modelo.keras')
         square = cv2.resize(square, (61, 61))
         square = cv2.cvtColor(square, cv2.COLOR_BGR2RGB)
-        img = np.expand_dims(square, axis=0)
-        pred = model.predict(img, verbose=0)
-        values.append(class_values[np.argmax(pred)])
+        imgs.append(square)
+
+    imgs = np.array(imgs)  # (5, 61, 61, 3)
+    preds = MODEL.predict(imgs, verbose=0)
+
+    values = [class_values[np.argmax(p)] for p in preds]
     return values
 
 def print_row(page:Page,row:int) -> tuple:
