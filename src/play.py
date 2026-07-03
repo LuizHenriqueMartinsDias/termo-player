@@ -2,12 +2,12 @@ import os
 
 import pandas as pd
 
-from src.player import WORD_LIST, Context, PlayOnTerminal, PlayOnWebsite
+from src.player import WORD_LIST, Context, PlayOnTerminal, PlayOnWebsite, PlayOnWebsiteDeepLearning
 
 
 def main():
-    context = Context(PlayOnWebsite())
-    context.play_strategy("jorge","furia")
+    context = Context(PlayOnWebsiteDeepLearning())
+    context.play_strategy("putos","furia")
 
 def save_dataset(attempts:int, guesses:tuple, win:bool, correct_word:str) -> None:
     file = "dataset_01.csv"
