@@ -1,4 +1,5 @@
 import json
+import re
 import time
 from abc import ABC, abstractmethod
 from typing import Optional
@@ -7,14 +8,18 @@ import pandas as pd
 
 from playwright.sync_api import sync_playwright, ViewportSize
 
-from src.compvision import check_collors, print_row, type_word
+from compvision import check_collors, print_row, type_word
 
-class Strategy(ABC):
+WORD_LIST = pd.read_csv("..\\data\\data.csv")
+RANK = dict(zip(WORD_LIST["palavras"], WORD_LIST["valor"]))
+
+class SolutionStrategy(ABC):
     @abstractmethod
     def play(self,first_word:str=None, correct_word:str=None, website=True):
         pass
-class ConcreteStrategyA(Strategy):
-    def play(self,first_word: str = None, correct_word: str = None, website=True) -> tuple[int, tuple, bool, str]:
+
+class ConcreteSolutionStrategyA(SolutionStrategy):
+    def play(self,first_word: str = None, correct_word: str = None, website:bool=True) -> tuple[int, tuple, bool, str]:
         """
            Executa uma partida completa do Termo.
 
@@ -81,9 +86,9 @@ class ConcreteStrategyA(Strategy):
                     time.sleep(2)
                     values = check_collors(print_row(page, row))
                     add_info(info, values, word)
-                    possible_words = guess_word(word, info)
+                    possible_words = guess_word(word, info,possible_words)
                     row += 1
-                if "".join(info.correct).isalpha() and row < 7:
+                if "".join(info.correct).isalpha():
                     win = True
                 else:
                     win = False
@@ -93,24 +98,21 @@ class ConcreteStrategyA(Strategy):
                 all_guesses.append(word)
                 values = check_word(correct_word, word)
                 add_info(info, values, word)
-                possible_words = guess_word(word, info)
+                possible_words = guess_word(word, info,possible_words)
                 row += 1
             if "".join(info.correct).isalpha() and row < 7:
                 win = True
             else:
                 win = False
-        return row, tuple(all_guesses), win, word
-
+        return row, tuple(all_guesses), win, correct_word
 
 class Context:
-    def __init__(self,strategy:Strategy):
+    def __init__(self, strategy:SolutionStrategy):
         self._strategy = strategy
-    def set_strategy(self,strategy:Strategy):
+    def set_strategy(self, strategy:SolutionStrategy):
         self._strategy = strategy
     def play_strategy(self,first_word:str=None, correct_word:str=None, website=True):
-       self._strategy.play(first_word,correct_word,website)
-
-WORD_LIST = pd.read_csv("..\\data\\data.txt", sep="\t")
+       return self._strategy.play(first_word,correct_word,website)
 
 class Info:
     """
@@ -138,31 +140,6 @@ class Info:
         self.missplaced = [[],[],[],[],[]]
         self.included = []
 
-def rank() -> dict:
-    """
-       Calcula uma pontuação para cada palavra do dicionário.
-
-       A pontuação é baseada na frequência das letras em toda a lista
-       de palavras. Letras repetidas contam apenas uma vez por palavra,
-       incentivando palavras com maior cobertura de letras diferentes.
-
-       Returns
-       -------
-       dict
-           Dicionário no formato:
-               {
-                   palavra: pontuação
-               }
-       """
-    rank_letters = WORD_LIST["palavras"].str.join('').str.split('').explode().value_counts()
-    rank_words = {}
-    for index, word in enumerate(WORD_LIST["palavras"]):
-        rank_words[word] = 0
-        for l in set(word):
-            rank_words[word] += rank_letters[l]
-
-    return rank_words
-
 def choose_word(guesses:list) -> str:
     """
        Escolhe a melhor palavra dentre as candidatas.
@@ -170,7 +147,7 @@ def choose_word(guesses:list) -> str:
        A escolha é feita utilizando o ranking calculado por `rank()`,
        priorizando palavras com letras mais frequentes.
 
-       Parameters
+               Parameters
        ----------
        guesses : list[str]
            Lista de palavras candidatas.
@@ -180,15 +157,9 @@ def choose_word(guesses:list) -> str:
        str
            Palavra escolhida.
        """
+    return max(guesses, key=RANK.get)
 
-    rank_words = rank()
-    if len(guesses) == 1 and not(str(guesses) in rank_words):
-        return guesses[0]
-    guesses_ranked = {key: rank_words[key] for key in guesses}
-    max_value = max(guesses_ranked.values())
-    return next((word for word,value in guesses_ranked.items() if value == max_value ),None)
-
-def guess_word(guess:str, info:Info) -> list:
+def guess_word(guess:str, info:Info,possible_words:list) -> list:
     """
     Filtra todas as palavras possíveis utilizando as informações
     descobertas até o momento.
@@ -211,7 +182,6 @@ def guess_word(guess:str, info:Info) -> list:
     """
     print(guess)
     pattern = ""
-
     for index,elem in enumerate(info.correct):
         if elem.isalpha():
             pattern += elem
@@ -222,9 +192,13 @@ def guess_word(guess:str, info:Info) -> list:
     not_included = f"(?!.*[{"".join(info.not_included)}])" if info.not_included else ""
     included = "".join([f"(?=.*{x})" for x in info.included])
     regex = f"^{not_included}{included}{pattern}$"
+    pattern = re.compile(regex)
     print(regex)
-    filter_guesses = WORD_LIST["palavras"].str.match(regex)
-    possible_words = WORD_LIST.loc[filter_guesses, "palavras"].tolist()
+    if len(possible_words)==1 and not(pattern.fullmatch(guess)):
+        filter_guesses = WORD_LIST["palavras"].str.match(regex)
+        possible_words = WORD_LIST.loc[filter_guesses, "palavras"].tolist()
+    else:
+        possible_words = [word for word in possible_words if pattern.fullmatch(word)]
     if guess in possible_words:
         possible_words.remove(guess)
     print(possible_words)
@@ -296,13 +270,7 @@ def add_info(info:Info, values:list, guess:str) -> None:
             if guess[index] in info.included:
                 continue
             info.included.append(guess[index])
+
+    for index, value in enumerate(values):
         if value == 0 and guess[index] not in info.correct and guess[index] not in info.included:
             info.not_included.append(guess[index])
-
-
-
-
-
-
-
-
