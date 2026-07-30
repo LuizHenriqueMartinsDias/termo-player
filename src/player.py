@@ -1,8 +1,10 @@
 import json
+import math
+import random
 import re
 import time
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import Optional, Counter
 
 import pandas as pd
 
@@ -11,7 +13,6 @@ from playwright.sync_api import sync_playwright, ViewportSize
 from compvision import check_collors, print_row, type_word,predict_square
 
 WORD_LIST = pd.read_csv("..\\data\\data.csv")
-RANK = dict(zip(WORD_LIST["palavras"], WORD_LIST["valor"]))
 
 class SolutionStrategy(ABC):
     @abstractmethod
@@ -26,11 +27,22 @@ class PlayOnTerminal(SolutionStrategy):
         row = 0
         info = Info()
         all_guesses = []
-
+        correct_word = "".join(correct_word)
+        print(correct_word,"correct")
         while len(possible_words) > 0 and row < 6:
-            word = choose_word(possible_words)
+            if row == 0:
+                ranking = dict(zip(WORD_LIST["palavras"], WORD_LIST["valor"]))
+            else:
+                ranking = calc_entropy(possible_words)
+
+            if len(possible_words) <= 2:
+                word = random.choice(possible_words)
+            else:
+                word = choose_word(all_guesses,ranking)
+
             all_guesses.append(word)
             values = check_word(correct_word, word)
+            print(values)
             add_info(info, values, word)
             possible_words = guess_word(word, info, possible_words)
             row += 1
@@ -94,6 +106,7 @@ class PlayOnWebsite(SolutionStrategy):
                                       "state": [{"curday": 1639, "solution": f"{correct_word}",
                                                  "normSolution": f"{correct_word}"}]}
                 page.add_init_script(f" localStorage.setItem('termo', '{json.dumps(local_storage_data)}')")
+            page.goto("https://term.ooo/")
             page.keyboard.press("Escape")
             while len(possible_words) > 0 and row < 6:
                 word = choose_word(possible_words)
@@ -215,7 +228,7 @@ class Info:
         self.missplaced = [[],[],[],[],[]]
         self.included = []
 
-def choose_word(guesses:list) -> str:
+def choose_word(guesses,ranking:dict) -> str:
     """
        Escolhe a melhor palavra dentre as candidatas.
 
@@ -232,7 +245,27 @@ def choose_word(guesses:list) -> str:
        str
            Palavra escolhida.
        """
-    return max(guesses, key=RANK.get)
+    possible_guesses = WORD_LIST[~WORD_LIST["palavras"].isin(guesses)]
+    return max(possible_guesses["palavras"], key=ranking.get)
+
+def calc_entropy(possible_words):
+    ranking = {}
+    for guess in WORD_LIST["palavras"]:
+        counts = Counter()
+
+        for answer in possible_words:
+            pattern = tuple(check_word(answer, guess))
+            counts[pattern] += 1
+
+        entropy = 0
+
+        for count in counts.values():
+            p = count / len(possible_words)
+            entropy += p * math.log2(1 / p)
+
+        ranking[guess] = entropy
+
+    return ranking
 
 def guess_word(guess:str, info:Info,possible_words:list) -> list:
     """
@@ -258,7 +291,22 @@ def guess_word(guess:str, info:Info,possible_words:list) -> list:
     list[str]
         Lista de palavras que ainda satisfazem todas as restrições.
     """
+    regex = generate_regex(info)
+    pattern = re.compile(regex)
+    print(regex)
+    if len(possible_words)==1 and not(pattern.fullmatch(guess)):
+        filter_guesses = WORD_LIST["palavras"].str.match(regex)
+        possible_words = WORD_LIST.loc[filter_guesses, "palavras"].tolist()
+    else:
+        possible_words = [word for word in possible_words if pattern.fullmatch(word)]
+    if guess in possible_words:
+        possible_words.remove(guess)
+    print(possible_words)
     print(guess)
+    return possible_words
+
+
+def generate_regex(info:Info):
     pattern = ""
     for index,elem in enumerate(info.correct):
         if elem.isalpha():
@@ -270,17 +318,7 @@ def guess_word(guess:str, info:Info,possible_words:list) -> list:
     not_included = f"(?!.*[{"".join(info.not_included)}])" if info.not_included else ""
     included = "".join([f"(?=.*{x})" for x in info.included])
     regex = f"^{not_included}{included}{pattern}$"
-    pattern = re.compile(regex)
-    print(regex)
-    if len(possible_words)==1 and not(pattern.fullmatch(guess)):
-        filter_guesses = WORD_LIST["palavras"].str.match(regex)
-        possible_words = WORD_LIST.loc[filter_guesses, "palavras"].tolist()
-    else:
-        possible_words = [word for word in possible_words if pattern.fullmatch(word)]
-    if guess in possible_words:
-        possible_words.remove(guess)
-    print(possible_words)
-    return possible_words
+    return regex
 
 def check_word(word: str, guess: str):
     """
@@ -350,5 +388,5 @@ def add_info(info:Info, values:list, guess:str) -> None:
             info.included.append(guess[index])
 
     for index, value in enumerate(values):
-        if value == 0 and guess[index] not in info.correct and guess[index] not in info.included:
+        if value == 0 and guess[index] not in info.correct and guess[index] not in info.included and guess[index] not in info.not_included:
             info.not_included.append(guess[index])

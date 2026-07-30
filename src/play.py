@@ -1,32 +1,30 @@
 import os
-
 import pandas as pd
-import getopt, sys
 import argparse
 
-from player import WORD_LIST, Context, PlayOnTerminal, PlayOnWebsite,PlayOnWebsiteDeepLearning
-
-
+from player import WORD_LIST, Context, PlayOnTerminal, PlayOnWebsite, PlayOnWebsiteDeepLearning, Info, calc_entropy
 
 def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-s", "--save_dataset",
                         metavar="FIRST_WORD",
-                        help="Salva um dataset usando a primeira palavra informada.")
+                        help="Salva um dataset usando a primeira palavra informada.",
+                        nargs="?")
 
     parser.add_argument("-t", "--play_terminal",
                         metavar="CORRECT_WORD",
-                        help="Joga no terminal.")
+                        help="Joga no terminal.",
+                        nargs=1)
 
     parser.add_argument("-b", "--play_browser",
                         metavar="CORRECT_WORD",
-                        help="Joga no navegador.")
+                        help="Joga no navegador somente com visão computacional.",
+                        nargs="?")
 
     parser.add_argument("-d", "--play_ml",
                         metavar="CORRECT_WORD",
                         nargs="?",
-                        const=None,
                         help="Joga no navegador usando Deep Learning.")
 
     parser.add_argument("-f", "--first_word",
@@ -60,7 +58,7 @@ def main():
             correct_word=args.play_browser
         )
 
-    elif args.play_ml is not None:
+    elif args.play_ml:
         context.set_strategy(PlayOnWebsiteDeepLearning())
         context.play_strategy(
             first_word=args.first_word,
