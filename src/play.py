@@ -1,82 +1,209 @@
-import os
+"""
+Ponto de entrada do Solver de Termo.
+
+Substitui a antiga interface de linha de comando (argparse) por um
+menu interativo no terminal: o usuário escolhe o modo de jogo e
+informa palavra inicial/palavra correta quando necessário, sem
+precisar lembrar de flags.
+"""
+from pathlib import Path
+
 import pandas as pd
-import argparse
 
-from player import WORD_LIST, Context, PlayOnTerminal, PlayOnWebsite, PlayOnWebsiteDeepLearning, Info, calc_entropy
+from player import (
+    WORD_LIST,
+    Context,
+    PlayOnTerminal,
+    PlayOnWebsite,
+    PlayOnWebsiteDeepLearning,
+)
 
-def main():
-    parser = argparse.ArgumentParser()
+WORD_LENGTH = 5
 
-    parser.add_argument("-s", "--save_dataset",
-                        metavar="FIRST_WORD",
-                        help="Salva um dataset usando a primeira palavra informada.",
-                        nargs="?")
+# Registro (padrão Factory) que liga cada opção do menu à sua
+# estratégia. Adicionar um novo modo de jogo no futuro significa
+# apenas acrescentar uma linha aqui — o menu e o laço principal não
+# precisam mudar.
+STRATEGIES = {
+    "1": {
+        "label": "Jogar no terminal (simulação)",
+        "cls": PlayOnTerminal,
+        "correct_word_required": True,
+    },
+    "2": {
+        "label": "Jogar no navegador (visão computacional)",
+        "cls": PlayOnWebsite,
+        "correct_word_required": False,
+    },
+    "3": {
+        "label": "Jogar no navegador (deep learning)",
+        "cls": PlayOnWebsiteDeepLearning,
+        "correct_word_required": False,
+    },
+}
+DATASET_OPTION = "4"
+EXIT_OPTION = "5"
 
-    parser.add_argument("-t", "--play_terminal",
-                        metavar="CORRECT_WORD",
-                        help="Joga no terminal.",
-                        nargs=1)
 
-    parser.add_argument("-b", "--play_browser",
-                        metavar="CORRECT_WORD",
-                        help="Joga no navegador somente com visão computacional.",
-                        nargs="?")
+def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | None:
+    """
+    Solicita uma palavra ao usuário pelo terminal, validando o
+    tamanho quando algo é digitado.
 
-    parser.add_argument("-d", "--play_ml",
-                        metavar="CORRECT_WORD",
-                        nargs="?",
-                        help="Joga no navegador usando Deep Learning.")
+    Parameters
+    ----------
+    prompt : str
+        Mensagem exibida ao usuário.
 
-    parser.add_argument("-f", "--first_word",
-                        help="Define a primeira palavra.")
+    required : bool
+        Se True, o campo não pode ficar em branco.
 
-    args = parser.parse_args()
+    length : int, optional
+        Tamanho esperado da palavra (padrão 5, o tamanho das
+        palavras do Termo).
 
+    Returns
+    -------
+    str or None
+        Palavra validada em minúsculas, ou None se o campo for
+        opcional e o usuário não digitar nada.
+    """
+    while True:
+        answer = input(prompt).strip().lower()
+        if not answer:
+            if not required:
+                return None
+            print("Esse campo é obrigatório, tente novamente.\n")
+            continue
+        if len(answer) != length:
+            print(f"A palavra deve ter {length} letras, tente novamente.\n")
+            continue
+        return answer
+
+
+def show_menu() -> None:
+    """Exibe as opções disponíveis do menu principal."""
+    print("\n=== Solver de Termo ===")
+    for key, opcao in STRATEGIES.items():
+        print(f"{key}. {opcao['label']}")
+    print(f"{DATASET_OPTION}. Gerar dataset de partidas")
+    print(f"{EXIT_OPTION}. Sair")
+
+
+def run_strategy(opcao: dict) -> None:
+    """
+    Coleta os dados necessários pelo terminal e executa a estratégia
+    escolhida no menu.
+
+    Parameters
+    ----------
+    opcao : dict
+        Entrada de `STRATEGIES` correspondente à escolha do usuário.
+    """
+    first_word = ask_word("Palavra inicial (Enter para automático): ", required=False)
+
+    if opcao["correct_word_required"]:
+        correct_word = ask_word("Palavra correta: ", required=True)
+    else:
+        correct_word = ask_word(
+            "Palavra correta (Enter para jogar ao vivo no site): ", required=False
+        )
+
+    context = Context(opcao["cls"]())
+    attempts, guesses, win, word = context.play_strategy(
+        first_word=first_word, correct_word=correct_word
+    )
+
+    resultado = "Vitória" if win else "Derrota"
+    print(f"\n{resultado} em {attempts} tentativa(s). Chutes: {guesses}")
+
+
+def run_dataset_generation() -> None:
+    """
+    Gera o dataset de partidas: joga (em modo simulado, no terminal)
+    contra cada palavra da lista, sempre a partir da mesma palavra
+    inicial, e salva o resultado de cada partida.
+    """
+    first_word = ask_word("Palavra inicial para o dataset: ", required=True)
     context = Context(PlayOnTerminal())
+    total = len(WORD_LIST["palavras"])
 
-    if args.save_dataset:
-        context.set_strategy(PlayOnTerminal())
+    for indice, word in enumerate(WORD_LIST["palavras"].values, start=1):
+        result = context.play_strategy(first_word=first_word, correct_word=word)
+        save_dataset(*result)
+        print(f"[{indice}/{total}] {word} processada.")
 
-        for word in WORD_LIST["palavras"].values:
-            dataset_args = context.play_strategy(
-                first_word=args.save_dataset,
-                correct_word=word
-            )
-            save_dataset(*dataset_args)
+    print("\nDataset gerado com sucesso!")
 
-    elif args.play_terminal:
-        context.set_strategy(PlayOnTerminal())
-        context.play_strategy(
-            first_word=args.first_word,
-            correct_word=args.play_terminal
+
+def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str) -> None:
+    """
+    Registra o resultado de uma partida em "data/dataset_01.csv",
+    evitando duplicar a mesma combinação de palavra correta e palavra
+    inicial.
+
+    Parameters
+    ----------
+    attempts : int
+        Número de tentativas utilizadas na partida.
+
+    guesses : tuple[str]
+        Todos os chutes realizados durante a partida.
+
+    win : bool
+        Se a partida terminou em vitória.
+
+    correct_word : str
+        Palavra correta da partida.
+
+    Returns
+    -------
+    None
+    """
+    path = Path(__file__).resolve().parent.parent / "data" / "dataset_01.csv"
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    novo_registro = pd.DataFrame(data={
+        "Palavra_correta": correct_word,
+        "palavra_inicial": guesses[0],
+        "N_de_tentativas": attempts,
+        "Chutes": [guesses],
+        "Vitoria": win,
+    })
+
+    if path.exists():
+        dataset = pd.read_csv(path)
+        dataset = (
+            pd.concat([dataset, novo_registro], ignore_index=True)
+            .drop_duplicates(subset=["Palavra_correta", "palavra_inicial"], keep="first")
+            .reset_index(drop=True)
         )
+    else:
+        dataset = novo_registro
 
-    elif args.play_browser:
-        context.set_strategy(PlayOnWebsite())
-        context.play_strategy(
-            first_word=args.first_word,
-            correct_word=args.play_browser
-        )
-
-    elif args.play_ml:
-        context.set_strategy(PlayOnWebsiteDeepLearning())
-        context.play_strategy(
-            first_word=args.first_word,
-            correct_word=args.play_ml
-        )
+    dataset.to_csv(path, index=False)
 
 
-def save_dataset(attempts:int, guesses:tuple, win:bool, correct_word:str) -> None:
-    file = "dataset_01.csv"
+def main() -> None:
+    """Laço principal: exibe o menu e executa a opção escolhida até o
+    usuário optar por sair."""
+    while True:
+        show_menu()
+        choice = input("Escolha uma opção: ").strip()
 
-    df = pd.DataFrame(data={"Palavra_correta": correct_word, "palavra_inicial": guesses[0], "N_de_tentativas":attempts, "Chutes": [guesses], "Vitoria":win})
-    if os.path.exists(f"../data/{file}"):
-        dataset = pd.read_csv(f"../data/{file}")
-        dataset_temp = pd.concat([dataset,df],ignore_index=True)
-        dataset = dataset_temp.drop_duplicates( subset=["Palavra_correta", "palavra_inicial"],keep='first').reset_index(drop=True)
-        dataset.to_csv(f"../data/{file}", index=False)
-        return
-    df.to_csv(f"../data/{file}",index=False)
+        if choice in STRATEGIES:
+            run_strategy(STRATEGIES[choice])
+        elif choice == DATASET_OPTION:
+            run_dataset_generation()
+        elif choice == EXIT_OPTION:
+            print("Até mais!")
+            break
+        else:
+            print("Opção inválida, tente novamente.")
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\nPrograma encerrado pelo usuário.")
