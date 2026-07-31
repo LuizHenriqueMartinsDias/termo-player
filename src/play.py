@@ -10,6 +10,7 @@ import random
 from pathlib import Path
 
 import pandas as pd
+from pandas import DataFrame
 
 from player import (
     WORD_LIST,
@@ -47,6 +48,7 @@ EXIT_OPTION = "5"
 
 def validate_answer(answer:str)->bool:
     return answer in WORD_LIST["palavras"].values
+
 def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | None:
     """
     Solicita uma palavra ao usuário pelo terminal, validando o
@@ -125,19 +127,24 @@ def run_dataset_generation() -> None:
     contra cada palavra da lista, sempre a partir da mesma palavra
     inicial, e salva o resultado de cada partida.
     """
-    first_word = ask_word("Palavra inicial para o dataset: ", required=True)
+    first_word = ask_word("Palavra inicial para o dataset (enter para aleatória): ", required=True)
     context = Context(PlayOnTerminal())
     total = len(WORD_LIST["palavras"])
-
+    path = Path(__file__).resolve().parent.parent / "data" / f"dataset_{first_word}.csv"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        df = pd.read_csv(path)
+    else:
+        df = pd.DataFrame()
     for indice, word in enumerate(WORD_LIST["palavras"].values, start=1):
-        result = context.play_strategy(first_word=first_word, correct_word=word)
-        save_dataset(*result)
+        attempts,guesses,win,correct_word = context.play_strategy(first_word=first_word, correct_word=word)
+        df = save_dataset(attempts,guesses,win,correct_word,df)
         print(f"[{indice}/{total}] {word} processada.")
-
+    df.to_csv(path,index=False)
     print("\nDataset gerado com sucesso!")
 
 
-def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str) -> None:
+def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str,df:DataFrame) -> DataFrame:
     """
     Registra o resultado de uma partida em "data/dataset_01.csv",
     evitando duplicar a mesma combinação de palavra correta e palavra
@@ -145,6 +152,9 @@ def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str) ->
 
     Parameters
     ----------
+    df: Dataframe
+        dataset a ser salvo
+
     attempts : int
         Número de tentativas utilizadas na partida.
 
@@ -159,10 +169,7 @@ def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str) ->
 
     Returns
     -------
-    None
     """
-    path = Path(__file__).resolve().parent.parent / "data" / "dataset_01.csv"
-    path.parent.mkdir(parents=True, exist_ok=True)
 
     novo_registro = pd.DataFrame(data={
         "Palavra_correta": correct_word,
@@ -171,19 +178,9 @@ def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str) ->
         "Chutes": [guesses],
         "Vitoria": win,
     })
-
-    if path.exists():
-        dataset = pd.read_csv(path)
-        dataset = (
-            pd.concat([dataset, novo_registro], ignore_index=True)
-            .drop_duplicates(subset=["Palavra_correta", "palavra_inicial"], keep="first")
-            .reset_index(drop=True)
-        )
-    else:
-        dataset = novo_registro
-
-    dataset.to_csv(path, index=False)
-
+    df = pd.concat(objs=(df,novo_registro))
+    df.drop_duplicates(subset=["Palavra_correta", "palavra_inicial"], keep='last')
+    return df
 
 def main() -> None:
     """Laço principal: exibe o menu e executa a opção escolhida até o
