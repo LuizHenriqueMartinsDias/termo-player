@@ -97,12 +97,10 @@ class PlayOnTerminal(SolutionStrategy):
         info = Info()
         all_guesses = []
         correct_word = "".join(correct_word)
-        print(correct_word, "correct")
         while len(possible_words) > 0 and row < 6:
             word = select_next_word(all_guesses, possible_words)
             all_guesses.append(word)
             values = check_word(correct_word, word)
-            print(values)
             add_info(info, values, word)
             possible_words = guess_word(word, info, possible_words)
             row += 1
@@ -439,7 +437,7 @@ def guess_word(guess: str, info: Info, possible_words: list) -> list:
     """
     regex = generate_regex(info)
     pattern = re.compile(regex)
-    print(regex)
+
     if len(possible_words) == 1 and not (pattern.fullmatch(guess)):
         filter_guesses = WORD_LIST["palavras"].str.match(regex)
         possible_words = WORD_LIST.loc[filter_guesses, "palavras"].tolist()
@@ -447,8 +445,7 @@ def guess_word(guess: str, info: Info, possible_words: list) -> list:
         possible_words = [word for word in possible_words if pattern.fullmatch(word)]
     if guess in possible_words:
         possible_words.remove(guess)
-    print(possible_words)
-    print(guess)
+
     return possible_words
 
 

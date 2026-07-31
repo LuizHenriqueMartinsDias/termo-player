@@ -43,6 +43,16 @@ def _get_model():
     -------
     tensorflow.keras.Model
         Modelo treinado para classificar os quadrados do tabuleiro.
+
+    Raises
+    ------
+    ValueError
+        Se o formato de entrada de "modelo.keras" não bater com
+        `MODEL_INPUT_SIZE`. Como o modelo usa `GlobalAveragePooling2D`,
+        ele aceita qualquer tamanho espacial de entrada sem travar --
+        ou seja, um modelo treinado com outra resolução não daria erro
+        de formato, só previsões erradas silenciosamente. Essa checagem
+        troca essa falha silenciosa por um erro claro e imediato.
     """
     global _MODEL
     if _MODEL is None:
@@ -50,7 +60,18 @@ def _get_model():
         os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
         import tensorflow as tf
 
-        _MODEL = tf.keras.models.load_model("modelo.keras")
+        model = tf.keras.models.load_model("modelo.keras")
+        modelo_espera = tuple(model.input_shape[1:3])
+        if modelo_espera != MODEL_INPUT_SIZE:
+            raise ValueError(
+                f"modelo.keras espera entradas {modelo_espera}, mas "
+                f"MODEL_INPUT_SIZE está definido como {MODEL_INPUT_SIZE}. "
+                "O modelo provavelmente foi treinado com outra resolução "
+                "e ainda não foi retreinado -- rode model.ipynb novamente "
+                "para gerar um modelo.keras compatível, ou ajuste "
+                "MODEL_INPUT_SIZE para bater com o modelo atual."
+            )
+        _MODEL = model
     return _MODEL
 
 

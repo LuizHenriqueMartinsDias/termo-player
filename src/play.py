@@ -6,6 +6,7 @@ menu interativo no terminal: o usuário escolhe o modo de jogo e
 informa palavra inicial/palavra correta quando necessário, sem
 precisar lembrar de flags.
 """
+import random
 from pathlib import Path
 
 import pandas as pd
@@ -44,7 +45,8 @@ STRATEGIES = {
 DATASET_OPTION = "4"
 EXIT_OPTION = "5"
 
-
+def validate_answer(answer:str)->bool:
+    return answer in WORD_LIST["palavras"].values
 def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | None:
     """
     Solicita uma palavra ao usuário pelo terminal, validando o
@@ -73,12 +75,11 @@ def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | No
         if not answer:
             if not required:
                 return None
-            print("Esse campo é obrigatório, tente novamente.\n")
-            continue
-        if len(answer) != length:
-            print(f"A palavra deve ter {length} letras, tente novamente.\n")
-            continue
-        return answer
+            return random.choice(WORD_LIST["palavras"])
+        if validate_answer(answer):
+            return answer
+        print(f"A palavra deve estar na lista de palavras válidas.\n")
+        continue
 
 
 def show_menu() -> None:
@@ -103,7 +104,7 @@ def run_strategy(opcao: dict) -> None:
     first_word = ask_word("Palavra inicial (Enter para automático): ", required=False)
 
     if opcao["correct_word_required"]:
-        correct_word = ask_word("Palavra correta: ", required=True)
+        correct_word = ask_word("Palavra correta(Enter para automático): ", required=True)
     else:
         correct_word = ask_word(
             "Palavra correta (Enter para jogar ao vivo no site): ", required=False
