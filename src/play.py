@@ -20,8 +20,6 @@ from player import (
     PlayOnWebsiteDeepLearning,
 )
 
-WORD_LENGTH = 5
-
 # Registro (padrão Factory) que liga cada opção do menu à sua
 # estratégia. Adicionar um novo modo de jogo no futuro significa
 # apenas acrescentar uma linha aqui — o menu e o laço principal não
@@ -46,13 +44,27 @@ STRATEGIES = {
 DATASET_OPTION = "4"
 EXIT_OPTION = "5"
 
-def validate_answer(answer:str)->bool:
+def validate_answer(answer: str) -> bool:
+    """
+    Verifica se `answer` é uma palavra válida do dicionário do Termo.
+
+    Parameters
+    ----------
+    answer : str
+        Palavra digitada pelo usuário (já normalizada em minúsculas).
+
+    Returns
+    -------
+    bool
+        True se `answer` está na lista de palavras válidas.
+    """
     return answer in WORD_LIST["palavras"].values
 
-def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | None:
+
+def ask_word(prompt: str, required: bool) -> str | None:
     """
-    Solicita uma palavra ao usuário pelo terminal, validando o
-    tamanho quando algo é digitado.
+    Solicita uma palavra ao usuário pelo terminal, validando que ela
+    pertence ao dicionário do Termo (`validate_answer`).
 
     Parameters
     ----------
@@ -60,17 +72,18 @@ def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | No
         Mensagem exibida ao usuário.
 
     required : bool
-        Se True, o campo não pode ficar em branco.
-
-    length : int, optional
-        Tamanho esperado da palavra (padrão 5, o tamanho das
-        palavras do Termo).
+        Comportamento quando o campo é deixado em branco: se True,
+        uma palavra aleatória do dicionário é escolhida
+        automaticamente; se False, retorna None (cabe a quem chamou
+        decidir o que isso significa -- por exemplo, jogar ao vivo
+        contra a palavra do dia).
 
     Returns
     -------
     str or None
-        Palavra validada em minúsculas, ou None se o campo for
-        opcional e o usuário não digitar nada.
+        Palavra validada em minúsculas, uma palavra aleatória (campo
+        obrigatório deixado em branco), ou None (campo opcional
+        deixado em branco).
     """
     while True:
         answer = input(prompt).strip().lower()
@@ -80,8 +93,7 @@ def ask_word(prompt: str, required: bool, length: int = WORD_LENGTH) -> str | No
             return random.choice(WORD_LIST["palavras"])
         if validate_answer(answer):
             return answer
-        print(f"A palavra deve estar na lista de palavras válidas.\n")
-        continue
+        print("A palavra deve estar na lista de palavras válidas.\n")
 
 
 def show_menu() -> None:
@@ -125,7 +137,13 @@ def run_dataset_generation() -> None:
     """
     Gera o dataset de partidas: joga (em modo simulado, no terminal)
     contra cada palavra da lista, sempre a partir da mesma palavra
-    inicial, e salva o resultado de cada partida.
+    inicial, e salva o resultado em
+    "data/dataset_{palavra_inicial}.csv" -- palavras iniciais
+    diferentes geram arquivos separados. Se o arquivo já existir, os
+    novos resultados são combinados com os existentes (sem duplicar
+    a mesma combinação de palavra correta e palavra inicial). Os
+    resultados são acumulados em memória e gravados em disco uma
+    única vez ao final, não a cada partida.
     """
     first_word = ask_word("Palavra inicial para o dataset (enter para aleatória): ", required=True)
     context = Context(PlayOnTerminal())
@@ -144,17 +162,18 @@ def run_dataset_generation() -> None:
     print("\nDataset gerado com sucesso!")
 
 
-def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str,df:DataFrame) -> DataFrame:
+def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str, df: DataFrame) -> DataFrame:
     """
-    Registra o resultado de uma partida em "data/dataset_01.csv",
-    evitando duplicar a mesma combinação de palavra correta e palavra
-    inicial.
+    Adiciona o resultado de uma partida a `df`, evitando duplicar a
+    mesma combinação de palavra correta e palavra inicial.
+
+    Não grava nada em disco -- só devolve o DataFrame atualizado;
+    quem chama decide quando salvar (`run_dataset_generation` escreve
+    o CSV uma única vez, depois de processar todas as palavras, em
+    vez de reabrir e regravar o arquivo a cada partida).
 
     Parameters
     ----------
-    df: Dataframe
-        dataset a ser salvo
-
     attempts : int
         Número de tentativas utilizadas na partida.
 
@@ -167,10 +186,16 @@ def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str,df:
     correct_word : str
         Palavra correta da partida.
 
+    df : DataFrame
+        Dataset acumulado até aqui.
+
     Returns
     -------
+    DataFrame
+        `df` com o novo registro adicionado, sem duplicar a mesma
+        combinação de palavra correta e palavra inicial (mantendo a
+        ocorrência mais recente em caso de duplicata).
     """
-
     novo_registro = pd.DataFrame(data={
         "Palavra_correta": correct_word,
         "palavra_inicial": guesses[0],
@@ -178,8 +203,8 @@ def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str,df:
         "Chutes": [guesses],
         "Vitoria": win,
     })
-    df = pd.concat(objs=(df,novo_registro))
-    df.drop_duplicates(subset=["Palavra_correta", "palavra_inicial"], keep='last')
+    df = pd.concat(objs=(df, novo_registro), ignore_index=True)
+    df = df.drop_duplicates(subset=["Palavra_correta", "palavra_inicial"], keep="last")
     return df
 
 def main() -> None:

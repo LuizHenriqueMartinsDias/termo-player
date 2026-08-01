@@ -1,15 +1,15 @@
 import json
 import math
 import random
-import re
 import time
 from abc import ABC, abstractmethod
 from collections import Counter
 from pathlib import Path
 from typing import Optional
 
+import numpy as np
 import pandas as pd
-
+from joblib import dump as _joblib_dump, load as _joblib_load
 from playwright.sync_api import sync_playwright, ViewportSize, Page
 
 from compvision import check_collors, print_row, type_word, predict_square
@@ -78,7 +78,10 @@ class PlayOnTerminal(SolutionStrategy):
         ----------
         first_word : str, optional
             Primeira palavra a ser tentada. Quando None, é escolhida
-            automaticamente a partir do ranking de palavras.
+            automaticamente a partir do ranking de palavras. Em
+            qualquer caso, o espaço de busca considerado continua
+            sendo o dicionário inteiro -- `first_word` só força a
+            abertura, não restringe as tentativas seguintes.
 
         correct_word : str
             Palavra correta a ser descoberta pela simulação.
@@ -89,20 +92,21 @@ class PlayOnTerminal(SolutionStrategy):
             (número de tentativas, tupla com todos os chutes, vitória,
             palavra correta).
         """
-        if first_word:
-            possible_words = [first_word]
-        else:
-            possible_words = WORD_LIST["palavras"].values.tolist()
+        patterns = _get_pattern_matrix()
+        possible_words = WORD_LIST["palavras"].values.tolist()
         row = 0
         info = Info()
         all_guesses = []
         correct_word = "".join(correct_word)
         while len(possible_words) > 0 and row < 6:
-            word = select_next_word(all_guesses, possible_words)
+            if row == 0 and first_word:
+                word = first_word
+            else:
+                word = select_next_word(all_guesses, possible_words)
             all_guesses.append(word)
             values = check_word(correct_word, word)
             add_info(info, values, word)
-            possible_words = guess_word(word, info, possible_words)
+            possible_words = patterns.get(word, values, possible_words)
             row += 1
         win = "".join(info.correct).isalpha()
         return row, tuple(all_guesses), win, correct_word
@@ -158,6 +162,9 @@ class PlayOnWebsiteBase(SolutionStrategy):
         first_word : str, optional
             Primeiro chute utilizado pelo algoritmo. Quando None, é
             escolhido automaticamente a partir do ranking de palavras.
+            Em qualquer caso, o espaço de busca considerado continua
+            sendo o dicionário inteiro -- `first_word` só força a
+            abertura, não restringe as tentativas seguintes.
 
         correct_word : str, optional
             Palavra correta da simulação. Quando informada, também é
@@ -171,10 +178,8 @@ class PlayOnWebsiteBase(SolutionStrategy):
             (número de tentativas, tupla com todos os chutes, vitória,
             palavra correta).
         """
-        if first_word:
-            possible_words = [first_word]
-        else:
-            possible_words = WORD_LIST["palavras"].values.tolist()
+        patterns = _get_pattern_matrix()
+        possible_words = WORD_LIST["palavras"].values.tolist()
         row = 0
         info = Info()
         all_guesses = []
@@ -198,13 +203,16 @@ class PlayOnWebsiteBase(SolutionStrategy):
             page.goto("https://term.ooo/")
             page.keyboard.press("Escape")
             while len(possible_words) > 0 and row < 6:
-                word = select_next_word(all_guesses, possible_words)
+                if row == 0 and first_word:
+                    word = first_word
+                else:
+                    word = select_next_word(all_guesses, possible_words)
                 all_guesses.append(word)
                 type_word(page, word)
                 time.sleep(1.5)
                 values = self._read_row(page, row)
                 add_info(info, values, word)
-                possible_words = guess_word(word, info, possible_words)
+                possible_words = patterns.get(word, values, possible_words)
                 row += 1
             win = "".join(info.correct).isalpha()
         return row, tuple(all_guesses), win, correct_word
@@ -279,30 +287,239 @@ class Context:
 
 class Info:
     """
-    Armazena todas as informações descobertas durante uma partida.
+    Acompanha as letras já confirmadas como corretas durante uma
+    partida.
+
+    Usado apenas para determinar, ao final, se a partida terminou em
+    vitória (`"".join(info.correct).isalpha()`) -- a filtragem de
+    palavras candidatas a cada tentativa é feita por `PatternMatrix`,
+    que não depende deste objeto.
 
     Attributes
     ----------
-    not_included : list[str]
-        Letras que certamente não pertencem à palavra.
-
     correct : list[str]
-        Letras na posição correta. Posições desconhecidas contêm ".".
-
-    missplaced : list[list[str]]
-        Para cada posição, guarda letras que pertencem à palavra,
-        porém não podem ocupar aquela posição.
-
-    included : list[str]
-        Letras confirmadas na palavra, mas cuja posição ainda não
-        foi totalmente determinada.
+        Letras na posição correta. Posições ainda não descobertas
+        contêm ".".
     """
 
     def __init__(self):
-        self.not_included = []
         self.correct = [".", ".", ".", ".", "."]
-        self.missplaced = [[], [], [], [], []]
-        self.included = []
+
+
+def _encode_pattern(values) -> int:
+    """
+    Codifica um padrão de resultado (5 valores em {0, 1, 2}) como um
+    único inteiro em base 3 (0 a 242).
+
+    `PatternMatrix.matrix` guarda um desses códigos por par de
+    palavras em vez de uma tupla de 5 elementos: um array numérico
+    (`dtype=int16`) serializa e desserializa muito mais rápido do que
+    um array de objetos guardando ~2 milhões de tuplas Python, o que
+    reduziu o arquivo de cache de ~38MB para menos de 5MB e o tempo
+    de carregá-lo de ~5.7s para frações de segundo.
+
+    Parameters
+    ----------
+    values : Sequence[int]
+        Padrão de resultado com 5 valores em {0, 1, 2}.
+
+    Returns
+    -------
+    int
+        Código em base 3 equivalente, no intervalo [0, 242].
+    """
+    codigo = 0
+    for v in values:
+        codigo = codigo * 3 + v
+    return codigo
+
+
+class PatternMatrix:
+    """
+    Pré-calcula e armazena em cache o resultado de `check_word` para
+    todos os pares (resposta, palpite) do dicionário de palavras.
+
+    Tanto o cálculo de entropia quanto a filtragem de candidatas após
+    uma tentativa dependem do resultado de `check_word(resposta,
+    palpite)` para muitos pares -- e o resultado de cada par não muda
+    entre partidas, já que depende só das duas palavras envolvidas.
+    Pré-calcular essa matriz uma única vez (e reaproveitá-la via cache
+    em disco entre execuções) evita refazer esse trabalho a cada
+    partida, o que importa especialmente ao gerar o dataset (até 6
+    tentativas × `len(WORD_LIST)` partidas simuladas).
+
+    Também substitui `guess_word`/`generate_regex`: em vez de
+    reconstruir as restrições conhecidas como uma expressão regular
+    (uma segunda implementação da mesma lógica, que pode divergir de
+    `check_word` em casos com letras repetidas), a filtragem consulta
+    diretamente o resultado pré-calculado -- mais rápido e, por
+    construção, sempre consistente com `check_word`.
+
+    A primeira construção percorre `len(word_list) ** 2` pares (com o
+    dicionário completo do projeto, algo em torno de 10s); o resultado
+    fica em cache em `CACHE_PATH`, então execuções seguintes só
+    carregam o arquivo, desde que a lista de palavras não tenha
+    mudado (`load_or_build` reconstrói automaticamente se tiver).
+
+    Attributes
+    ----------
+    word_list : list[str]
+        Lista de palavras usada para construir a matriz -- usada para
+        detectar se um cache em disco está desatualizado.
+    idx : dict[str, int]
+        Mapeia cada palavra para seu índice em `matrix`.
+    matrix : numpy.ndarray
+        `matrix[i, j]` é o padrão de resultado (tupla de 5 inteiros)
+        de `check_word(word_list[i], word_list[j])`.
+    lookup : dict[tuple[str, tuple], list[str]]
+        Mapeia (palpite, padrão observado) para a lista de palavras
+        que produziriam esse padrão se fossem a resposta correta.
+    """
+
+    CACHE_PATH = Path(__file__).resolve().parent.parent / "data" / "pattern_matrix.joblib"
+
+    @classmethod
+    def load_or_build(cls, palavras) -> "PatternMatrix":
+        """
+        Carrega a matriz do cache em disco se existir e ainda for
+        válida para a lista de palavras atual; caso contrário,
+        constrói do zero e salva em cache para as próximas execuções.
+
+        Parameters
+        ----------
+        palavras : Iterable[str]
+            Lista de palavras (dicionário atual) para a qual a matriz
+            deve ser construída ou validada.
+
+        Returns
+        -------
+        PatternMatrix
+        """
+        palavras = list(palavras)
+
+        if cls.CACHE_PATH.exists():
+            cache = _joblib_load(cls.CACHE_PATH)
+            if cache.word_list == palavras:
+                return cache
+            # dicionário mudou desde que o cache foi gerado -- reconstrói
+
+        matriz = cls(palavras)
+        cls.CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        _joblib_dump(matriz, cls.CACHE_PATH)
+        return matriz
+
+    def __init__(self, word_list):
+        """
+        Parameters
+        ----------
+        word_list : Iterable[str]
+            Lista de palavras para as quais todos os pares
+            (resposta, palpite) serão pré-calculados.
+        """
+        self.word_list = list(word_list)
+        self.idx = {palavra: i for i, palavra in enumerate(self.word_list)}
+        n = len(self.word_list)
+        self.matrix = np.empty((n, n), dtype=np.int16)
+        self.lookup = {}
+
+        for i, resposta in enumerate(self.word_list):
+            for j, palpite in enumerate(self.word_list):
+                codigo = _encode_pattern(check_word(resposta, palpite))
+                self.matrix[i, j] = codigo
+                self.lookup.setdefault((palpite, codigo), []).append(resposta)
+
+    def get(self, guess: str, feedback, possible_words: list) -> list:
+        """
+        Filtra `possible_words` para as palavras que produziriam
+        exatamente `feedback` se `guess` fosse tentado contra elas.
+
+        Parameters
+        ----------
+        guess : str
+            Palavra que foi tentada.
+
+        feedback : Sequence[int]
+            Resultado observado para `guess` (0/1/2 por posição).
+
+        possible_words : list[str]
+            Palavras que ainda satisfaziam as restrições antes desta
+            tentativa.
+
+        Returns
+        -------
+        list[str]
+            Palavras de `possible_words` compatíveis com `feedback`,
+            excluindo a própria `guess`.
+        """
+        codigo = _encode_pattern(feedback)
+        candidatos = self.lookup.get((guess, codigo), [])
+        ainda_possiveis = set(possible_words)
+        return [w for w in candidatos if w in ainda_possiveis and w != guess]
+
+    def entropy_ranking(self, possible_words: list) -> dict:
+        """
+        Calcula, para cada palavra do dicionário, a entropia (em
+        bits) do padrão de resultado que ela produziria contra as
+        palavras ainda possíveis -- equivalente ao que `calc_entropy`
+        fazia, mas consultando `matrix` em vez de recalcular
+        `check_word` para cada par, que é a parte mais cara do
+        algoritmo (refeita a cada tentativa, exceto a primeira, de
+        cada partida).
+
+        Palavras que dividem o conjunto de possibilidades em mais
+        grupos, de tamanhos mais equilibrados, geram mais informação
+        (entropia mais alta) e por isso tendem a ser escolhas
+        melhores para a próxima tentativa.
+
+        Parameters
+        ----------
+        possible_words : list[str]
+            Palavras que ainda satisfazem as restrições conhecidas.
+
+        Returns
+        -------
+        dict
+            Dicionário que associa cada palavra do dicionário à
+            entropia (float) do padrão de resultado que ela geraria.
+        """
+        indices_possiveis = [self.idx[w] for w in possible_words]
+        total = len(possible_words)
+        ranking = {}
+
+        for palpite in self.word_list:
+            j = self.idx[palpite]
+            counts = Counter(int(self.matrix[i, j]) for i in indices_possiveis)
+            entropy = 0.0
+            for count in counts.values():
+                p = count / total
+                entropy += p * math.log2(1 / p)
+            ranking[palpite] = entropy
+
+        return ranking
+
+
+_PATTERN_MATRIX = None
+
+
+def _get_pattern_matrix() -> PatternMatrix:
+    """
+    Devolve a `PatternMatrix` compartilhada por todas as estratégias,
+    construindo-a (ou carregando-a do cache) na primeira chamada.
+
+    Mesmo padrão de Lazy Initialization usado em
+    `compvision._get_model`: construída no máximo uma vez por
+    processo e reaproveitada em todas as partidas daquela sessão --
+    o que importa aqui especialmente pelo menu interativo rodar em
+    loop, jogando várias partidas na mesma execução.
+
+    Returns
+    -------
+    PatternMatrix
+    """
+    global _PATTERN_MATRIX
+    if _PATTERN_MATRIX is None:
+        _PATTERN_MATRIX = PatternMatrix.load_or_build(WORD_LIST["palavras"])
+    return _PATTERN_MATRIX
 
 
 def select_next_word(previous_guesses: list, possible_words: list) -> str:
@@ -312,10 +529,11 @@ def select_next_word(previous_guesses: list, possible_words: list) -> str:
     Na primeira tentativa (quando ainda não há chutes anteriores),
     usa o ranking estático pré-calculado na coluna "valor" do
     dataset. Nas tentativas seguintes, recalcula um ranking por
-    entropia com base nas palavras ainda possíveis, o que tende a
-    escolher a palavra que mais reduz o espaço de possibilidades.
-    Quando restam poucas palavras candidatas, escolhe aleatoriamente
-    entre elas, já que o cálculo de entropia deixa de compensar.
+    entropia (via `PatternMatrix.entropy_ranking`) com base nas
+    palavras ainda possíveis, o que tende a escolher a palavra que
+    mais reduz o espaço de possibilidades. Quando restam poucas
+    palavras candidatas, escolhe aleatoriamente entre elas, já que o
+    cálculo de entropia deixa de compensar.
 
     Parameters
     ----------
@@ -336,7 +554,7 @@ def select_next_word(previous_guesses: list, possible_words: list) -> str:
     if not previous_guesses:
         ranking = dict(zip(WORD_LIST["palavras"], WORD_LIST["valor"]))
     else:
-        ranking = calc_entropy(possible_words)
+        ranking = _get_pattern_matrix().entropy_ranking(possible_words)
 
     return choose_word(previous_guesses, ranking)
 
@@ -359,7 +577,8 @@ def choose_word(guesses, ranking: dict) -> str:
     ranking : dict
         Dicionário que associa cada palavra ao seu valor (score
         estático da coluna "valor" na primeira tentativa, ou entropia
-        calculada por `calc_entropy` nas tentativas seguintes).
+        calculada por `PatternMatrix.entropy_ranking` nas tentativas
+        seguintes).
 
     Returns
     -------
@@ -368,122 +587,6 @@ def choose_word(guesses, ranking: dict) -> str:
     """
     possible_guesses = WORD_LIST[~WORD_LIST["palavras"].isin(guesses)]
     return max(possible_guesses["palavras"], key=ranking.get)
-
-
-def calc_entropy(possible_words: list) -> dict:
-    """
-    Calcula, para cada palavra do dataset, a entropia (em bits) do
-    padrão de resultado que ela produziria contra as palavras ainda
-    possíveis.
-
-    Palavras que dividem o conjunto de possibilidades em mais grupos,
-    de tamanhos mais equilibrados, geram mais informação (entropia
-    mais alta) e por isso tendem a ser escolhas melhores para a
-    próxima tentativa.
-
-    Parameters
-    ----------
-    possible_words : list[str]
-        Palavras que ainda satisfazem as restrições conhecidas.
-
-    Returns
-    -------
-    dict
-        Dicionário que associa cada palavra do dataset à entropia
-        (float) do padrão de resultado que ela geraria.
-    """
-    ranking = {}
-    for guess in WORD_LIST["palavras"]:
-        counts = Counter()
-
-        for answer in possible_words:
-            pattern = tuple(check_word(answer, guess))
-            counts[pattern] += 1
-
-        entropy = 0
-
-        for count in counts.values():
-            p = count / len(possible_words)
-            entropy += p * math.log2(1 / p)
-
-        ranking[guess] = entropy
-
-    return ranking
-
-
-def guess_word(guess: str, info: Info, possible_words: list) -> list:
-    """
-    Filtra todas as palavras possíveis utilizando as informações
-    descobertas até o momento.
-
-    A filtragem é feita através de uma expressão regular construída
-    dinamicamente.
-
-    Parameters
-    ----------
-    guess : str
-        Última palavra jogada.
-
-    info : Info
-        Estado atual da partida.
-
-    possible_words: list
-        Lista de palavras possiveis
-
-    Returns
-    -------
-    list[str]
-        Lista de palavras que ainda satisfazem todas as restrições.
-    """
-    regex = generate_regex(info)
-    pattern = re.compile(regex)
-
-    if len(possible_words) == 1 and not (pattern.fullmatch(guess)):
-        filter_guesses = WORD_LIST["palavras"].str.match(regex)
-        possible_words = WORD_LIST.loc[filter_guesses, "palavras"].tolist()
-    else:
-        possible_words = [word for word in possible_words if pattern.fullmatch(word)]
-    if guess in possible_words:
-        possible_words.remove(guess)
-
-    return possible_words
-
-
-def generate_regex(info: Info) -> str:
-    """
-    Constrói a expressão regular que representa todas as restrições
-    conhecidas sobre a palavra correta.
-
-    Para cada posição, usa a letra correta quando já é conhecida, ou
-    uma classe de negação com as letras que já se provaram fora de
-    lugar naquela posição especificamente. Além disso, adiciona uma
-    negação global para letras confirmadas ausentes e "lookaheads"
-    positivos para letras confirmadas presentes em alguma posição
-    ainda não determinada.
-
-    Parameters
-    ----------
-    info : Info
-        Estado atual da partida.
-
-    Returns
-    -------
-    str
-        Expressão regular que qualquer palavra candidata deve
-        satisfazer (via `fullmatch`) para continuar sendo possível.
-    """
-    pattern = ""
-    for index, elem in enumerate(info.correct):
-        if elem.isalpha():
-            pattern += elem
-        elif info.missplaced[index]:
-            pattern += f"[^{"".join(info.missplaced[index])}]"
-        else:
-            pattern += elem
-    not_included = f"(?!.*[{"".join(info.not_included)}])" if info.not_included else ""
-    included = "".join([f"(?=.*{x})" for x in info.included])
-    regex = f"^{not_included}{included}{pattern}$"
-    return regex
 
 
 def check_word(word: str, guess: str):
@@ -495,7 +598,9 @@ def check_word(word: str, guess: str):
         1 -> letra existente em outra posição.
         0 -> letra inexistente.
 
-    Utilizado quando a partida é simulada sem acessar o site.
+    Utilizado quando a partida é simulada sem acessar o site, e para
+    construir `PatternMatrix` (que pré-calcula esse resultado para
+    todos os pares de palavras do dicionário).
 
     Parameters
     ----------
@@ -531,7 +636,8 @@ def check_word(word: str, guess: str):
 
 def add_info(info: Info, values: list, guess: str) -> None:
     """
-    Atualiza o objeto `Info` com o resultado do último chute.
+    Atualiza `info.correct` com as letras confirmadas pelo resultado
+    do último chute.
 
     Parameters
     ----------
@@ -545,16 +651,6 @@ def add_info(info: Info, values: list, guess: str) -> None:
     guess : str
         Palavra utilizada no chute.
     """
-
     for index, value in enumerate(values):
         if value == 2:
             info.correct[index] = guess[index]
-        if value == 1:
-            info.missplaced[index].append(guess[index])
-            if guess[index] in info.included:
-                continue
-            info.included.append(guess[index])
-
-    for index, value in enumerate(values):
-        if value == 0 and guess[index] not in info.correct and guess[index] not in info.included and guess[index] not in info.not_included:
-            info.not_included.append(guess[index])

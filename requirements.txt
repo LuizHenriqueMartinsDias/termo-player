@@ -1,7 +1,15 @@
-pandas~=3.0.3
-playwright~=1.61.0
-matplotlib~=3.11.0
-numpy~=2.5.0
-pillow~=12.3.0
-tensorflow~=2.21.0
-opencv-python~=4.13.0.92
+# Core -- necessário para jogar (modo terminal e modos de navegador)
+pandas>=2.0
+playwright>=1.40
+opencv-python>=4.8
+numpy>=1.24
+joblib>=1.3
+
+# Deep learning -- só necessário para a estratégia PlayOnWebsiteDeepLearning
+# (compvision.py carrega isso sob demanda; sem tensorflow, as outras
+# estratégias continuam funcionando normalmente)
+tensorflow>=2.15
+
+# Análise exploratória -- só necessário para eda_datasets.ipynb
+matplotlib>=3.7
+seaborn>=0.13
