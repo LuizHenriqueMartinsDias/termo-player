@@ -104,7 +104,7 @@ termo/
 ## Instalação e uso
 
 ```bash
-git clone <url-do-repositorio>
+git clone <https://github.com/LuizHenriqueMartinsDias/termo-player.git>
 cd termo/src
 
 pip install -r requirements.txt
