@@ -211,6 +211,14 @@ class PlayOnWebsiteBase(SolutionStrategy):
                 type_word(page, word)
                 time.sleep(1.5)
                 values = self._read_row(page, row)
+                if len(values) != 5:
+                    raise ValueError(
+                        f"A leitura da linha {row} devolveu {len(values)} "
+                        f"valores em vez de 5 ({values}) -- provavelmente uma "
+                        "cor não reconhecida no tabuleiro. Encerrando em vez "
+                        "de continuar com uma leitura incompleta, que faria "
+                        "a partida terminar em derrota sem motivo real."
+                    )
                 add_info(info, values, word)
                 possible_words = patterns.get(word, values, possible_words)
                 row += 1

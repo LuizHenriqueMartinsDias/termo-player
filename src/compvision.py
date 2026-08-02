@@ -56,7 +56,6 @@ def _get_model():
     """
     global _MODEL
     if _MODEL is None:
-        print("Inicializando modelo...")
         os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
         os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
         import tensorflow as tf
@@ -219,12 +218,21 @@ def check_collors(squares: tuple) -> list:
     Determina o resultado de uma tentativa analisando as cores dos
     quadrados do tabuleiro.
 
-    Para cada quadrado, identifica a cor predominante e converte para
-    o mesmo formato utilizado pela lógica do jogo:
+    Para cada quadrado, identifica a cor predominante e a associa à
+    cor conhecida mais próxima (por distância euclidiana em RGB, não
+    igualdade exata) entre as três usadas pelo jogo:
 
         2 -> letra correta na posição correta (verde)
         1 -> letra presente em outra posição (amarelo)
         0 -> letra inexistente (preto)
+
+    Usar a cor mais próxima em vez de exigir correspondência exata
+    evita que pequenas variações de renderização (antialiasing,
+    compressão da captura de tela, diferenças entre monitores)
+    deixem uma posição sem resultado -- o que corrompia o padrão
+    lido (uma lista com menos de 5 elementos), fazendo o filtro de
+    candidatas descartar a palavra correta por engano e a partida
+    terminar em derrota sem motivo real.
 
     Parameters
     ----------
@@ -234,18 +242,22 @@ def check_collors(squares: tuple) -> list:
     Returns
     -------
     list[int]
-        Lista com o resultado correspondente a cada posição.
+        Lista com o resultado correspondente a cada posição -- sempre
+        com o mesmo tamanho de `squares`.
     """
+    cores_conhecidas = np.array([
+        [105, 173, 211],  # amarelo -> 1
+        [44, 42, 49],      # preto   -> 0
+        [148, 163, 58],    # verde   -> 2
+    ])
+    valor_por_cor = [1, 0, 2]
+
     values = []
-    for i, square in enumerate(squares):
+    for square in squares:
         pixels = square.reshape(-1, 3)
         colors, count = np.unique(pixels, axis=0, return_counts=True)
-        color = colors[np.argmax(count)]
-        match list(color):
-            case [105, 173, 211]:
-                values.append(1)
-            case [44, 42, 49]:
-                values.append(0)
-            case [148, 163, 58]:
-                values.append(2)
+        cor_dominante = colors[np.argmax(count)]
+        distancias = np.sum((cores_conhecidas - cor_dominante) ** 2, axis=1)
+        indice_mais_proximo = np.argmin(distancias)
+        values.append(valor_por_cor[indice_mais_proximo])
     return values
