@@ -26,6 +26,18 @@ from playwright.sync_api import Page
 # menor já basta e deixa o pré-processamento e a inferência mais rápidos.
 MODEL_INPUT_SIZE = (32, 32)
 
+# Distância euclidiana (ao quadrado, em RGB) acima da qual a cor
+# dominante de um quadrado é considerada pouco confiável -- não perto
+# o bastante de nenhuma das três cores conhecidas do jogo para confiar
+# cegamente nela. Serve para detectar capturas feitas no meio da
+# animação de revelação do tabuleiro (quando o quadrado ainda não
+# assumiu sua cor final).
+LIMIAR_DISTANCIA_COR = 8000
+
+# Confiança mínima (probabilidade da classe prevista, após softmax)
+# para considerar uma previsão do modelo de deep learning confiável.
+LIMIAR_CONFIANCA_MODELO = 0.6
+
 _MODEL = None  # Cache do modelo carregado (padrão Lazy Initialization).
 _PREDICT_FN = None  # Cache da função de inferência compilada (tf.function).
 
@@ -135,7 +147,7 @@ def type_word(page: Page, word: str) -> None:
     page.keyboard.press("Enter")
 
 
-def predict_square(squares) -> list:
+def predict_square(squares) -> tuple:
     """
     Classifica os cinco quadrados de uma linha usando o modelo de
     deep learning.
@@ -155,11 +167,18 @@ def predict_square(squares) -> list:
 
     Returns
     -------
-    list[int]
-        Resultado previsto para cada posição:
+    tuple[list[int], bool]
+        (valores, confiável). `valores` tem o resultado previsto para
+        cada posição:
             2 -> letra correta na posição correta (verde).
             1 -> letra presente em outra posição (amarelo).
             0 -> letra inexistente (preto).
+        `confiável` é False se a probabilidade da classe prevista (via
+        softmax sobre os logits) ficar abaixo de
+        `LIMIAR_CONFIANCA_MODELO` para qualquer uma das cinco
+        posições -- sinal de que a captura pode ter sido feita durante
+        a animação de revelação do tabuleiro, antes do quadrado
+        assumir sua aparência final.
     """
     class_values = [1, 0, 2]
     imgs = []
@@ -171,10 +190,14 @@ def predict_square(squares) -> list:
 
     imgs = np.array(imgs, dtype="float32")  # (5, H, W, 3)
     predict_fn = _get_predict_fn()
-    preds = predict_fn(imgs).numpy()
+    logits = predict_fn(imgs).numpy()
 
-    values = [class_values[np.argmax(p)] for p in preds]
-    return values
+    exp = np.exp(logits - np.max(logits, axis=-1, keepdims=True))
+    probs = exp / np.sum(exp, axis=-1, keepdims=True)
+
+    values = [class_values[np.argmax(p)] for p in logits]
+    confiavel = bool(np.min(np.max(probs, axis=1)) >= LIMIAR_CONFIANCA_MODELO)
+    return values, confiavel
 
 
 def print_row(page: Page, row: int) -> tuple:
@@ -213,7 +236,7 @@ def print_row(page: Page, row: int) -> tuple:
     return tuple(squares_list)
 
 
-def check_collors(squares: tuple) -> list:
+def check_collors(squares: tuple) -> tuple:
     """
     Determina o resultado de uma tentativa analisando as cores dos
     quadrados do tabuleiro.
@@ -229,10 +252,16 @@ def check_collors(squares: tuple) -> list:
     Usar a cor mais próxima em vez de exigir correspondência exata
     evita que pequenas variações de renderização (antialiasing,
     compressão da captura de tela, diferenças entre monitores)
-    deixem uma posição sem resultado -- o que corrompia o padrão
-    lido (uma lista com menos de 5 elementos), fazendo o filtro de
-    candidatas descartar a palavra correta por engano e a partida
-    terminar em derrota sem motivo real.
+    deixem uma posição sem resultado -- o que corrompia o padrão lido
+    (uma lista com menos de 5 elementos). Mas isso sozinho troca uma
+    falha óbvia (posição faltando) por uma sutil: se a captura for
+    feita no meio da animação de revelação do tabuleiro, a cor
+    dominante pode não ser nenhuma das três finais, e "cor mais
+    próxima" ainda escolhe alguma, com confiança total e errada. Por
+    isso a função também devolve um sinal de confiabilidade, baseado
+    em quão perto a cor dominante de cada quadrado ficou da cor
+    conhecida mais próxima -- quem chama pode usar isso para tentar
+    de novo em vez de aceitar cegamente a primeira leitura.
 
     Parameters
     ----------
@@ -241,9 +270,11 @@ def check_collors(squares: tuple) -> list:
 
     Returns
     -------
-    list[int]
-        Lista com o resultado correspondente a cada posição -- sempre
-        com o mesmo tamanho de `squares`.
+    tuple[list[int], bool]
+        (valores, confiável). `valores` sempre tem o mesmo tamanho de
+        `squares`. `confiável` é False se a cor dominante de qualquer
+        quadrado ficou a uma distância maior que `LIMIAR_DISTANCIA_COR`
+        de todas as três cores conhecidas.
     """
     cores_conhecidas = np.array([
         [105, 173, 211],  # amarelo -> 1
@@ -253,11 +284,14 @@ def check_collors(squares: tuple) -> list:
     valor_por_cor = [1, 0, 2]
 
     values = []
+    confiavel = True
     for square in squares:
         pixels = square.reshape(-1, 3)
         colors, count = np.unique(pixels, axis=0, return_counts=True)
         cor_dominante = colors[np.argmax(count)]
         distancias = np.sum((cores_conhecidas - cor_dominante) ** 2, axis=1)
         indice_mais_proximo = np.argmin(distancias)
+        if distancias[indice_mais_proximo] > LIMIAR_DISTANCIA_COR:
+            confiavel = False
         values.append(valor_por_cor[indice_mais_proximo])
-    return values
+    return values, confiavel

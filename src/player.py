@@ -211,6 +211,7 @@ class PlayOnWebsiteBase(SolutionStrategy):
                 type_word(page, word)
                 time.sleep(1.5)
                 values = self._read_row(page, row)
+                print(values)
                 if len(values) != 5:
                     raise ValueError(
                         f"A leitura da linha {row} devolveu {len(values)} "
