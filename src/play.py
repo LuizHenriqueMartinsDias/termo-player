@@ -6,6 +6,8 @@ menu interativo no terminal: o usuário escolhe o modo de jogo e
 informa palavra inicial/palavra correta quando necessário, sem
 precisar lembrar de flags.
 """
+import os
+import platform
 import random
 from pathlib import Path
 
@@ -132,6 +134,22 @@ def run_strategy(opcao: dict) -> None:
     resultado = "Vitória" if win else "Derrota"
     print(f"\n{resultado} em {attempts} tentativa(s). Chutes: {guesses}")
 
+def pause():
+    input("Digite enter para continuar...")
+    limpar_terminal()
+
+def limpar_terminal():
+    """
+    Limpa o terminal de forma compatível com Windows, Linux e macOS.
+    """
+    try:
+        sistema = platform.system()
+        if sistema == "Windows":
+            os.system('cls')
+        else:
+            os.system('clear')
+    except Exception as e:
+        print(f"Erro ao tentar limpar o terminal: {e}")
 
 def run_dataset_generation() -> None:
     """
@@ -210,14 +228,17 @@ def save_dataset(attempts: int, guesses: tuple, win: bool, correct_word: str, df
 def main() -> None:
     """Laço principal: exibe o menu e executa a opção escolhida até o
     usuário optar por sair."""
+
     while True:
         show_menu()
         choice = input("Escolha uma opção: ").strip()
 
         if choice in STRATEGIES:
             run_strategy(STRATEGIES[choice])
+            pause()
         elif choice == DATASET_OPTION:
             run_dataset_generation()
+            pause()
         elif choice == EXIT_OPTION:
             print("Até mais!")
             break
