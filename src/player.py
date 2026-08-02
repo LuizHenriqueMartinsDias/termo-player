@@ -127,7 +127,7 @@ class PlayOnWebsiteBase(SolutionStrategy):
     """
 
     @abstractmethod
-    def _read_row(self, page: Page, row: int) -> list:
+    def _read_row(self, page: Page, row: int) -> tuple:
         """
         Lê o resultado (0, 1 ou 2 por posição) de uma linha do
         tabuleiro já preenchida.
@@ -142,10 +142,51 @@ class PlayOnWebsiteBase(SolutionStrategy):
 
         Returns
         -------
-        list[int]
-            Resultado de cada uma das cinco posições da linha.
+        tuple[list[int], bool]
+            (valores, confiável) -- ver `compvision.check_collors` e
+            `compvision.predict_square`. `confiável` sinaliza se a
+            leitura parece estável o bastante para ser usada, ou se
+            provavelmente foi feita durante a animação de revelação
+            do tabuleiro.
         """
         pass
+
+    def _read_row_com_retentativa(self, page: Page, row: int, tentativas: int = 3, espera_extra: float = 1.0) -> list:
+        """
+        Lê o resultado de uma linha, tentando de novo (com uma espera
+        extra) se a primeira leitura vier marcada como pouco
+        confiável -- normalmente sinal de que a captura de tela
+        aconteceu antes da animação de revelação do tabuleiro
+        terminar, não de um problema real na palavra tentada.
+
+        Parameters
+        ----------
+        page : Page
+            Página do navegador controlada pelo Playwright.
+
+        row : int
+            Índice da linha a ser lida.
+
+        tentativas : int, optional
+            Número máximo de leituras a tentar antes de desistir e
+            devolver a última leitura obtida mesmo assim.
+
+        espera_extra : float, optional
+            Segundos extras de espera antes de cada nova tentativa.
+
+        Returns
+        -------
+        list[int]
+            Resultado de cada uma das cinco posições da linha (a
+            última leitura obtida, confiável ou não).
+        """
+        values, confiavel = self._read_row(page, row)
+        tentativa = 1
+        while not confiavel and tentativa < tentativas:
+            time.sleep(espera_extra)
+            values, confiavel = self._read_row(page, row)
+            tentativa += 1
+        return values
 
     def play(self, first_word: str = None, correct_word: str = None) -> tuple[int, tuple, bool, str]:
         """
@@ -209,9 +250,8 @@ class PlayOnWebsiteBase(SolutionStrategy):
                     word = select_next_word(all_guesses, possible_words)
                 all_guesses.append(word)
                 type_word(page, word)
-                time.sleep(1.5)
-                values = self._read_row(page, row)
-                print(values)
+                time.sleep(2.0)
+                values = self._read_row_com_retentativa(page, row)
                 if len(values) != 5:
                     raise ValueError(
                         f"A leitura da linha {row} devolveu {len(values)} "
@@ -232,7 +272,7 @@ class PlayOnWebsite(PlayOnWebsiteBase):
     cada linha por análise direta das cores dos quadrados (visão
     computacional simples, sem deep learning)."""
 
-    def _read_row(self, page: Page, row: int) -> list:
+    def _read_row(self, page: Page, row: int) -> tuple:
         return check_collors(print_row(page, row))
 
 
@@ -241,7 +281,7 @@ class PlayOnWebsiteDeepLearning(PlayOnWebsiteBase):
     cada linha através de um modelo de deep learning treinado para
     classificar os quadrados do tabuleiro."""
 
-    def _read_row(self, page: Page, row: int) -> list:
+    def _read_row(self, page: Page, row: int) -> tuple:
         return predict_square(print_row(page, row))
 
 
